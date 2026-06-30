@@ -78,7 +78,32 @@
                 Console.WriteLine("Invalid Number");
             }
 
+            ////////////////////////////////////////////////////////////////////
 
+            // Switch Case Conditional Statement
+
+            Console.WriteLine("Welcome to main menu:");
+            Console.WriteLine("1.Deposite");
+            Console.WriteLine("2.Withdraw");
+            
+            Console.WriteLine("Choose an option: ");
+            int option = int.Parse(Console.ReadLine());
+
+            switch (option)
+            {
+                case 1:
+                    Console.WriteLine("Deposited..");
+                    break;
+
+                case 2:
+                    Console.WriteLine("Withdrawed..");
+                    break;
+
+                default:
+                    Console.WriteLine("please choose a correct option");
+                    break;
+            }
+            //////////////////////////////////////////////////////////////////
         }
     }
 }

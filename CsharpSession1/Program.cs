@@ -44,11 +44,39 @@
             Console.WriteLine("Division result: " + divisionResult);
             Console.WriteLine("Reminder result: " + reminderResult);
             Console.WriteLine("Comparison result: " + comparisonResult);
-            Console.WriteLine("Test result: " + testResult); 
+            Console.WriteLine("Test result: " + testResult);
 
             ////////////////////////////////////////////////////////////////////////
-            
-            //
+
+            // If else Conditional Statement
+
+            Console.WriteLine("Enter your degree: ");
+            float degree = float.Parse(Console.ReadLine());
+
+            if(degree >= 0 && degree < 50)
+            {
+                Console.WriteLine("Failed..");
+            }
+            else if(degree >= 50 && degree < 60)
+            {
+                Console.WriteLine("Grade: D");
+            }
+            else if(degree >= 60 && degree < 70)
+            {
+                Console.WriteLine("Grade: C");
+            }
+            else if (degree >= 70 && degree < 80)
+            {
+                Console.WriteLine("Grade: B");
+            }
+            else if(degree > 80)
+            {
+                Console.WriteLine("Grade: A");
+            }
+            else
+            {
+                Console.WriteLine("Invalid Number");
+            }
 
 
         }

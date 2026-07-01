@@ -309,99 +309,129 @@
 
             // Task 12 - Shipping Cost Calculator
 
-            Console.WriteLine("Enter the weight of the package in kilograms: ");
-            double weight = double.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the destination region:");
-            Console.WriteLine("A. Local");
-            Console.WriteLine("B. National");
-            Console.WriteLine("C. International");
-            char region = char.Parse(Console.ReadLine().ToUpper());
+            //Console.WriteLine("Enter the weight of the package in kilograms: ");
+            //double weight = double.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter the destination region:");
+            //Console.WriteLine("A. Local");
+            //Console.WriteLine("B. National");
+            //Console.WriteLine("C. International");
+            //char region = char.Parse(Console.ReadLine().ToUpper());
 
-            double cost;
-            double totalCost;
+            //double cost;
+            //double totalCost;
 
-            switch (region)
-            {
-                case 'A':
-                    cost = 1.000;
-                    Console.WriteLine("Base shipping cost: " + cost + " OMR");
+            //switch (region)
+            //{
+            //    case 'A':
+            //        cost = 1.000;
+            //        Console.WriteLine("Base shipping cost: " + cost + " OMR");
 
-                    if (weight > 5 && weight <= 10)
-                    {
-                        Console.WriteLine("Extra charge 2.000 OMR");
-                        totalCost = cost + 2.000;
-                        Console.WriteLine("Total shipping cost: " + totalCost + " OMR");
+            //        if (weight > 5 && weight <= 10)
+            //        {
+            //            Console.WriteLine("Extra charge 2.000 OMR");
+            //            totalCost = cost + 2.000;
+            //            Console.WriteLine("Total shipping cost: " + totalCost + " OMR");
 
-                    }
-                    else if (weight > 10)
-                    {
-                        Console.WriteLine("Extra charge 5.000 OMR");
-                        totalCost = cost + 5.000;
-                        Console.WriteLine("Total shipping cost: " + totalCost + " OMR");
-                    }
-                    else
-                    {
-                        Console.WriteLine("No extra charge");
-                        Console.WriteLine("Total shipping cost: " + cost + " OMR");
-                    }
-                    break;
+            //        }
+            //        else if (weight > 10)
+            //        {
+            //            Console.WriteLine("Extra charge 5.000 OMR");
+            //            totalCost = cost + 5.000;
+            //            Console.WriteLine("Total shipping cost: " + totalCost + " OMR");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("No extra charge");
+            //            Console.WriteLine("Total shipping cost: " + cost + " OMR");
+            //        }
+            //        break;
 
-                case 'B':
-                    cost = 3.000;
-                    Console.WriteLine("Base shipping cost: " + cost + " OMR");
+            //    case 'B':
+            //        cost = 3.000;
+            //        Console.WriteLine("Base shipping cost: " + cost + " OMR");
 
-                    if (weight > 5 && weight <= 10)
-                    {
-                        Console.WriteLine("Extra charge 2.000 OMR");
-                        totalCost = cost + 2.000;
-                        Console.WriteLine("Total shipping cost: " + totalCost + " OMR");
+            //        if (weight > 5 && weight <= 10)
+            //        {
+            //            Console.WriteLine("Extra charge 2.000 OMR");
+            //            totalCost = cost + 2.000;
+            //            Console.WriteLine("Total shipping cost: " + totalCost + " OMR");
 
-                    }
-                    else if (weight > 10)
-                    {
-                        Console.WriteLine("Extra charge 5.000 OMR");
-                        totalCost = cost + 5.000;
-                        Console.WriteLine("Total shipping cost: " + totalCost + " OMR");
-                    }
-                    else
-                    {
-                        Console.WriteLine("No extra charge");
-                        Console.WriteLine("Total shipping cost: " + cost + " OMR");
-                    }
-                    break;
+            //        }
+            //        else if (weight > 10)
+            //        {
+            //            Console.WriteLine("Extra charge 5.000 OMR");
+            //            totalCost = cost + 5.000;
+            //            Console.WriteLine("Total shipping cost: " + totalCost + " OMR");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("No extra charge");
+            //            Console.WriteLine("Total shipping cost: " + cost + " OMR");
+            //        }
+            //        break;
 
-                case 'C':
-                    cost = 7.000;
-                    Console.WriteLine("Base shipping cost: " + cost + " OMR");
+            //    case 'C':
+            //        cost = 7.000;
+            //        Console.WriteLine("Base shipping cost: " + cost + " OMR");
 
-                    if (weight > 5 && weight <= 10)
-                    {
-                        Console.WriteLine("Extra charge 2.000 OMR");
-                        totalCost = cost + 2.000;
-                        Console.WriteLine("Total shipping cost: " + totalCost + " OMR");
+            //        if (weight > 5 && weight <= 10)
+            //        {
+            //            Console.WriteLine("Extra charge 2.000 OMR");
+            //            totalCost = cost + 2.000;
+            //            Console.WriteLine("Total shipping cost: " + totalCost + " OMR");
 
-                    }
-                    else if (weight > 10)
-                    {
-                        Console.WriteLine("Extra charge 5.000 OMR");
-                        totalCost = cost + 5.000;
-                        Console.WriteLine("Total shipping cost: " + totalCost + " OMR");
-                    }
-                    else
-                    {
-                        Console.WriteLine("No extra charge");
-                        Console.WriteLine("Total shipping cost: " + cost + " OMR");
-                    }
-                    break;
+            //        }
+            //        else if (weight > 10)
+            //        {
+            //            Console.WriteLine("Extra charge 5.000 OMR");
+            //            totalCost = cost + 5.000;
+            //            Console.WriteLine("Total shipping cost: " + totalCost + " OMR");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("No extra charge");
+            //            Console.WriteLine("Total shipping cost: " + cost + " OMR");
+            //        }
+            //        break;
 
-                default:
-                    Console.WriteLine("Invalid region entered. Please enter A, B, or C");
-                    break;
+            //    default:
+            //        Console.WriteLine("Invalid region entered. Please enter A, B, or C");
+            //        break;
 
-            }
+            //}
             ////////////////////////////////////////////////////////////////////////////////////////////////////////
             
-            ///
+            // Task 13 - Triangle Type Classifier
+
+            Console.WriteLine("Enter the lengths of the three sides of the triangle:");
+            Console.Write("Side 1: ");
+            double side1 = double.Parse(Console.ReadLine());
+            Console.Write("Side 2: ");
+            double side2 = double.Parse(Console.ReadLine());
+            Console.Write("Side 3: ");
+            double side3 = double.Parse(Console.ReadLine());
+
+            if (side1 + side2 > side3 && side1 + side3 > side2 && side2 + side3 > side1)
+            {
+                Console.WriteLine("The triangle is valid.");
+
+                if (side1 == side2 && side1 == side3)
+                {
+                    Console.WriteLine("The triangle is equilateral (all sides equal)");
+                }
+                else if (side1 == side2 || side1 == side3 || side2 == side3)
+                {
+                    Console.WriteLine("The triangle is isosceles (two sides equal)");
+                }
+                else
+                {
+                    Console.WriteLine("The triangle is scalene (no sides equal)");
+                }
+            }
+            else
+            {
+                Console.WriteLine("The triangle is not valid.");
+            }
 
         }
     }

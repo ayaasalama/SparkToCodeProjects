@@ -400,39 +400,167 @@
 
             //}
             ////////////////////////////////////////////////////////////////////////////////////////////////////////
-            
+
             // Task 13 - Triangle Type Classifier
 
-            Console.WriteLine("Enter the lengths of the three sides of the triangle:");
-            Console.Write("Side 1: ");
-            double side1 = double.Parse(Console.ReadLine());
-            Console.Write("Side 2: ");
-            double side2 = double.Parse(Console.ReadLine());
-            Console.Write("Side 3: ");
-            double side3 = double.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter the lengths of the three sides of the triangle:");
+            //Console.Write("Side 1: ");
+            //double side1 = double.Parse(Console.ReadLine());
+            //Console.Write("Side 2: ");
+            //double side2 = double.Parse(Console.ReadLine());
+            //Console.Write("Side 3: ");
+            //double side3 = double.Parse(Console.ReadLine());
 
-            if (side1 + side2 > side3 && side1 + side3 > side2 && side2 + side3 > side1)
+            //if (side1 + side2 > side3 && side1 + side3 > side2 && side2 + side3 > side1)
+            //{
+            //    Console.WriteLine("The triangle is valid.");
+
+            //    if (side1 == side2 && side1 == side3)
+            //    {
+            //        Console.WriteLine("The triangle is equilateral (all sides equal)");
+            //    }
+            //    else if (side1 == side2 || side1 == side3 || side2 == side3)
+            //    {
+            //        Console.WriteLine("The triangle is isosceles (two sides equal)");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("The triangle is scalene (no sides equal)");
+            //    }
+            //}
+            //else
+            //{
+            //    Console.WriteLine("The triangle is not valid.");
+            //}
+
+            /////////////////////////////////////////////////////////////////////////////////////
+
+            // Task 14 - Online Store Checkout
+
+            Console.WriteLine("Choose a product code to purchase:");
+            Console.WriteLine("1. Headphones - 8.500 OMR");
+            Console.WriteLine("2. Keyboard - 12.000 OMR");
+            Console.WriteLine("3. Mouse - 5.000 OMR");
+
+            Console.Write("Product code: ");
+            int productCode = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter the quantity you want to purchase: ");
+            int quantity = int.Parse(Console.ReadLine());
+
+            Console.Write("Do you have a coupon? (yes/no):");
+            string couponInput = Console.ReadLine();
+            bool hasCoupon = couponInput == "yes";
+
+            double unitprice;
+            double subtotal;
+            double discount; 
+            double afterdiscount; 
+            double tax; 
+            double finalTotal;
+
+            switch (productCode)
             {
-                Console.WriteLine("The triangle is valid.");
+                case 1:
+                    unitprice = 8.500;
 
-                if (side1 == side2 && side1 == side3)
-                {
-                    Console.WriteLine("The triangle is equilateral (all sides equal)");
-                }
-                else if (side1 == side2 || side1 == side3 || side2 == side3)
-                {
-                    Console.WriteLine("The triangle is isosceles (two sides equal)");
-                }
-                else
-                {
-                    Console.WriteLine("The triangle is scalene (no sides equal)");
-                }
-            }
-            else
-            {
-                Console.WriteLine("The triangle is not valid.");
+                    Console.WriteLine("Product: Headphones, Unit Price: " + unitprice + " OMR");
+                    Console.WriteLine("Quantity chosen is " + quantity);
+
+                    subtotal = unitprice * quantity;
+                    Console.WriteLine("Subtotal: " + subtotal + " OMR");
+
+                    if (hasCoupon && subtotal > 20)
+                    {
+                        Console.WriteLine("You are eligible for a 10% discount");
+                        discount = subtotal * 0.1; // 10% discount
+                        Console.WriteLine("Discount amount: " + discount + " OMR");
+                        afterdiscount = subtotal * 0.9; // 10% discount means 90% to pay
+                        tax = afterdiscount * 0.05; // 5% tax
+                        Console.WriteLine("Tax amount: " + tax + " OMR");
+                        finalTotal = afterdiscount + tax;
+                        Console.WriteLine("Final total after discount and tax: " + finalTotal + " OMR");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You are not eligible for a discount");
+                        tax = subtotal * 0.05; // 5% tax
+                        Console.WriteLine("Tax amount: " + tax + " OMR");
+                        finalTotal = subtotal + tax;
+                        Console.WriteLine("Final total after tax: " + finalTotal + " OMR");
+                    }
+                    break;
+
+                case 2:
+                    unitprice = 12.000;
+
+                    Console.WriteLine("Product: Keyboard, Unit Price: " + unitprice + " OMR");
+                    Console.WriteLine("Quantity chosen is " + quantity);
+
+                    subtotal = unitprice * quantity;
+                    Console.WriteLine("Subtotal: " + subtotal + " OMR");
+
+                    if (hasCoupon && subtotal > 20)
+                    {
+                        Console.WriteLine("You are eligible for a 10% discount");
+                        discount = subtotal * 0.1; // 10% discount
+                        Console.WriteLine("Discount amount: " + discount + " OMR");
+                        afterdiscount = subtotal * 0.9; // 10% discount means 90% to pay
+                        tax = afterdiscount * 0.05; // 5% tax
+                        Console.WriteLine("Tax amount: " + tax + " OMR");
+                        finalTotal = afterdiscount + tax;
+                        Console.WriteLine("Final total after discount and tax: " + finalTotal + " OMR");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You are not eligible for a discount");
+                        tax = subtotal * 0.05; // 5% tax
+                        Console.WriteLine("Tax amount: " + tax + " OMR");
+                        finalTotal = subtotal + tax;
+                        Console.WriteLine("Final total after tax: " + finalTotal + " OMR");
+                    }
+                    break;
+
+                case 3:
+
+                    unitprice = 5.000;
+
+                    Console.WriteLine("Product: Mouse, Unit Price: " + unitprice + " OMR");
+                    Console.WriteLine("Quantity chosen is " + quantity);
+
+                    subtotal = unitprice * quantity;
+                    Console.WriteLine("Subtotal: " + subtotal + " OMR");
+
+                    if (hasCoupon && subtotal > 20)
+                    {
+                        Console.WriteLine("You are eligible for a 10% discount");
+                        discount = subtotal * 0.1; // 10% discount
+                        Console.WriteLine("Discount amount: " + discount + " OMR");
+                        afterdiscount = subtotal * 0.9; // 10% discount means 90% to pay
+                        tax = afterdiscount * 0.05; // 5% tax
+                        Console.WriteLine("Tax amount: " + tax + " OMR");
+                        finalTotal = afterdiscount + tax;
+                        Console.WriteLine("Final total after discount and tax: " + finalTotal + " OMR");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You are not eligible for a discount");
+                        tax = subtotal * 0.05; // 5% tax
+                        Console.WriteLine("Tax amount: " + tax + " OMR");
+                        finalTotal = subtotal + tax;
+                        Console.WriteLine("Final total after tax: " + finalTotal + " OMR");
+                    }
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid product code entered. Please enter 1, 2, or 3");
+                    break;
             }
 
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            //
+            
         }
     }
 }

@@ -21,20 +21,36 @@
 
             // Task 2 - Rectangle Calculator
 
-            Console.WriteLine("Enter the length of the rectangle");
-            double length = double.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the width of the rectangle");
-            double width = double.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter the length of the rectangle");
+            //double length = double.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter the width of the rectangle");
+            //double width = double.Parse(Console.ReadLine());
 
-            double area = length * width;
-            double perimeter = 2 * (length + width);
+            //double area = length * width;
+            //double perimeter = 2 * (length + width);
 
-            Console.WriteLine("Area= length * width= " + area );
-            Console.WriteLine("Perimeter= 2 * (length + width)= " + perimeter);
+            //Console.WriteLine("Area= length * width= " + area );
+            //Console.WriteLine("Perimeter= 2 * (length + width)= " + perimeter);
 
             //////////////////////////////////////////////////////////////////////////////
+
+            // Task 3 - Even or Odd Checker
+
+            Console.WriteLine("Enter a whole number to check if it is even or odd");
+            int number = int.Parse(Console.ReadLine());
+
+            if (number % 2 == 0)
+            {
+                Console.WriteLine("The number " + number + " is even.");
+            }
+            else
+            {
+                Console.WriteLine("The number " + number + " is odd.");
+            }
+
+            ////////////////////////////////////////////////////////////////////////////////
             
             //
         }
-    }
+}
 }

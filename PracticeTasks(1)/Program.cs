@@ -36,21 +36,38 @@
 
             // Task 3 - Even or Odd Checker
 
-            Console.WriteLine("Enter a whole number to check if it is even or odd");
-            int number = int.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter a whole number to check if it is even or odd");
+            //int number = int.Parse(Console.ReadLine());
 
-            if (number % 2 == 0)
+            //if (number % 2 == 0)
+            //{
+            //    Console.WriteLine("The number " + number + " is even.");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("The number " + number + " is odd.");
+            //}
+
+            ////////////////////////////////////////////////////////////////////////////////
+
+            // Task 4 - Voting Eligibility
+
+            Console.WriteLine("Voting Eligibility Checker: ");
+            Console.WriteLine("Enter your age: ");
+            int userAge = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Do you hold a valid national ID? (yes/no): ");
+            string input = Console.ReadLine();
+            bool hasID = input == "yes";
+
+            if (userAge >= 18 && hasID)
             {
-                Console.WriteLine("The number " + number + " is even.");
+                Console.WriteLine("You are eligible to vote.");
             }
             else
             {
-                Console.WriteLine("The number " + number + " is odd.");
+                Console.WriteLine("You are not eligible to vote.");
             }
-
-            ////////////////////////////////////////////////////////////////////////////////
-            
-            //
         }
-}
+    }
 }

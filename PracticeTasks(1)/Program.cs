@@ -6,18 +6,33 @@
         {
             // Task 1 - Personal Info Card
 
-            Console.WriteLine("Enter your name");
-            string name = Console.ReadLine();
-            Console.WriteLine("Enter your age");
-            int age = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter your height in meters");
-            double height = double.Parse(Console.ReadLine());
-            Console.WriteLine("Are you a student? (True/False)");
-            bool isStudent = bool.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter your name");
+            //string name = Console.ReadLine();
+            //Console.WriteLine("Enter your age");
+            //int age = int.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter your height in meters");
+            //double height = double.Parse(Console.ReadLine());
+            //Console.WriteLine("Are you a student? (True/False)");
+            //bool isStudent = bool.Parse(Console.ReadLine());
 
-            Console.WriteLine("Name: " + name + ", Age: " + age + ", Height: " + height + ", Student: " + isStudent);
+            //Console.WriteLine("Name: " + name + ", Age: " + age + ", Height: " + height + ", Student: " + isStudent);
 
             //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Task 2 - Rectangle Calculator
+
+            Console.WriteLine("Enter the length of the rectangle");
+            double length = double.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the width of the rectangle");
+            double width = double.Parse(Console.ReadLine());
+
+            double area = length * width;
+            double perimeter = 2 * (length + width);
+
+            Console.WriteLine("Area= length * width= " + area );
+            Console.WriteLine("Perimeter= 2 * (length + width)= " + perimeter);
+
+            //////////////////////////////////////////////////////////////////////////////
             
             //
         }

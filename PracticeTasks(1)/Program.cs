@@ -127,9 +127,9 @@
             //}
 
             //////////////////////////////////////////////////////////////////////////
-            
+
             // Task 7 - Movie Ticket Pricing
-            
+
             //Console.WriteLine("Enter your age: ");
             //int Age = int.Parse(Console.ReadLine());
 
@@ -151,7 +151,7 @@
             //}
 
             ////////////////////////////////////////////////////////////////////////////////////////
-            
+
             // Task 8 - Resturant Bill with Membership Discount
 
             //Console.WriteLine("Enter the total bill amount: ");
@@ -176,7 +176,7 @@
             //}
 
             ////////////////////////////////////////////////////////////////////////////////////////
-            
+
             // Task 9 - Day Name Finder 
 
             //Console.WriteLine("Enter a number from 1 to 7 to find the corresponding day of the week: ");
@@ -270,40 +270,139 @@
             //}
 
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            
+
             // Task 11 - Loan Eligibility System 
 
-            Console.WriteLine("Enter your age: ");
-            int applicableAge = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter your monthly income: ");
-            double monthlyIncome = double.Parse(Console.ReadLine());
-            Console.WriteLine("Do you have any existing loans? (yes/no): ");
-            string existingLoansInput = Console.ReadLine();
-            bool hasExistingLoans = existingLoansInput == "yes";
+            //Console.WriteLine("Enter your age: ");
+            //int applicableAge = int.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter your monthly income: ");
+            //double monthlyIncome = double.Parse(Console.ReadLine());
+            //Console.WriteLine("Do you have any existing loans? (yes/no): ");
+            //string existingLoansInput = Console.ReadLine();
+            //bool hasExistingLoans = existingLoansInput == "yes";
 
-            if (applicableAge >= 21 && applicableAge <= 60 && monthlyIncome >= 400 && !hasExistingLoans)
+            //if (applicableAge >= 21 && applicableAge <= 60 && monthlyIncome >= 400 && !hasExistingLoans)
+            //{
+            //    Console.WriteLine("You are eligible for a loan.");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("You are not eligible for a loan.");
+            //}
+
+            //if (applicableAge < 21 || applicableAge > 60)
+            //{
+            //    Console.WriteLine("Reason: Age must be between 21 and 60");
+            //}
+
+            //if (monthlyIncome < 400)
+            //{
+            //    Console.WriteLine("Reason: Monthly income must be at least 400 OMR");
+            //}
+
+            //if (hasExistingLoans)
+            //{
+            //    Console.WriteLine("Reason: You must not have any existing loans");
+            //}
+
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Task 12 - Shipping Cost Calculator
+
+            Console.WriteLine("Enter the weight of the package in kilograms: ");
+            double weight = double.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the destination region:");
+            Console.WriteLine("A. Local");
+            Console.WriteLine("B. National");
+            Console.WriteLine("C. International");
+            char region = char.Parse(Console.ReadLine().ToUpper());
+
+            double cost;
+            double totalCost;
+
+            switch (region)
             {
-                Console.WriteLine("You are eligible for a loan.");
+                case 'A':
+                    cost = 1.000;
+                    Console.WriteLine("Base shipping cost: " + cost + " OMR");
+
+                    if (weight > 5 && weight <= 10)
+                    {
+                        Console.WriteLine("Extra charge 2.000 OMR");
+                        totalCost = cost + 2.000;
+                        Console.WriteLine("Total shipping cost: " + totalCost + " OMR");
+
+                    }
+                    else if (weight > 10)
+                    {
+                        Console.WriteLine("Extra charge 5.000 OMR");
+                        totalCost = cost + 5.000;
+                        Console.WriteLine("Total shipping cost: " + totalCost + " OMR");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No extra charge");
+                        Console.WriteLine("Total shipping cost: " + cost + " OMR");
+                    }
+                    break;
+
+                case 'B':
+                    cost = 3.000;
+                    Console.WriteLine("Base shipping cost: " + cost + " OMR");
+
+                    if (weight > 5 && weight <= 10)
+                    {
+                        Console.WriteLine("Extra charge 2.000 OMR");
+                        totalCost = cost + 2.000;
+                        Console.WriteLine("Total shipping cost: " + totalCost + " OMR");
+
+                    }
+                    else if (weight > 10)
+                    {
+                        Console.WriteLine("Extra charge 5.000 OMR");
+                        totalCost = cost + 5.000;
+                        Console.WriteLine("Total shipping cost: " + totalCost + " OMR");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No extra charge");
+                        Console.WriteLine("Total shipping cost: " + cost + " OMR");
+                    }
+                    break;
+
+                case 'C':
+                    cost = 7.000;
+                    Console.WriteLine("Base shipping cost: " + cost + " OMR");
+
+                    if (weight > 5 && weight <= 10)
+                    {
+                        Console.WriteLine("Extra charge 2.000 OMR");
+                        totalCost = cost + 2.000;
+                        Console.WriteLine("Total shipping cost: " + totalCost + " OMR");
+
+                    }
+                    else if (weight > 10)
+                    {
+                        Console.WriteLine("Extra charge 5.000 OMR");
+                        totalCost = cost + 5.000;
+                        Console.WriteLine("Total shipping cost: " + totalCost + " OMR");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No extra charge");
+                        Console.WriteLine("Total shipping cost: " + cost + " OMR");
+                    }
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid region entered. Please enter A, B, or C");
+                    break;
+
             }
-            else
-            {
-                Console.WriteLine("You are not eligible for a loan.");
-            }
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////
             
-            if (applicableAge < 21 || applicableAge > 60)
-            {
-                Console.WriteLine("Reason: Age must be between 21 and 60");
-            }
+            ///
 
-            if (monthlyIncome < 400)
-            {
-                Console.WriteLine("Reason: Monthly income must be at least 400 OMR");
-            }
-
-            if (hasExistingLoans)
-            {
-                Console.WriteLine("Reason: You must not have any existing loans");
-            }
         }
     }
 }

@@ -73,39 +73,62 @@
 
             // Task 5 - Grade Letter Lookup
 
-            Console.WriteLine("Enter you Grade: (A, B, C, D, or F)");
-            char grade = char.Parse(Console.ReadLine().ToUpper());
+            //Console.WriteLine("Enter you Grade: (A, B, C, D, or F)");
+            //char grade = char.Parse(Console.ReadLine().ToUpper());
 
-            switch (grade)
-            {
-                case 'A':
-                    Console.WriteLine("Excellent");
-                    break;
+            //switch (grade)
+            //{
+            //    case 'A':
+            //        Console.WriteLine("Excellent");
+            //        break;
 
-                case 'B':
-                    Console.WriteLine("Very Good");
-                    break;
+            //    case 'B':
+            //        Console.WriteLine("Very Good");
+            //        break;
 
-                case 'C':
-                    Console.WriteLine("Good");
-                    break;
+            //    case 'C':
+            //        Console.WriteLine("Good");
+            //        break;
 
-                case 'D':
-                    Console.WriteLine("Pass");
-                    break;
+            //    case 'D':
+            //        Console.WriteLine("Pass");
+            //        break;
 
-                case 'F':
-                    Console.WriteLine("Fail");
-                    break;
+            //    case 'F':
+            //        Console.WriteLine("Fail");
+            //        break;
 
-                default:
-                    Console.WriteLine("Invalid grade");
-                    break;
-            }
+            //    default:
+            //        Console.WriteLine("Invalid grade");
+            //        break;
+            //}
 
             /////////////////////////////////////////////////////////////////////////////////
+
+            // Task 6 - Temperature Converter
+
+            Console.WriteLine("Enter temperature in Celsius: ");
+            double C = double.Parse(Console.ReadLine());
+
+            double F = (C * 9 / 5) + 32;
+            Console.WriteLine("Temperature in Fahrenheit: " + F);
+
+            if (C < 10)
+            {
+                Console.WriteLine("The weather classification is Cold");
+            }
+            else if (C >= 10 && C <= 30)
+            {
+                Console.WriteLine("The weather classification is Mild");
+            }
+            else
+            {
+                Console.WriteLine("The weather classification is Hot");
+            }
+
+            //////////////////////////////////////////////////////////////////////////
             
-            //
+            ///
+        }
     }
-}
 }

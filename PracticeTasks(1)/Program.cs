@@ -130,27 +130,54 @@
             
             // Task 7 - Movie Ticket Pricing
             
-            Console.WriteLine("Enter your age: ");
-            int Age = int.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter your age: ");
+            //int Age = int.Parse(Console.ReadLine());
 
-            if (Age > 0 && Age <= 12)
+            //if (Age > 0 && Age <= 12)
+            //{
+            //    Console.WriteLine("Age Category: Children, Ticket Price: 2.000 OMR");
+            //}
+            //else if (Age >= 13 && Age <= 59)
+            //{
+            //    Console.WriteLine("Age Category: Adults, Ticket Price: 5.000 OMR");
+            //}
+            //else if (Age >= 60)
+            //{
+            //    Console.WriteLine("Age Category: Seniors, Ticket Price: 3.000 OMR");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Invalid age entered");
+            //}
+
+            ////////////////////////////////////////////////////////////////////////////////////////
+            
+            // Task 8 - Resturant Bill with Membership Discount
+
+            Console.WriteLine("Enter the total bill amount: ");
+            double bill = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Are you a member? (yes/no): ");
+            string membershipInput = Console.ReadLine();
+            bool isMember = membershipInput == "yes";
+
+            Console.WriteLine("Your original bill is: " + bill + " OMR");
+
+            if (bill > 20 && isMember)
             {
-                Console.WriteLine("Age Category: Children, Ticket Price: 2.000 OMR");
-            }
-            else if (Age >= 13 && Age <= 59)
-            {
-                Console.WriteLine("Age Category: Adults, Ticket Price: 5.000 OMR");
-            }
-            else if (Age >= 60)
-            {
-                Console.WriteLine("Age Category: Seniors, Ticket Price: 3.000 OMR");
+                Console.WriteLine("You are eligible for a 15% discount");
+                double finalbill = bill * 0.85;  // 100 - 15 (discount) = 85 (to pay)
+                Console.WriteLine("Your final bill after discount is: " + finalbill + " OMR");
             }
             else
             {
-                Console.WriteLine("Invalid age entered");
+                Console.WriteLine("You are not eligible for a discount");
+                Console.WriteLine("Your final bill is: " + bill + " OMR");
             }
 
             ////////////////////////////////////////////////////////////////////////////////////////
+            
+            // 
         }
     }
 }

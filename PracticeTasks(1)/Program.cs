@@ -444,14 +444,7 @@
 
             Console.Write("Product code: ");
             int productCode = int.Parse(Console.ReadLine());
-
-            Console.Write("Enter the quantity you want to purchase: ");
-            int quantity = int.Parse(Console.ReadLine());
-
-            Console.Write("Do you have a coupon? (yes/no):");
-            string couponInput = Console.ReadLine();
-            bool hasCoupon = couponInput == "yes";
-
+                        
             double unitprice;
             double subtotal;
             double discount; 
@@ -459,104 +452,119 @@
             double tax; 
             double finalTotal;
 
-            switch (productCode)
+            if (productCode == 1 || productCode == 2 || productCode == 3)
             {
-                case 1:
-                    unitprice = 8.500;
+                Console.Write("Enter the quantity you want to purchase: ");
+                int quantity = int.Parse(Console.ReadLine());
 
-                    Console.WriteLine("Product: Headphones, Unit Price: " + unitprice + " OMR");
-                    Console.WriteLine("Quantity chosen is " + quantity);
+                Console.Write("Do you have a coupon? (yes/no): ");
+                string couponInput = Console.ReadLine().ToLower();
+                bool hasCoupon = couponInput == "yes";
 
-                    subtotal = unitprice * quantity;
-                    Console.WriteLine("Subtotal: " + subtotal + " OMR");
+                switch (productCode)
+                {
+                    case 1:
+                        unitprice = 8.500;
 
-                    if (hasCoupon && subtotal > 20)
-                    {
-                        Console.WriteLine("You are eligible for a 10% discount");
-                        discount = subtotal * 0.1; // 10% discount
-                        Console.WriteLine("Discount amount: " + discount + " OMR");
-                        afterdiscount = subtotal * 0.9; // 10% discount means 90% to pay
-                        tax = afterdiscount * 0.05; // 5% tax
-                        Console.WriteLine("Tax amount: " + tax + " OMR");
-                        finalTotal = afterdiscount + tax;
-                        Console.WriteLine("Final total after discount and tax: " + finalTotal + " OMR");
-                    }
-                    else
-                    {
-                        Console.WriteLine("You are not eligible for a discount");
-                        tax = subtotal * 0.05; // 5% tax
-                        Console.WriteLine("Tax amount: " + tax + " OMR");
-                        finalTotal = subtotal + tax;
-                        Console.WriteLine("Final total after tax: " + finalTotal + " OMR");
-                    }
-                    break;
+                        Console.WriteLine("Product: Headphones, Unit Price: " + unitprice + " OMR");
+                        Console.WriteLine("Quantity chosen is " + quantity);
 
-                case 2:
-                    unitprice = 12.000;
+                        subtotal = unitprice * quantity;
+                        Console.WriteLine("Subtotal: " + subtotal + " OMR");
 
-                    Console.WriteLine("Product: Keyboard, Unit Price: " + unitprice + " OMR");
-                    Console.WriteLine("Quantity chosen is " + quantity);
+                        if (hasCoupon && subtotal > 20)
+                        {
+                            Console.WriteLine("You are eligible for a 10% discount");
+                            discount = subtotal * 0.1; // 10% discount
+                            Console.WriteLine("Discount amount: " + discount + " OMR");
+                            afterdiscount = subtotal * 0.9; // 10% discount means 90% to pay
+                            tax = afterdiscount * 0.05; // 5% tax
+                            Console.WriteLine("Tax amount: " + tax + " OMR");
+                            finalTotal = afterdiscount + tax;
+                            Console.WriteLine("Final total after discount and tax: " + finalTotal + " OMR");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You are not eligible for a discount");
+                            tax = subtotal * 0.05; // 5% tax
+                            Console.WriteLine("Tax amount: " + tax + " OMR");
+                            finalTotal = subtotal + tax;
+                            Console.WriteLine("Final total after tax: " + finalTotal + " OMR");
+                        }
+                        break;
 
-                    subtotal = unitprice * quantity;
-                    Console.WriteLine("Subtotal: " + subtotal + " OMR");
+                    case 2:
+                        unitprice = 12.000;
 
-                    if (hasCoupon && subtotal > 20)
-                    {
-                        Console.WriteLine("You are eligible for a 10% discount");
-                        discount = subtotal * 0.1; // 10% discount
-                        Console.WriteLine("Discount amount: " + discount + " OMR");
-                        afterdiscount = subtotal * 0.9; // 10% discount means 90% to pay
-                        tax = afterdiscount * 0.05; // 5% tax
-                        Console.WriteLine("Tax amount: " + tax + " OMR");
-                        finalTotal = afterdiscount + tax;
-                        Console.WriteLine("Final total after discount and tax: " + finalTotal + " OMR");
-                    }
-                    else
-                    {
-                        Console.WriteLine("You are not eligible for a discount");
-                        tax = subtotal * 0.05; // 5% tax
-                        Console.WriteLine("Tax amount: " + tax + " OMR");
-                        finalTotal = subtotal + tax;
-                        Console.WriteLine("Final total after tax: " + finalTotal + " OMR");
-                    }
-                    break;
+                        Console.WriteLine("Product: Keyboard, Unit Price: " + unitprice + " OMR");
+                        Console.WriteLine("Quantity chosen is " + quantity);
 
-                case 3:
+                        subtotal = unitprice * quantity;
+                        Console.WriteLine("Subtotal: " + subtotal + " OMR");
 
-                    unitprice = 5.000;
+                        if (hasCoupon && subtotal > 20)
+                        {
+                            Console.WriteLine("You are eligible for a 10% discount");
+                            discount = subtotal * 0.1; // 10% discount
+                            Console.WriteLine("Discount amount: " + discount + " OMR");
+                            afterdiscount = subtotal * 0.9; // 10% discount means 90% to pay
+                            tax = afterdiscount * 0.05; // 5% tax
+                            Console.WriteLine("Tax amount: " + tax + " OMR");
+                            finalTotal = afterdiscount + tax;
+                            Console.WriteLine("Final total after discount and tax: " + finalTotal + " OMR");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You are not eligible for a discount");
+                            tax = subtotal * 0.05; // 5% tax
+                            Console.WriteLine("Tax amount: " + tax + " OMR");
+                            finalTotal = subtotal + tax;
+                            Console.WriteLine("Final total after tax: " + finalTotal + " OMR");
+                        }
+                        break;
 
-                    Console.WriteLine("Product: Mouse, Unit Price: " + unitprice + " OMR");
-                    Console.WriteLine("Quantity chosen is " + quantity);
+                    case 3:
 
-                    subtotal = unitprice * quantity;
-                    Console.WriteLine("Subtotal: " + subtotal + " OMR");
+                        unitprice = 5.000;
 
-                    if (hasCoupon && subtotal > 20)
-                    {
-                        Console.WriteLine("You are eligible for a 10% discount");
-                        discount = subtotal * 0.1; // 10% discount
-                        Console.WriteLine("Discount amount: " + discount + " OMR");
-                        afterdiscount = subtotal * 0.9; // 10% discount means 90% to pay
-                        tax = afterdiscount * 0.05; // 5% tax
-                        Console.WriteLine("Tax amount: " + tax + " OMR");
-                        finalTotal = afterdiscount + tax;
-                        Console.WriteLine("Final total after discount and tax: " + finalTotal + " OMR");
-                    }
-                    else
-                    {
-                        Console.WriteLine("You are not eligible for a discount");
-                        tax = subtotal * 0.05; // 5% tax
-                        Console.WriteLine("Tax amount: " + tax + " OMR");
-                        finalTotal = subtotal + tax;
-                        Console.WriteLine("Final total after tax: " + finalTotal + " OMR");
-                    }
-                    break;
+                        Console.WriteLine("Product: Mouse, Unit Price: " + unitprice + " OMR");
+                        Console.WriteLine("Quantity chosen is " + quantity);
 
-                default:
-                    Console.WriteLine("Invalid product code entered. Please enter 1, 2, or 3");
-                    break;
+                        subtotal = unitprice * quantity;
+                        Console.WriteLine("Subtotal: " + subtotal + " OMR");
+
+                        if (hasCoupon && subtotal > 20)
+                        {
+                            Console.WriteLine("You are eligible for a 10% discount");
+                            discount = subtotal * 0.1; // 10% discount
+                            Console.WriteLine("Discount amount: " + discount + " OMR");
+                            afterdiscount = subtotal * 0.9; // 10% discount means 90% to pay
+                            tax = afterdiscount * 0.05; // 5% tax
+                            Console.WriteLine("Tax amount: " + tax + " OMR");
+                            finalTotal = afterdiscount + tax;
+                            Console.WriteLine("Final total after discount and tax: " + finalTotal + " OMR");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You are not eligible for a discount");
+                            tax = subtotal * 0.05; // 5% tax
+                            Console.WriteLine("Tax amount: " + tax + " OMR");
+                            finalTotal = subtotal + tax;
+                            Console.WriteLine("Final total after tax: " + finalTotal + " OMR");
+                        }
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid product code entered. Please enter 1, 2, or 3");
+                        break;
+                }
+
             }
-
+            else
+            {
+                Console.WriteLine("Invalid product code entered. Please enter 1, 2, or 3");
+            }
+            
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             
             //

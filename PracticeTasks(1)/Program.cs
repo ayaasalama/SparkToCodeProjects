@@ -179,47 +179,96 @@
             
             // Task 9 - Day Name Finder 
 
-            Console.WriteLine("Enter a number from 1 to 7 to find the corresponding day of the week: ");
-            int dayNumber = int.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter a number from 1 to 7 to find the corresponding day of the week: ");
+            //int dayNumber = int.Parse(Console.ReadLine());
 
-            switch (dayNumber)
+            //switch (dayNumber)
+            //{
+            //    case 1:
+            //        Console.WriteLine("The day is Sunday");
+            //        break;
+
+            //    case 2:
+            //        Console.WriteLine("The day is Monday");
+            //        break;
+
+            //    case 3:
+            //        Console.WriteLine("The day is Tuesday");
+            //        break;
+
+            //    case 4:
+            //        Console.WriteLine("The day is Wednesday");
+            //        break;
+
+            //    case 5:
+            //        Console.WriteLine("The day is Thursday");
+            //        break;
+
+            //    case 6:
+            //        Console.WriteLine("The day is Friday");
+            //        break;
+
+            //    case 7:
+            //        Console.WriteLine("The day is Saturday");
+            //        break;
+
+            //    default:
+            //        Console.WriteLine("Invalid input. Please enter a number from 1 to 7");
+            //        break;
+            //}
+
+            ////////////////////////////////////////////////////////////////////////////////////////
+
+            // Task 10 - Mini Calculator
+
+            Console.WriteLine("Enter the first number: ");
+            double num1 = double.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the second number: ");
+            double num2 = double.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the operation (+, -, *, /, %): ");
+            char operation = char.Parse(Console.ReadLine());
+
+            switch (operation)
             {
-                case 1:
-                    Console.WriteLine("The day is Sunday");
+                case '+':
+                    Console.WriteLine("Result of the addition: " + (num1 + num2));
                     break;
 
-                case 2:
-                    Console.WriteLine("The day is Monday");
+                case '-':
+                    Console.WriteLine("Result of the subtraction: " + (num1 - num2));
                     break;
 
-                case 3:
-                    Console.WriteLine("The day is Tuesday");
+                case '*':
+                    Console.WriteLine("Result of the multiplication: " + (num1 * num2));
                     break;
 
-                case 4:
-                    Console.WriteLine("The day is Wednesday");
+                case '/':
+                    if (num2 != 0)
+                    {
+                        Console.WriteLine("Result of the division: " + (num1 / num2));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Cannot divide by zero");
+                    }
                     break;
 
-                case 5:
-                    Console.WriteLine("The day is Thursday");
-                    break;
-
-                case 6:
-                    Console.WriteLine("The day is Friday");
-                    break;
-
-                case 7:
-                    Console.WriteLine("The day is Saturday");
+                case '%':
+                    if (num2 != 0)
+                    {
+                        Console.WriteLine("Result of the modulus: " + (num1 % num2));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Cannot perform modulus by zero");
+                    }
                     break;
 
                 default:
-                    Console.WriteLine("Invalid input. Please enter a number from 1 to 7");
+                    Console.WriteLine("Invalid operator. Please enter one of the following: +, -, *, /, %");
                     break;
             }
 
-            ////////////////////////////////////////////////////////////////////////////////////////
-            
-            //
         }
     }
 }

@@ -571,15 +571,15 @@
             // Task 15 - University Admission Decision
 
             Console.WriteLine("Enter the program type:");
-            Console.WriteLine("1. Science");
-            Console.WriteLine("2. Arts");
-            Console.Write("Program type (1 or 2): ");
-            int programType = int.Parse(Console.ReadLine());
-            if (programType != 1 && programType != 2)
+            Console.WriteLine("S. Science");
+            Console.WriteLine("A. Arts");
+            Console.Write("Program type (S or A): ");
+            char programType = char.Parse(Console.ReadLine());
+            if (programType != 'S' && programType != 'A')
             {
                 Console.WriteLine("Invalid Program Type entered");
-                Console.Write("Re-Enter your program type (1 or 2): ");
-                programType = int.Parse(Console.ReadLine());
+                Console.Write("Re-Enter your program type (S or A): ");
+                programType = char.Parse(Console.ReadLine());
             }
 
             Console.Write("Enter your GPA (0.0 - 4.0): ");
@@ -606,7 +606,7 @@
 
             switch (programType)
             {
-                case 1:
+                case 'S':
 
                     if (gpa >= 3.0 && examScore >= 75)
                     {
@@ -622,7 +622,7 @@
                     }
                     break;
 
-                case 2:
+                case 'A':
                     if (gpa >= 2.5 && examScore >= 50)
                     {
                         Console.WriteLine("Admitted to the Arts program");

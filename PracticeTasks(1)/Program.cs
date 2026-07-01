@@ -107,28 +107,50 @@
 
             // Task 6 - Temperature Converter
 
-            Console.WriteLine("Enter temperature in Celsius: ");
-            double C = double.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter temperature in Celsius: ");
+            //double C = double.Parse(Console.ReadLine());
 
-            double F = (C * 9 / 5) + 32;
-            Console.WriteLine("Temperature in Fahrenheit: " + F);
+            //double F = (C * 9 / 5) + 32;
+            //Console.WriteLine("Temperature in Fahrenheit: " + F);
 
-            if (C < 10)
-            {
-                Console.WriteLine("The weather classification is Cold");
-            }
-            else if (C >= 10 && C <= 30)
-            {
-                Console.WriteLine("The weather classification is Mild");
-            }
-            else
-            {
-                Console.WriteLine("The weather classification is Hot");
-            }
+            //if (C < 10)
+            //{
+            //    Console.WriteLine("The weather classification is Cold");
+            //}
+            //else if (C >= 10 && C <= 30)
+            //{
+            //    Console.WriteLine("The weather classification is Mild");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("The weather classification is Hot");
+            //}
 
             //////////////////////////////////////////////////////////////////////////
             
-            ///
+            // Task 7 - Movie Ticket Pricing
+            
+            Console.WriteLine("Enter your age: ");
+            int Age = int.Parse(Console.ReadLine());
+
+            if (Age > 0 && Age <= 12)
+            {
+                Console.WriteLine("Age Category: Children, Ticket Price: 2.000 OMR");
+            }
+            else if (Age >= 13 && Age <= 59)
+            {
+                Console.WriteLine("Age Category: Adults, Ticket Price: 5.000 OMR");
+            }
+            else if (Age >= 60)
+            {
+                Console.WriteLine("Age Category: Seniors, Ticket Price: 3.000 OMR");
+            }
+            else
+            {
+                Console.WriteLine("Invalid age entered");
+            }
+
+            ////////////////////////////////////////////////////////////////////////////////////////
         }
     }
 }

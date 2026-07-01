@@ -221,54 +221,89 @@
 
             // Task 10 - Mini Calculator
 
-            Console.WriteLine("Enter the first number: ");
-            double num1 = double.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the second number: ");
-            double num2 = double.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the operation (+, -, *, /, %): ");
-            char operation = char.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter the first number: ");
+            //double num1 = double.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter the second number: ");
+            //double num2 = double.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter the operation (+, -, *, /, %): ");
+            //char operation = char.Parse(Console.ReadLine());
 
-            switch (operation)
+            //switch (operation)
+            //{
+            //    case '+':
+            //        Console.WriteLine("Result of the addition: " + (num1 + num2));
+            //        break;
+
+            //    case '-':
+            //        Console.WriteLine("Result of the subtraction: " + (num1 - num2));
+            //        break;
+
+            //    case '*':
+            //        Console.WriteLine("Result of the multiplication: " + (num1 * num2));
+            //        break;
+
+            //    case '/':
+            //        if (num2 != 0)
+            //        {
+            //            Console.WriteLine("Result of the division: " + (num1 / num2));
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("Cannot divide by zero");
+            //        }
+            //        break;
+
+            //    case '%':
+            //        if (num2 != 0)
+            //        {
+            //            Console.WriteLine("Result of the modulus: " + (num1 % num2));
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("Cannot perform modulus by zero");
+            //        }
+            //        break;
+
+            //    default:
+            //        Console.WriteLine("Invalid operator. Please enter one of the following: +, -, *, /, %");
+            //        break;
+            //}
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            // Task 11 - Loan Eligibility System 
+
+            Console.WriteLine("Enter your age: ");
+            int applicableAge = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter your monthly income: ");
+            double monthlyIncome = double.Parse(Console.ReadLine());
+            Console.WriteLine("Do you have any existing loans? (yes/no): ");
+            string existingLoansInput = Console.ReadLine();
+            bool hasExistingLoans = existingLoansInput == "yes";
+
+            if (applicableAge >= 21 && applicableAge <= 60 && monthlyIncome >= 400 && !hasExistingLoans)
             {
-                case '+':
-                    Console.WriteLine("Result of the addition: " + (num1 + num2));
-                    break;
-
-                case '-':
-                    Console.WriteLine("Result of the subtraction: " + (num1 - num2));
-                    break;
-
-                case '*':
-                    Console.WriteLine("Result of the multiplication: " + (num1 * num2));
-                    break;
-
-                case '/':
-                    if (num2 != 0)
-                    {
-                        Console.WriteLine("Result of the division: " + (num1 / num2));
-                    }
-                    else
-                    {
-                        Console.WriteLine("Cannot divide by zero");
-                    }
-                    break;
-
-                case '%':
-                    if (num2 != 0)
-                    {
-                        Console.WriteLine("Result of the modulus: " + (num1 % num2));
-                    }
-                    else
-                    {
-                        Console.WriteLine("Cannot perform modulus by zero");
-                    }
-                    break;
-
-                default:
-                    Console.WriteLine("Invalid operator. Please enter one of the following: +, -, *, /, %");
-                    break;
+                Console.WriteLine("You are eligible for a loan.");
+            }
+            else
+            {
+                Console.WriteLine("You are not eligible for a loan.");
+            }
+            
+            if (applicableAge < 21 || applicableAge > 60)
+            {
+                Console.WriteLine("Reason: Age must be between 21 and 60");
             }
 
+            if (monthlyIncome < 400)
+            {
+                Console.WriteLine("Reason: Monthly income must be at least 400 OMR");
+            }
+
+            if (hasExistingLoans)
+            {
+                Console.WriteLine("Reason: You must not have any existing loans");
+            }
         }
     }
 }

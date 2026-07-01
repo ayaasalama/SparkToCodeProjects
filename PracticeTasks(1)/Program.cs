@@ -154,30 +154,72 @@
             
             // Task 8 - Resturant Bill with Membership Discount
 
-            Console.WriteLine("Enter the total bill amount: ");
-            double bill = double.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter the total bill amount: ");
+            //double bill = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("Are you a member? (yes/no): ");
-            string membershipInput = Console.ReadLine();
-            bool isMember = membershipInput == "yes";
+            //Console.WriteLine("Are you a member? (yes/no): ");
+            //string membershipInput = Console.ReadLine();
+            //bool isMember = membershipInput == "yes";
 
-            Console.WriteLine("Your original bill is: " + bill + " OMR");
+            //Console.WriteLine("Your original bill is: " + bill + " OMR");
 
-            if (bill > 20 && isMember)
+            //if (bill > 20 && isMember)
+            //{
+            //    Console.WriteLine("You are eligible for a 15% discount");
+            //    double finalbill = bill * 0.85;  // 100 - 15 (discount) = 85 (to pay)
+            //    Console.WriteLine("Your final bill after discount is: " + finalbill + " OMR");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("You are not eligible for a discount");
+            //    Console.WriteLine("Your final bill is: " + bill + " OMR");
+            //}
+
+            ////////////////////////////////////////////////////////////////////////////////////////
+            
+            // Task 9 - Day Name Finder 
+
+            Console.WriteLine("Enter a number from 1 to 7 to find the corresponding day of the week: ");
+            int dayNumber = int.Parse(Console.ReadLine());
+
+            switch (dayNumber)
             {
-                Console.WriteLine("You are eligible for a 15% discount");
-                double finalbill = bill * 0.85;  // 100 - 15 (discount) = 85 (to pay)
-                Console.WriteLine("Your final bill after discount is: " + finalbill + " OMR");
-            }
-            else
-            {
-                Console.WriteLine("You are not eligible for a discount");
-                Console.WriteLine("Your final bill is: " + bill + " OMR");
+                case 1:
+                    Console.WriteLine("The day is Sunday");
+                    break;
+
+                case 2:
+                    Console.WriteLine("The day is Monday");
+                    break;
+
+                case 3:
+                    Console.WriteLine("The day is Tuesday");
+                    break;
+
+                case 4:
+                    Console.WriteLine("The day is Wednesday");
+                    break;
+
+                case 5:
+                    Console.WriteLine("The day is Thursday");
+                    break;
+
+                case 6:
+                    Console.WriteLine("The day is Friday");
+                    break;
+
+                case 7:
+                    Console.WriteLine("The day is Saturday");
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid input. Please enter a number from 1 to 7");
+                    break;
             }
 
             ////////////////////////////////////////////////////////////////////////////////////////
             
-            // 
+            //
         }
     }
 }

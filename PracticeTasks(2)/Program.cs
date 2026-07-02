@@ -118,33 +118,82 @@
 
             // Task 6 - Safe Division Calculator
 
-            Console.WriteLine("Safe Division Calculator");
-            int divisionResult;
+            //Console.WriteLine("Safe Division Calculator");
+            //int divisionResult;
 
-            try
-            {
-                Console.Write("Enter the first number:");
-                int num1 = int.Parse(Console.ReadLine());
+            //try
+            //{
+            //    Console.Write("Enter the first number:");
+            //    int num1 = int.Parse(Console.ReadLine());
 
-                Console.Write("Enter the second number:");
-                int num2 = int.Parse(Console.ReadLine());
+            //    Console.Write("Enter the second number:");
+            //    int num2 = int.Parse(Console.ReadLine());
 
-                divisionResult = num1 / num2;
+            //    divisionResult = num1 / num2;
 
-                Console.WriteLine("The result of the division is: " + divisionResult);
+            //    Console.WriteLine("The result of the division is: " + divisionResult);
 
-            }
-            catch (DivideByZeroException)
-            {
-                Console.WriteLine("Cannot divide by Zero");
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Invalid input. Please enter a valid number.");
-            }
-            
+            //}
+            //catch (DivideByZeroException)
+            //{
+            //    Console.WriteLine("Cannot divide by Zero");
+            //}
+            //catch (FormatException)
+            //{
+            //    Console.WriteLine("Invalid input. Please enter a valid number.");
+            //}
+
             ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
+            // Task 7 - Repeating Menu with Exit Option
+
+            bool Exit = false;
+
+            Console.WriteLine("Choose an option from the menu:");
+            Console.WriteLine("1. Say hello");
+            Console.WriteLine("2.  Show Current Time-of-day Greeting");
+            Console.WriteLine("3. Exit");
+
+            int option;
+
+            while (Exit == false)
+            {
+                try
+                {
+                    Console.WriteLine("Enter your option:");
+                    option = int.Parse(Console.ReadLine());
+
+                    switch (option)
+                    {
+                        case 1:
+                            Console.WriteLine("Hello!");
+                            break;
+
+                        case 2:
+                            Console.WriteLine("Good Evening");
+                            break;
+
+                        case 3:
+                            Console.WriteLine("Exiting the program...");
+                            Exit = true;
+                            break;
+
+                        default:
+                            Console.WriteLine("Invalid option. Please choose a valid option from the menu.");
+                            break;
+
+                    }
+
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                    continue;
+                }
+                
+
+                
+            }
 
         }
     }

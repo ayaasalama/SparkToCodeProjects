@@ -46,6 +46,20 @@
 
             do
             {
+                try
+                {
+
+                    Console.WriteLine("Do you want to exit? (1/2)");
+                    userchoice = int.Parse(Console.ReadLine());
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+
+                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                }
+
                 Console.WriteLine("print menu");
 
 

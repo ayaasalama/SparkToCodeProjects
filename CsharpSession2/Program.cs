@@ -38,6 +38,27 @@
             /////////////////////////////////////////////////////////////////////////
 
 
+            //Do while loop:
+
+            bool exit = false;
+            string Input;
+            int userchoice;
+
+            do
+            {
+                Console.WriteLine("print menu");
+
+
+                Console.WriteLine("Do you want to exit? (y/n)");
+                Input = Console.ReadLine();
+
+                if (Input == "y")
+                {
+                    exit = true;
+                }
+
+            } while (exit == false);
+
 
         }
     }

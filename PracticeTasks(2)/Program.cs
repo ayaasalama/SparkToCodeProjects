@@ -45,18 +45,43 @@
 
             // Task 3 - Multiplication Table
 
-            Console.WriteLine("Multiplication Table");
-            Console.Write("Enter a number to generate its multiplication table:");
-            int number = int.Parse(Console.ReadLine());
+            //Console.WriteLine("Multiplication Table");
+            //Console.Write("Enter a number to generate its multiplication table:");
+            //int number = int.Parse(Console.ReadLine());
 
-            for (int m = 0; m <= 10; m++)
-            {
-                Console.WriteLine(number + " x " + m + " = " + (number * m));
-            }
+            //for (int m = 0; m <= 10; m++)
+            //{
+            //    Console.WriteLine(number + " x " + m + " = " + (number * m));
+            //}
 
             //////////////////////////////////////////////////////////////////////////////////////
 
+            // Task 4 - Password Retry
+
+            bool exit = false;
+            string truePassword = "Spark2026";
+            string password;
+
+            while (exit == false)
+            {
+                Console.WriteLine("Enter your password:");
+                password = Console.ReadLine();
+
+                if (truePassword == password)
+                {
+                    Console.WriteLine("Access granted");
+                    exit = true;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect password, try again");
+                }
+            }
+
+            ////////////////////////////////////////////////////////////////////////////////////
+            
             //
+
         }
     }
 }

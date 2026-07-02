@@ -17,7 +17,27 @@
 
             ///////////////////////////////////////////////////////////////////
 
-            
+            //While loop:
+
+            bool exitDecision = false;
+            string userInput;
+
+            while (exitDecision == false)
+            {
+                Console.WriteLine("print menu");
+
+                Console.WriteLine("Do you want to exit? (y/n)");
+                userInput = Console.ReadLine();
+                
+                if (userInput == "y")
+                {
+                    exitDecision = true;
+                }
+            }
+
+            /////////////////////////////////////////////////////////////////////////
+
+
 
         }
     }

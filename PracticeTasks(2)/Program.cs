@@ -190,31 +190,71 @@
             //        Console.WriteLine("Invalid input. Please enter a valid number.");
             //        continue;
             //    }
-                                
+
             //}
 
             //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             // Task 8 - Sum of Even Numbers Only
 
-            Console.WriteLine("Sum of Even Numbers Only");
-            Console.WriteLine("Enter a positive N value");
-            int num = int.Parse(Console.ReadLine());
+            //Console.WriteLine("Sum of Even Numbers Only");
+            //Console.WriteLine("Enter a positive N value");
+            //int num = int.Parse(Console.ReadLine());
 
-            int c;
-            int sum = 0;
+            //int c;
+            //int sum = 0;
 
-            for (c = 1; c <= num; c++)
-            {
-                if (c % 2 == 0)
-                {
-                    sum += c;
-                }
-            }
-            Console.WriteLine("The final sum of even numbers from 1 to " + num + " is: " + sum);
+            //for (c = 1; c <= num; c++)
+            //{
+            //    if (c % 2 == 0)
+            //    {
+            //        sum += c;
+            //    }
+            //}
+            //Console.WriteLine("The final sum of even numbers from 1 to " + num + " is: " + sum);
 
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+            // Task 9 - Validated Positive Number Input
+            bool exitloop = false;
+            int positiveNumber = 0;
+            int nsum = 0;
+
+            do
+            {
+                try
+                {
+                    Console.WriteLine("Enter a positive number: ");
+                    positiveNumber = int.Parse(Console.ReadLine());
+
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid number.");
+                    continue;
+                }
+
+                if (positiveNumber > 0)
+                {
+                    Console.WriteLine("You entered a positive number: " + positiveNumber);
+                    exitloop = true;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter a positive number.");
+                }
+
+            } while (exitloop == false);
+                        
+            for (int p = 1; p <= positiveNumber; p++)
+            {
+                nsum += p;
+            }
+            Console.WriteLine("The final sum of numbers from 1 to " + positiveNumber + " is: " + nsum);
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            //
         }
     }
 }

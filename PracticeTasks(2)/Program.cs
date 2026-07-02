@@ -21,27 +21,42 @@
 
             // Task 2 - Sum of Numbers 1 to N
 
-            Console.WriteLine("Sum of Numbers 1 to N");
-            Console.WriteLine("Enter the a positive N value");
-            int n = int.Parse(Console.ReadLine());
-            int a;
-            int sum = 0;
+            //Console.WriteLine("Sum of Numbers 1 to N");
+            //Console.WriteLine("Enter the a positive N value");
+            //int n = int.Parse(Console.ReadLine());
+            //int a;
+            //int sum = 0;
 
-            if (n > 0)
-            {
-                for (a = 1; a <= n; a++)
-                {
-                    sum += a;
-                }
-                Console.WriteLine("The final sum of numbers from 1 to " + n + " is: " + sum);
+            //if (n > 0)
+            //{
+            //    for (a = 1; a <= n; a++)
+            //    {
+            //        sum += a;
+            //    }
+            //    Console.WriteLine("The final sum of numbers from 1 to " + n + " is: " + sum);
 
-            }
-            else
-            {
-                Console.WriteLine("Invalid input. Please enter a positive number.");
-            }
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Invalid input. Please enter a positive number.");
+            //}
 
             /////////////////////////////////////////////////////////////////////////////////////
+
+            // Task 3 - Multiplication Table
+
+            Console.WriteLine("Multiplication Table");
+            Console.Write("Enter a number to generate its multiplication table:");
+            int number = int.Parse(Console.ReadLine());
+
+            for (int m = 0; m <= 10; m++)
+            {
+                Console.WriteLine(number + " x " + m + " = " + (number * m));
+            }
+
+            //////////////////////////////////////////////////////////////////////////////////////
+
+            //
         }
     }
 }

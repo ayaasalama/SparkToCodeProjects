@@ -58,29 +58,63 @@
 
             // Task 4 - Password Retry
 
-            bool exit = false;
-            string truePassword = "Spark2026";
-            string password;
+            //bool exit = false;
+            //string truePassword = "Spark2026";
+            //string password;
 
-            while (exit == false)
-            {
-                Console.WriteLine("Enter your password:");
-                password = Console.ReadLine();
+            //while (exit == false)
+            //{
+            //    Console.WriteLine("Enter your password:");
+            //    password = Console.ReadLine();
 
-                if (truePassword == password)
-                {
-                    Console.WriteLine("Access granted");
-                    exit = true;
-                }
-                else
-                {
-                    Console.WriteLine("Incorrect password, try again");
-                }
-            }
+            //    if (truePassword == password)
+            //    {
+            //        Console.WriteLine("Access granted");
+            //        exit = true;
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("Incorrect password, try again");
+            //    }
+            //}
 
             ////////////////////////////////////////////////////////////////////////////////////
+
+            // Task 5 - Number Guessing Game
+
+            int secretNumber = 42;
+            int userGuess;
+            bool exitdesision = false;
+            int counter = 0;
+
+            do
+            {
+                Console.WriteLine("Guess the Secret Number");
+                Console.Write("Enter your guess:");
+                userGuess = int.Parse(Console.ReadLine());
+                counter++;
+
+                if (userGuess > secretNumber + 10)
+                {
+                    Console.WriteLine("Too high! Guess again");
+                }
+                else if (userGuess < secretNumber - 10)
+                {
+                    Console.WriteLine("Too low! Guess again");
+                }
+                else if (userGuess <= secretNumber + 10 && userGuess >= secretNumber - 10 && userGuess != secretNumber)
+                {
+                    Console.WriteLine("Close! Guess again");
+                }
+                else if (userGuess == secretNumber)
+                {
+                    Console.WriteLine("Congratulations! You guessed the secret number in " + counter + " attempts");
+                    exitdesision = true;
+                }
+
+            } while (exitdesision == false);
             
-            //
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         }
     }

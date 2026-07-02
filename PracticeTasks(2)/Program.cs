@@ -149,51 +149,71 @@
 
             bool Exit = false;
 
-            Console.WriteLine("Choose an option from the menu:");
-            Console.WriteLine("1. Say hello");
-            Console.WriteLine("2.  Show Current Time-of-day Greeting");
-            Console.WriteLine("3. Exit");
+            //Console.WriteLine("Choose an option from the menu:");
+            //Console.WriteLine("1. Say hello");
+            //Console.WriteLine("2.  Show Current Time-of-day Greeting");
+            //Console.WriteLine("3. Exit");
 
-            int option;
+            //int option;
 
-            while (Exit == false)
+            //while (Exit == false)
+            //{
+            //    try
+            //    {
+            //        Console.WriteLine("Enter your option:");
+            //        option = int.Parse(Console.ReadLine());
+
+            //        switch (option)
+            //        {
+            //            case 1:
+            //                Console.WriteLine("Hello!");
+            //                break;
+
+            //            case 2:
+            //                Console.WriteLine("Good Evening");
+            //                break;
+
+            //            case 3:
+            //                Console.WriteLine("Exiting the program...");
+            //                Exit = true;
+            //                break;
+
+            //            default:
+            //                Console.WriteLine("Invalid option. Please choose a valid option from the menu.");
+            //                break;
+
+            //        }
+
+            //    }
+            //    catch (FormatException)
+            //    {
+            //        Console.WriteLine("Invalid input. Please enter a valid number.");
+            //        continue;
+            //    }
+                                
+            //}
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Task 8 - Sum of Even Numbers Only
+
+            Console.WriteLine("Sum of Even Numbers Only");
+            Console.WriteLine("Enter a positive N value");
+            int num = int.Parse(Console.ReadLine());
+
+            int c;
+            int sum = 0;
+
+            for (c = 1; c <= num; c++)
             {
-                try
+                if (c % 2 == 0)
                 {
-                    Console.WriteLine("Enter your option:");
-                    option = int.Parse(Console.ReadLine());
-
-                    switch (option)
-                    {
-                        case 1:
-                            Console.WriteLine("Hello!");
-                            break;
-
-                        case 2:
-                            Console.WriteLine("Good Evening");
-                            break;
-
-                        case 3:
-                            Console.WriteLine("Exiting the program...");
-                            Exit = true;
-                            break;
-
-                        default:
-                            Console.WriteLine("Invalid option. Please choose a valid option from the menu.");
-                            break;
-
-                    }
-
+                    sum += c;
                 }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Invalid input. Please enter a valid number.");
-                    continue;
-                }
-                
-
-                
             }
+            Console.WriteLine("The final sum of even numbers from 1 to " + num + " is: " + sum);
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         }
     }

@@ -47,7 +47,33 @@ namespace FunctionsPractice_1_
 
             ///////////////////////////////////////////////////////////////////
 
+            string word = "Hello, world!";
+            int length = word.Length;
+            Console.WriteLine(length);
 
+            string sub = word.Substring(0, 6);
+            Console.WriteLine(sub);
+
+            string upperword = word.ToUpper();
+            Console.WriteLine(upperword);
+            string lowerword = word.ToLower();
+            Console.WriteLine(lowerword);
+
+            string name = "aya";
+            Console.WriteLine("Enter your name");
+            string input = Console.ReadLine();
+
+            if (input.ToUpper() == name.ToUpper())       
+            {
+                Console.WriteLine("Welcome " + name);
+            }
+            else
+            {
+                Console.WriteLine("invalid, please try again");
+            }
+
+            bool cont = name.Contains('e');
+            Console.WriteLine(cont);
 
         }
     }

@@ -36,11 +36,16 @@ namespace FunctionsPractice_1_
             double r2 = Math.Pow(baseNum, powerNum);
             Console.WriteLine(r2);
 
+            ///////////////////////////////////////////////////////////////////
 
+            DateTime currentDate = DateTime.Now;
+            Console.WriteLine(currentDate);
 
+            DateTime startsub = DateTime.Today;
+            Console.WriteLine(startsub);
+            DateTime endsub = startsub.AddDays(7);
 
-
-
+            ///////////////////////////////////////////////////////////////////
 
 
 

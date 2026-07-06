@@ -51,17 +51,37 @@ namespace PracticeTasks_3_
 
             // Task 4 - Subscription End Date
 
-            DateTime startDate = DateTime.Now;
-            Console.WriteLine("Start Date is: " + startDate);
+            //DateTime startDate = DateTime.Now;
+            //Console.WriteLine("Start Date is: " + startDate);
 
-            Console.Write("Enter number of days of a free trial: ");
-            int numDays = int.Parse(Console.ReadLine());
+            //Console.Write("Enter number of days of a free trial: ");
+            //int numDays = int.Parse(Console.ReadLine());
 
-            DateTime endDate = startDate.AddDays(numDays);
-            Console.WriteLine("The End date is: " + endDate);
+            //DateTime endDate = startDate.AddDays(numDays);
+            //Console.WriteLine("The End date is: " + endDate);
 
-            string subend = endDate.ToString("yyyy-MM-dd");
-            Console.WriteLine("The End date in yyyy-MM-dd format: " + subend); 
+            //string subend = endDate.ToString("yyyy-MM-dd");
+            //Console.WriteLine("The End date in yyyy-MM-dd format: " + subend); 
+
+            //////////////////////////////////////////////////////////////////////////////////////////
+
+            // Task 5 - Grade Rounding System
+
+            Console.WriteLine("Enter your raw exam score (decimal)");
+            double rawScore = double.Parse(Console.ReadLine());
+
+            double roundScore = Math.Round(rawScore, 0);
+            Console.WriteLine("The rounded score is: " + roundScore);
+
+            if (roundScore >= 60)
+            {
+                Console.WriteLine("Pass");
+            }
+            else
+            {
+                Console.WriteLine("Fail");
+            }
+
 
 
         }

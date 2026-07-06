@@ -178,25 +178,65 @@ namespace PracticeTasks_3_
 
             // Task 10 - word Position Finder
 
-            Console.WriteLine("Enter a full sentence: ");
-            string sentence = Console.ReadLine();
+            //Console.WriteLine("Enter a full sentence: ");
+            //string sentence = Console.ReadLine();
 
-            Console.WriteLine("Enter a single word to search for: ");
-            string word = Console.ReadLine();
+            //Console.WriteLine("Enter a single word to search for: ");
+            //string word = Console.ReadLine();
 
-            int firstIndex = sentence.IndexOf(word);
-            int lastIndex = sentence.LastIndexOf(word);
+            //int firstIndex = sentence.IndexOf(word);
+            //int lastIndex = sentence.LastIndexOf(word);
 
-            if (firstIndex == -1)
+            //if (firstIndex == -1)
+            //{
+            //    Console.WriteLine("The word is not Found");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Word Found");
+            //    Console.WriteLine("First appearance position: " + firstIndex);
+            //    Console.WriteLine("Last appearance position: " + lastIndex);
+            //}
+
+            //////////////////////////////////////////////////////////////////
+
+            // Task 11 - One-Time Password (OTP) Generator
+
+            Random random = new Random();
+            int generatedOTP = random.Next(1000, 10000);
+
+            Console.WriteLine("Your 4-digit OTP is " + generatedOTP);
+
+            int maxAttemps = 3;
+            bool isVerified = false;
+
+            for (int attempt = 1; attempt <= maxAttemps; attempt++)
             {
-                Console.WriteLine("The word is not Found");
+                try
+                {
+                    Console.WriteLine("Enter the Generated OTP:");
+                    int userOTP = int.Parse(Console.ReadLine());
+
+                    if (userOTP == generatedOTP)
+                    {
+                        Console.WriteLine("Verified");
+                        isVerified = true;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Verification Failed");
+                    }
+
+                }
+                catch(FormatException)
+                {
+                    Console.WriteLine("Invalid Input");
+                }
+
             }
-            else
-            {
-                Console.WriteLine("Word Found");
-                Console.WriteLine("First appearance position: " + firstIndex);
-                Console.WriteLine("Last appearance position: " + lastIndex);
-            }
+
+
 
         }
 

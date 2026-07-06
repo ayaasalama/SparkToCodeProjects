@@ -135,29 +135,48 @@ namespace PracticeTasks_3_
             //}
 
             ////////////////////////////////////////////////////////////////
-            
+
             // Task 8 - Membership Expiry Checker
 
-            Console.WriteLine("Enter your membership start date (yyyy-mm-dd): ");
-            DateTime membershipstart = DateTime.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter your membership start date (yyyy-mm-dd): ");
+            //DateTime membershipstart = DateTime.Parse(Console.ReadLine());
 
-            Console.WriteLine("Enter the number of valid membership days: ");
-            int validDays = int.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter the number of valid membership days: ");
+            //int validDays = int.Parse(Console.ReadLine());
 
-            DateTime expireDate = membershipstart.AddDays(validDays);
+            //DateTime expireDate = membershipstart.AddDays(validDays);
 
-            DateTime today = DateTime.Today;
+            //DateTime today = DateTime.Today;
 
-            if (expireDate >= today)
-            {
-                Console.WriteLine("Active");
-            }
-            else
-            {
-                Console.WriteLine("Expired");
-            }
+            //if (expireDate >= today)
+            //{
+            //    Console.WriteLine("Active");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Expired");
+            //}
+
+            ///////////////////////////////////////////////////////////////////////////
+
+            // Task 9 - Round Up/ Round Down Explorer
+
+            Console.Write("Enter a decimal number: ");
+            float decNum = float.Parse(Console.ReadLine());
+            Console.WriteLine("The original number " + decNum);
+
+            double wholeNum = Math.Round(decNum, 0);
+            Console.WriteLine("The nearest whole number: " + wholeNum);
+
+            double roundup = Math.Ceiling(decNum);
+            Console.WriteLine("Always Rounded Up: " + roundup);
+
+            double roundDown = Math.Floor (decNum);
+            Console.WriteLine("Always Rounded Down: " + roundDown);
 
 
         }
+
     }
+    
 }

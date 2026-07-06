@@ -21,13 +21,29 @@
 
             // Task 2 - Power & Root Explorer
 
-            Console.Write("Enter a number: ");
-            float num = float.Parse(Console.ReadLine());
+            //Console.Write("Enter a number: ");
+            //float num = float.Parse(Console.ReadLine());
 
-            double power = Math.Pow(num, 2);
-            double Sqrt = Math.Sqrt(num);
+            //double power = Math.Pow(num, 2);
+            //double Sqrt = Math.Sqrt(num);
 
-            Console.WriteLine("The power of the number tp 2 is " + power + " and the square root is " + Sqrt);
+            //Console.WriteLine("The power of the number tp 2 is " + power + " and the square root is " + Sqrt);
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////////\
+
+            // Task 3 - Name Formatter
+
+            Console.Write("Enter you full name: ");
+            string name = Console.ReadLine();
+
+            string upperchar = name.ToUpper();
+            Console.WriteLine("Uppercase: " + upperchar);
+
+            string lowerchar = name.ToLower();
+            Console.WriteLine("Lowercase: " +  lowerchar);
+
+            int lettercount = name.Length;
+            Console.WriteLine("Number of characters: " + lettercount);
 
 
         }

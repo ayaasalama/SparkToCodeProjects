@@ -161,19 +161,42 @@ namespace PracticeTasks_3_
 
             // Task 9 - Round Up/ Round Down Explorer
 
-            Console.Write("Enter a decimal number: ");
-            float decNum = float.Parse(Console.ReadLine());
-            Console.WriteLine("The original number " + decNum);
+            //Console.Write("Enter a decimal number: ");
+            //float decNum = float.Parse(Console.ReadLine());
+            //Console.WriteLine("The original number " + decNum);
 
-            double wholeNum = Math.Round(decNum, 0);
-            Console.WriteLine("The nearest whole number: " + wholeNum);
+            //double wholeNum = Math.Round(decNum, 0);
+            //Console.WriteLine("The nearest whole number: " + wholeNum);
 
-            double roundup = Math.Ceiling(decNum);
-            Console.WriteLine("Always Rounded Up: " + roundup);
+            //double roundup = Math.Ceiling(decNum);
+            //Console.WriteLine("Always Rounded Up: " + roundup);
 
-            double roundDown = Math.Floor (decNum);
-            Console.WriteLine("Always Rounded Down: " + roundDown);
+            //double roundDown = Math.Floor (decNum);
+            //Console.WriteLine("Always Rounded Down: " + roundDown);
 
+            /////////////////////////////////////////////////////////////////////
+
+            // Task 10 - word Position Finder
+
+            Console.WriteLine("Enter a full sentence: ");
+            string sentence = Console.ReadLine();
+
+            Console.WriteLine("Enter a single word to search for: ");
+            string word = Console.ReadLine();
+
+            int firstIndex = sentence.IndexOf(word);
+            int lastIndex = sentence.LastIndexOf(word);
+
+            if (firstIndex == -1)
+            {
+                Console.WriteLine("The word is not Found");
+            }
+            else
+            {
+                Console.WriteLine("Word Found");
+                Console.WriteLine("First appearance position: " + firstIndex);
+                Console.WriteLine("Last appearance position: " + lastIndex);
+            }
 
         }
 

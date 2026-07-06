@@ -67,21 +67,50 @@ namespace PracticeTasks_3_
 
             // Task 5 - Grade Rounding System
 
-            Console.WriteLine("Enter your raw exam score (decimal)");
-            double rawScore = double.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter your raw exam score (decimal)");
+            //double rawScore = double.Parse(Console.ReadLine());
 
-            double roundScore = Math.Round(rawScore, 0);
-            Console.WriteLine("The rounded score is: " + roundScore);
+            //double roundScore = Math.Round(rawScore, 0);
+            //Console.WriteLine("The rounded score is: " + roundScore);
 
-            if (roundScore >= 60)
+            //if (roundScore >= 60)
+            //{
+            //    Console.WriteLine("Pass");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Fail");
+            //}
+
+            ///////////////////////////////////////////////////////////////////////////////
+
+            // Task 6 - Password Strength Checker
+
+            Console.WriteLine("Enter a password");
+            string password = Console.ReadLine();
+
+            int passLength = password.Length;
+
+            string lowerpass = password.ToLower();
+            bool hasForbidden = lowerpass.Contains("password");
+
+            if (hasForbidden || passLength < 8)
             {
-                Console.WriteLine("Pass");
+                Console.WriteLine("The password is weak");
+                
+                if (hasForbidden)
+                {
+                    Console.WriteLine("It has the word 'password' in it");
+                }
+                else
+                {
+                    Console.WriteLine("The password is less than 8 characters");
+                }
             }
             else
             {
-                Console.WriteLine("Fail");
+                Console.WriteLine("The password is Strong");
             }
-
 
 
         }

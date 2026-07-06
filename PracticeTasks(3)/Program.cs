@@ -116,22 +116,45 @@ namespace PracticeTasks_3_
 
             // Task 7 - Clean Name Comparator
 
-            Console.WriteLine("Enter a name: ");
-            string Firstname = Console.ReadLine();
+            //Console.WriteLine("Enter a name: ");
+            //string Firstname = Console.ReadLine();
 
-            Console.WriteLine("Enter the name again");
-            string Secondname = Console.ReadLine();
+            //Console.WriteLine("Enter the name again");
+            //string Secondname = Console.ReadLine();
 
-            string cleanFirstname = Firstname.Trim().ToUpper();
-            string cleanSecondname = Secondname.Trim().ToUpper();
+            //string cleanFirstname = Firstname.Trim().ToUpper();
+            //string cleanSecondname = Secondname.Trim().ToUpper();
 
-            if (cleanFirstname == cleanSecondname)
+            //if (cleanFirstname == cleanSecondname)
+            //{
+            //    Console.WriteLine("Match.");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("No Match.");
+            //}
+
+            ////////////////////////////////////////////////////////////////
+            
+            // Task 8 - Membership Expiry Checker
+
+            Console.WriteLine("Enter your membership start date (yyyy-mm-dd): ");
+            DateTime membershipstart = DateTime.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter the number of valid membership days: ");
+            int validDays = int.Parse(Console.ReadLine());
+
+            DateTime expireDate = membershipstart.AddDays(validDays);
+
+            DateTime today = DateTime.Today;
+
+            if (expireDate >= today)
             {
-                Console.WriteLine("Match.");
+                Console.WriteLine("Active");
             }
             else
             {
-                Console.WriteLine("No Match.");
+                Console.WriteLine("Expired");
             }
 
 

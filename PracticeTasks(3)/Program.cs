@@ -86,30 +86,52 @@ namespace PracticeTasks_3_
 
             // Task 6 - Password Strength Checker
 
-            Console.WriteLine("Enter a password");
-            string password = Console.ReadLine();
+            //Console.WriteLine("Enter a password");
+            //string password = Console.ReadLine();
 
-            int passLength = password.Length;
+            //int passLength = password.Length;
 
-            string lowerpass = password.ToLower();
-            bool hasForbidden = lowerpass.Contains("password");
+            //string lowerpass = password.ToLower();
+            //bool hasForbidden = lowerpass.Contains("password");
 
-            if (hasForbidden || passLength < 8)
+            //if (hasForbidden || passLength < 8)
+            //{
+            //    Console.WriteLine("The password is weak");
+
+            //    if (hasForbidden)
+            //    {
+            //        Console.WriteLine("It has the word 'password' in it");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("The password is less than 8 characters");
+            //    }
+            //}
+            //else
+            //{
+            //    Console.WriteLine("The password is Strong");
+            //}
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Task 7 - Clean Name Comparator
+
+            Console.WriteLine("Enter a name: ");
+            string Firstname = Console.ReadLine();
+
+            Console.WriteLine("Enter the name again");
+            string Secondname = Console.ReadLine();
+
+            string cleanFirstname = Firstname.Trim().ToUpper();
+            string cleanSecondname = Secondname.Trim().ToUpper();
+
+            if (cleanFirstname == cleanSecondname)
             {
-                Console.WriteLine("The password is weak");
-                
-                if (hasForbidden)
-                {
-                    Console.WriteLine("It has the word 'password' in it");
-                }
-                else
-                {
-                    Console.WriteLine("The password is less than 8 characters");
-                }
+                Console.WriteLine("Match.");
             }
             else
             {
-                Console.WriteLine("The password is Strong");
+                Console.WriteLine("No Match.");
             }
 
 

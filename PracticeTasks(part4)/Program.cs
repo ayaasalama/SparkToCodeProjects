@@ -67,30 +67,40 @@ namespace PracticeTasks_part4_
         //////////////////////////////////////////////////////////////////////////
 
         // Task 7 - Grade Letter Function
-        public static string GetGradeLetter(int score)
+        //public static string GetGradeLetter(int score)
+        //{
+        //    if (score >= 90)
+        //    {
+        //        return "A";
+        //    }
+        //    else if (score >= 80)
+        //    {
+        //        return "B";
+        //    }
+        //    else if (score >= 70)
+        //    {
+        //        return "C";
+        //    }
+        //    else if (score >= 60)
+        //    {
+        //        return "D";
+        //    }
+        //    else
+        //    {
+        //        return "F"; 
+        //    }
+        //}
+
+        /// ////////////////////////////////////////////////////////////////////////////
+        
+        // Task 8 - Countdown Function
+        public static void Countdown (int startNum )
         {
-            if (score >= 90)
+            for (int i = startNum; i >= 1; i--)
             {
-                return "A";
-            }
-            else if (score >= 80)
-            {
-                return "B";
-            }
-            else if (score >= 70)
-            {
-                return "C";
-            }
-            else if (score >= 60)
-            {
-                return "D";
-            }
-            else
-            {
-                return "F"; 
+                Console.WriteLine(i);
             }
         }
-
 
         static void Main(string[] args)
         {
@@ -128,13 +138,17 @@ namespace PracticeTasks_part4_
             //CalculateArea(length, width);
             //CalculatePerimeter(length, width);
             ////////////////////////////////////////////////////////////////
-            Console.WriteLine("Enter your score (0-100)");
-            int userScore = int.Parse(Console.ReadLine());
+            //Console.WriteLine("Enter your score (0-100)");
+            //int userScore = int.Parse(Console.ReadLine());
 
-            string finalGrade = GetGradeLetter(userScore);
+            //string finalGrade = GetGradeLetter(userScore);
 
-            Console.WriteLine("Your grade letter is: " + finalGrade);
+            //Console.WriteLine("Your grade letter is: " + finalGrade);
+            //////////////////////////////////////////////////////////////
+            Console.Write("Enter a starting number for the countdown: ");
+            int startNum = int.Parse(Console.ReadLine());
 
+            Countdown(startNum);
 
         }
     }

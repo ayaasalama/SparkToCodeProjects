@@ -13,24 +13,37 @@ namespace PracticeTasks_part4_
         //////////////////////////////////////////////////////
         
         // Task 2 - Square Number Function
-        public static int Square(int x)
-        {
-            int sqrt = x * x;
-            Console.WriteLine("The square is " + sqrt);
-            return sqrt;
-            
-        }
+        //public static int Square(int x)
+        //{
+        //    int sqrt = x * x;
+        //    Console.WriteLine("The square is " + sqrt);
+        //    return sqrt;
+        //}
+
+        ///////////////////////////////////////////////////
         
+        // Task 3 - Celsius to Fahrenheit 
+        public static double CelsiusToFahrenheit (double C)
+        {
+            double F = (C * 9 / 5) + 32;
+            Console.WriteLine("The Temperature in Fehrenheit " + F);
+            return F;
+        }
+
+
         static void Main(string[] args)
         {
             //Console.WriteLine("Enter your name");
             //string name = Console.ReadLine();
             //PrintWelcome(name);
 
-            Console.WriteLine("Enter a number ");
-            int x = int.Parse(Console.ReadLine());
-            Square(x);
+            //Console.WriteLine("Enter a number ");
+            //int x = int.Parse(Console.ReadLine());
+            //Square(x);
 
+            Console.WriteLine("Enter the Temperature as Celsius ");
+            double C = double.Parse(Console.ReadLine());
+            CelsiusToFahrenheit(C);
 
         }
     }

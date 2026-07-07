@@ -106,18 +106,34 @@ namespace PracticeTasks_part4_
 
         // Task 9 - Overloaded Multiply Function
 
-        public static int Multiply(int a, int b)
+        //public static int Multiply(int a, int b)
+        //{
+        //    return a * b;
+        //}
+        //public static double Multiply(double a, double b)
+        //{
+        //    return a * b;
+        //}
+        //public static int Multiply(int a, int b, int c)
+        //{
+        //    return a + b * c;
+        //}
+
+        /////////////////////////////////////////////////////////////////////////////////////
+
+        // Task 10 - Overloaded Area Calculator
+
+        public static double CalculateArea(double side)
         {
-            return a * b;
+            return side * side;
         }
-        public static double Multiply(double a, double b)
+
+        public static double CalculateArea(double length, double width)
         {
-            return a * b;
+            return length * width;
         }
-        public static int Multiply(int a, int b, int c)
-        {
-            return a + b * c;
-        }
+
+        /// ///////////////////////////////////////////////////////////////////////////
 
 
         static void Main(string[] args)
@@ -168,14 +184,35 @@ namespace PracticeTasks_part4_
 
             //Countdown(startNum);
             /////////////////////////////////////////////////////////////////
-            int intResult1 = Multiply(5, 4);
-            Console.WriteLine("Result from Overload 1 (Two ints: 5 * 4): " + intResult1);
+            //int intResult1 = Multiply(5, 4);
+            //Console.WriteLine("Result from Overload 1 (Two ints: 5 * 4): " + intResult1);
 
-            double doubleResult = Multiply(2.5, 4.0);
-            Console.WriteLine("Result from Overload 2 (Two doubles: 2.5 * 4.0): " + doubleResult);
+            //double doubleResult = Multiply(2.5, 4.0);
+            //Console.WriteLine("Result from Overload 2 (Two doubles: 2.5 * 4.0): " + doubleResult);
 
-            int intResult2 = Multiply(2, 3, 4);
-            Console.WriteLine("Result from Overload 3 (Three ints: 2 * 3 * 4): " + intResult2);
+            //int intResult2 = Multiply(2, 3, 4);
+            //Console.WriteLine("Result from Overload 3 (Three ints: 2 * 3 * 4): " + intResult2);
+            //////////////////////////////////////////////////////////////////////////////////////////
+            Console.Write("Type 'square' or 'rectangle': ");
+            string choice = Console.ReadLine();
+
+            if (choice == "square")
+            {
+                Console.Write("Enter side: ");
+                double side = double.Parse(Console.ReadLine());
+
+                Console.WriteLine("Area: " + CalculateArea(side));
+            }
+            else
+            {
+                Console.Write("Enter length: ");
+                double length = double.Parse(Console.ReadLine());
+                Console.Write("Enter width: ");
+                double width = double.Parse(Console.ReadLine());
+
+                Console.WriteLine("Area: " + CalculateArea(length, width));
+            }
+
 
         }
     }

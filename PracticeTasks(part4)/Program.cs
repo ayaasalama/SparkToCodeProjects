@@ -23,11 +23,21 @@ namespace PracticeTasks_part4_
         ///////////////////////////////////////////////////
         
         // Task 3 - Celsius to Fahrenheit 
-        public static double CelsiusToFahrenheit (double C)
+        //public static double CelsiusToFahrenheit (double C)
+        //{
+        //    double F = (C * 9 / 5) + 32;
+        //    Console.WriteLine("The Temperature in Fehrenheit " + F);
+        //    return F;
+        //}
+
+        ///////////////////////////////////////////////////////////
+        
+        // Task 4 -  Fixed Menu Display Function 
+        public static void DisplayMenu()
         {
-            double F = (C * 9 / 5) + 32;
-            Console.WriteLine("The Temperature in Fehrenheit " + F);
-            return F;
+            Console.WriteLine("1) Start");
+            Console.WriteLine("2) Help");
+            Console.WriteLine("3) Exit");
         }
 
 
@@ -41,10 +51,12 @@ namespace PracticeTasks_part4_
             //int x = int.Parse(Console.ReadLine());
             //Square(x);
 
-            Console.WriteLine("Enter the Temperature as Celsius ");
-            double C = double.Parse(Console.ReadLine());
-            CelsiusToFahrenheit(C);
+            //Console.WriteLine("Enter the Temperature as Celsius ");
+            //double C = double.Parse(Console.ReadLine());
+            //CelsiusToFahrenheit(C);
 
+
+            DisplayMenu();
         }
     }
 }

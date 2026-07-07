@@ -11,7 +11,7 @@ namespace PracticeTasks_part4_
         //}
 
         //////////////////////////////////////////////////////
-        
+
         // Task 2 - Square Number Function
         //public static int Square(int x)
         //{
@@ -21,7 +21,7 @@ namespace PracticeTasks_part4_
         //}
 
         ///////////////////////////////////////////////////
-        
+
         // Task 3 - Celsius to Fahrenheit 
         //public static double CelsiusToFahrenheit (double C)
         //{
@@ -31,14 +31,23 @@ namespace PracticeTasks_part4_
         //}
 
         ///////////////////////////////////////////////////////////
-        
+
         // Task 4 -  Fixed Menu Display Function 
-        public static void DisplayMenu()
+        //public static void DisplayMenu()
+        //{
+        //    Console.WriteLine("1) Start");
+        //    Console.WriteLine("2) Help");
+        //    Console.WriteLine("3) Exit");
+        //}
+
+        ////////////////////////////////////////////////////
+
+        // Task 5 - Even or Odd Function
+        public static bool IsEven (int num)
         {
-            Console.WriteLine("1) Start");
-            Console.WriteLine("2) Help");
-            Console.WriteLine("3) Exit");
+            return num % 2 == 0;
         }
+
 
 
         static void Main(string[] args)
@@ -55,8 +64,21 @@ namespace PracticeTasks_part4_
             //double C = double.Parse(Console.ReadLine());
             //CelsiusToFahrenheit(C);
 
+            //DisplayMenu();
 
-            DisplayMenu();
+            Console.WriteLine("Enter a number");
+            int num = int.Parse(Console.ReadLine());
+
+            if (IsEven(num))
+            {
+                Console.WriteLine("The number is Even");
+            }
+            else
+            {
+                Console.WriteLine("The number is Odd");
+            }
+            
+            
         }
     }
 }

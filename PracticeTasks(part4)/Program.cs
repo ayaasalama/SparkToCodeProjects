@@ -49,27 +49,55 @@ namespace PracticeTasks_part4_
         //}
 
         ///////////////////////////////////////////////////////////////
-        
+
         // Task 6 - Rectangle Area & Perimeter Functions
-        public static double CalculateArea(double length, double width)
+        //public static double CalculateArea(double length, double width)
+        //{
+        //    double area = length * width;
+        //    Console.WriteLine("The Area is " + area);
+        //    return area;
+        //}
+        //public static double CalculatePerimeter(double length, double width)
+        //{
+        //    double perimeter = 2* (length + width);
+        //    Console.WriteLine("The Perimeter is " + perimeter);
+        //    return perimeter;
+        //}
+
+        //////////////////////////////////////////////////////////////////////////
+
+        // Task 7 - Grade Letter Function
+        public static string GetGradeLetter(int score)
         {
-            double area = length * width;
-            Console.WriteLine("The Area is " + area);
-            return area;
+            if (score >= 90)
+            {
+                return "A";
+            }
+            else if (score >= 80)
+            {
+                return "B";
+            }
+            else if (score >= 70)
+            {
+                return "C";
+            }
+            else if (score >= 60)
+            {
+                return "D";
+            }
+            else
+            {
+                return "F"; 
+            }
         }
-        public static double CalculatePerimeter(double length, double width)
-        {
-            double perimeter = 2* (length + width);
-            Console.WriteLine("The Perimeter is " + perimeter);
-            return perimeter;
-        }
+
 
         static void Main(string[] args)
         {
             //Console.WriteLine("Enter your name");
             //string name = Console.ReadLine();
             //PrintWelcome(name);
-            ///////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////
             //Console.WriteLine("Enter a number ");
             //int x = int.Parse(Console.ReadLine());
             //Square(x);
@@ -92,15 +120,21 @@ namespace PracticeTasks_part4_
             //    Console.WriteLine("The number is Odd");
             //}
             ////////////////////////////////////////////////////////////////////
-            Console.Write("Enter the Length of rectangle: ");
-            double length = double.Parse(Console.ReadLine());
-            Console.Write("Enter the Width of rectangle: ");
-            double width = double.Parse(Console.ReadLine());
+            //Console.Write("Enter the Length of rectangle: ");
+            //double length = double.Parse(Console.ReadLine());
+            //Console.Write("Enter the Width of rectangle: ");
+            //double width = double.Parse(Console.ReadLine());
 
-            CalculateArea(length, width);
-            CalculatePerimeter(length, width);
-            
-            
+            //CalculateArea(length, width);
+            //CalculatePerimeter(length, width);
+            ////////////////////////////////////////////////////////////////
+            Console.WriteLine("Enter your score (0-100)");
+            int userScore = int.Parse(Console.ReadLine());
+
+            string finalGrade = GetGradeLetter(userScore);
+
+            Console.WriteLine("Your grade letter is: " + finalGrade);
+
 
         }
     }

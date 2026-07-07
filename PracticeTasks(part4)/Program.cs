@@ -136,37 +136,72 @@ namespace PracticeTasks_part4_
         /// ///////////////////////////////////////////////////////////////////////////
 
         // Task 11 - Function-Based Calculator
-        public static double Add(double Num1, double Num2)
+        //public static double Add(double Num1, double Num2)
+        //{
+        //    return Num1 + Num2;
+        //}
+        //public static double Subtract(double Num1, double Num2)
+        //{
+        //    return Num1 - Num2;
+        //}
+        //public static double MultiplyNumbers(double Num1, double Num2)
+        //{
+        //    return Num1 * Num2;
+        //}
+        //public static double DivideNumbers(double Num1, double Num2)
+        //{
+        //    try
+        //    {
+        //        if (Num2 == 0)
+        //        {
+        //            throw new DivideByZeroException();
+        //        }
+        //        return Num1 / Num2;
+        //    }
+        //    catch (DivideByZeroException)
+        //    {
+        //        return 0;
+        //    }
+        //}
+        //public static void DisplayResult(string op, double res)
+        //{
+        //    Console.WriteLine(op + " Result: " + res );
+        //}
+
+        /////////////////////////////////////////////////////////////////////////////
+
+        // Task 12 - Student Report Card Generator
+        public static double CalculateAverage(double score1, double score2, double score3)
         {
-            return Num1 + Num2;
+            return (score1 + score2 + score3) / 3.0;
         }
-        public static double Subtract(double Num1, double Num2)
+        public static string GetGradeLetter(double average)
         {
-            return Num1 - Num2;
-        }
-        public static double MultiplyNumbers(double Num1, double Num2)
-        {
-            return Num1 * Num2;
-        }
-        public static double DivideNumbers(double Num1, double Num2)
-        {
-            try
+            if (average >= 90)
             {
-                if (Num2 == 0)
-                {
-                    throw new DivideByZeroException();
-                }
-                return Num1 / Num2;
+                return "A";
             }
-            catch (DivideByZeroException)
+            else if (average >= 80)
             {
-                return 0;
+                return "B";
             }
+            else if (average >= 70)
+            {
+                return "C";
+            }
+            else if (average >= 60)
+            {
+                return "D";
+            }
+            else return "F";
         }
-        public static void DisplayResult(string op, double res)
+        public static void PrintReportCard(string name, double average, string grade)
         {
-            Console.WriteLine(op + " Result: " + res );
+            Console.WriteLine("\nStudent Name : " + name);
+            Console.WriteLine("Average Score: " + average);
+            Console.WriteLine("Final Grade  : " + grade);
         }
+
 
         static void Main(string[] args)
         {
@@ -245,48 +280,64 @@ namespace PracticeTasks_part4_
             //    Console.WriteLine("Area: " + CalculateArea(length, width));
             //}
             ///////////////////////////////////////////////////////////////////////////////////
-            while (true)
-            {
-                Console.WriteLine("1) Add");
-                Console.WriteLine("2) Subtract");
-                Console.WriteLine("3) Multiply");
-                Console.WriteLine("4) Divide");
-                Console.WriteLine("5) Exit");
-                Console.Write("Choice: ");
-                string choice = Console.ReadLine();
+            //while (true)
+            //{
+            //    Console.WriteLine("1) Add");
+            //    Console.WriteLine("2) Subtract");
+            //    Console.WriteLine("3) Multiply");
+            //    Console.WriteLine("4) Divide");
+            //    Console.WriteLine("5) Exit");
+            //    Console.Write("Choice: ");
+            //    string choice = Console.ReadLine();
 
-                if (choice == "5") break; // Exit the loop immediately
+            //    if (choice == "5") break; // Exit the loop immediately
 
-                Console.Write("Enter first number: ");
-                double Num1 = double.Parse(Console.ReadLine());
-                Console.Write("Enter second number: ");
-                double Num2 = double.Parse(Console.ReadLine());
+            //    Console.Write("Enter first number: ");
+            //    double Num1 = double.Parse(Console.ReadLine());
+            //    Console.Write("Enter second number: ");
+            //    double Num2 = double.Parse(Console.ReadLine());
 
-                double result = 0;
-                string opName = "";
+            //    double result = 0;
+            //    string opName = "";
 
-                switch (choice)
-                {
-                    case "1":
-                        result = Add(Num1, Num2);
-                        opName = "Addition";
-                        break;
-                    case "2":
-                        result = Subtract(Num1, Num2);
-                        opName = "Subtraction";
-                        break;
-                    case "3":
-                        result = MultiplyNumbers(Num1, Num2);
-                        opName = "Multiplication";
-                        break;
-                    case "4":
-                        result = DivideNumbers(Num1, Num2);
-                        opName = "Division";
-                        break;
-                }
+            //    switch (choice)
+            //    {
+            //        case "1":
+            //            result = Add(Num1, Num2);
+            //            opName = "Addition";
+            //            break;
+            //        case "2":
+            //            result = Subtract(Num1, Num2);
+            //            opName = "Subtraction";
+            //            break;
+            //        case "3":
+            //            result = MultiplyNumbers(Num1, Num2);
+            //            opName = "Multiplication";
+            //            break;
+            //        case "4":
+            //            result = DivideNumbers(Num1, Num2);
+            //            opName = "Division";
+            //            break;
+            //    }
 
-                DisplayResult(opName, result);
-            }
+            //    DisplayResult(opName, result);
+            //}
+            ///////////////////////////////////////////////////////////////////////////////
+            Console.Write("Enter student's name: ");
+            string name = Console.ReadLine();
+
+            Console.Write("Enter score 1: ");
+            double score1 = double.Parse(Console.ReadLine());
+            Console.Write("Enter score 2: ");
+            double score2 = double.Parse(Console.ReadLine());
+            Console.Write("Enter score 3: ");
+            double score3 = double.Parse(Console.ReadLine());
+
+            // Using matching names out here in Main
+            double average = CalculateAverage(score1, score2, score3);
+            string grade = GetGradeLetter(average);
+
+            PrintReportCard(name, average, grade);
 
 
         }

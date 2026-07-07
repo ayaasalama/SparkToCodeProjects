@@ -92,15 +92,33 @@ namespace PracticeTasks_part4_
         //}
 
         /// ////////////////////////////////////////////////////////////////////////////
-        
+
         // Task 8 - Countdown Function
-        public static void Countdown (int startNum )
+        //public static void Countdown (int startNum )
+        //{
+        //    for (int i = startNum; i >= 1; i--)
+        //    {
+        //        Console.WriteLine(i);
+        //    }
+        //}
+
+        /////////////////////////////////////////////////////////////////////////
+
+        // Task 9 - Overloaded Multiply Function
+
+        public static int Multiply(int a, int b)
         {
-            for (int i = startNum; i >= 1; i--)
-            {
-                Console.WriteLine(i);
-            }
+            return a * b;
         }
+        public static double Multiply(double a, double b)
+        {
+            return a * b;
+        }
+        public static int Multiply(int a, int b, int c)
+        {
+            return a + b * c;
+        }
+
 
         static void Main(string[] args)
         {
@@ -145,10 +163,19 @@ namespace PracticeTasks_part4_
 
             //Console.WriteLine("Your grade letter is: " + finalGrade);
             //////////////////////////////////////////////////////////////
-            Console.Write("Enter a starting number for the countdown: ");
-            int startNum = int.Parse(Console.ReadLine());
+            //Console.Write("Enter a starting number for the countdown: ");
+            //int startNum = int.Parse(Console.ReadLine());
 
-            Countdown(startNum);
+            //Countdown(startNum);
+            /////////////////////////////////////////////////////////////////
+            int intResult1 = Multiply(5, 4);
+            Console.WriteLine("Result from Overload 1 (Two ints: 5 * 4): " + intResult1);
+
+            double doubleResult = Multiply(2.5, 4.0);
+            Console.WriteLine("Result from Overload 2 (Two doubles: 2.5 * 4.0): " + doubleResult);
+
+            int intResult2 = Multiply(2, 3, 4);
+            Console.WriteLine("Result from Overload 3 (Three ints: 2 * 3 * 4): " + intResult2);
 
         }
     }

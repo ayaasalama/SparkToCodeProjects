@@ -51,7 +51,7 @@ namespace PracticeTasks_part4_
         ///////////////////////////////////////////////////////////////
 
         // Task 6 - Rectangle Area & Perimeter Functions
-        public static double CalculateArea(double length, double width)
+        public static double CalculateAreaR(double length, double width)
         {
             double area = length * width;
             Console.WriteLine("The Area is " + area);
@@ -128,7 +128,7 @@ namespace PracticeTasks_part4_
             return side * side;
         }
 
-        public static double CalculateAreaR(double Length, double Width)
+        public static double CalculateArea(double Length, double Width)
         {
             return Length * Width;
         }
@@ -242,7 +242,7 @@ namespace PracticeTasks_part4_
             Console.Write("Enter the Width of rectangle: ");
             double width = double.Parse(Console.ReadLine());
 
-            CalculateArea(length, width);
+            CalculateAreaR(length, width);
             CalculatePerimeter(length, width);
 
             ////////////////////////////////////////////////////////////////
@@ -287,7 +287,7 @@ namespace PracticeTasks_part4_
                 Console.Write("Enter width: ");
                 double Width = double.Parse(Console.ReadLine());
 
-                Console.WriteLine("Area: " + CalculateAreaR(Length, Width));
+                Console.WriteLine("Area: " + CalculateArea(Length, Width));
             }
 
             ///////////////////////////////////////////////////////////////////////////////////

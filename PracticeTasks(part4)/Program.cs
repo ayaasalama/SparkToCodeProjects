@@ -123,18 +123,50 @@ namespace PracticeTasks_part4_
 
         // Task 10 - Overloaded Area Calculator
 
-        public static double CalculateArea(double side)
-        {
-            return side * side;
-        }
+        //public static double CalculateArea(double side)
+        //{
+        //    return side * side;
+        //}
 
-        public static double CalculateArea(double length, double width)
-        {
-            return length * width;
-        }
+        //public static double CalculateArea(double length, double width)
+        //{
+        //    return length * width;
+        //}
 
         /// ///////////////////////////////////////////////////////////////////////////
 
+        // Task 11 - Function-Based Calculator
+        public static double Add(double Num1, double Num2)
+        {
+            return Num1 + Num2;
+        }
+        public static double Subtract(double Num1, double Num2)
+        {
+            return Num1 - Num2;
+        }
+        public static double MultiplyNumbers(double Num1, double Num2)
+        {
+            return Num1 * Num2;
+        }
+        public static double DivideNumbers(double Num1, double Num2)
+        {
+            try
+            {
+                if (Num2 == 0)
+                {
+                    throw new DivideByZeroException();
+                }
+                return Num1 / Num2;
+            }
+            catch (DivideByZeroException)
+            {
+                return 0;
+            }
+        }
+        public static void DisplayResult(string op, double res)
+        {
+            Console.WriteLine(op + " Result: " + res );
+        }
 
         static void Main(string[] args)
         {
@@ -193,27 +225,72 @@ namespace PracticeTasks_part4_
             //int intResult2 = Multiply(2, 3, 4);
             //Console.WriteLine("Result from Overload 3 (Three ints: 2 * 3 * 4): " + intResult2);
             //////////////////////////////////////////////////////////////////////////////////////////
-            Console.Write("Type 'square' or 'rectangle': ");
-            string choice = Console.ReadLine();
+            //Console.Write("Type 'square' or 'rectangle': ");
+            //string choice = Console.ReadLine();
 
-            if (choice == "square")
+            //if (choice == "square")
+            //{
+            //    Console.Write("Enter side: ");
+            //    double side = double.Parse(Console.ReadLine());
+
+            //    Console.WriteLine("Area: " + CalculateArea(side));
+            //}
+            //else
+            //{
+            //    Console.Write("Enter length: ");
+            //    double length = double.Parse(Console.ReadLine());
+            //    Console.Write("Enter width: ");
+            //    double width = double.Parse(Console.ReadLine());
+
+            //    Console.WriteLine("Area: " + CalculateArea(length, width));
+            //}
+            ///////////////////////////////////////////////////////////////////////////////////
+            while (true)
             {
-                Console.Write("Enter side: ");
-                double side = double.Parse(Console.ReadLine());
+                Console.WriteLine("1) Add");
+                Console.WriteLine("2) Subtract");
+                Console.WriteLine("3) Multiply");
+                Console.WriteLine("4) Divide");
+                Console.WriteLine("5) Exit");
+                Console.Write("Choice: ");
+                string choice = Console.ReadLine();
 
-                Console.WriteLine("Area: " + CalculateArea(side));
-            }
-            else
-            {
-                Console.Write("Enter length: ");
-                double length = double.Parse(Console.ReadLine());
-                Console.Write("Enter width: ");
-                double width = double.Parse(Console.ReadLine());
+                if (choice == "5") break; // Exit the loop immediately
 
-                Console.WriteLine("Area: " + CalculateArea(length, width));
+                Console.Write("Enter first number: ");
+                double Num1 = double.Parse(Console.ReadLine());
+                Console.Write("Enter second number: ");
+                double Num2 = double.Parse(Console.ReadLine());
+
+                double result = 0;
+                string opName = "";
+
+                switch (choice)
+                {
+                    case "1":
+                        result = Add(Num1, Num2);
+                        opName = "Addition";
+                        break;
+                    case "2":
+                        result = Subtract(Num1, Num2);
+                        opName = "Subtraction";
+                        break;
+                    case "3":
+                        result = MultiplyNumbers(Num1, Num2);
+                        opName = "Multiplication";
+                        break;
+                    case "4":
+                        result = DivideNumbers(Num1, Num2);
+                        opName = "Division";
+                        break;
+                }
+
+                DisplayResult(opName, result);
             }
 
 
         }
+
     }
+    
 }

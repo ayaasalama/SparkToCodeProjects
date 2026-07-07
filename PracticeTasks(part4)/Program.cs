@@ -43,42 +43,65 @@ namespace PracticeTasks_part4_
         ////////////////////////////////////////////////////
 
         // Task 5 - Even or Odd Function
-        public static bool IsEven (int num)
+        //public static bool IsEven (int num)
+        //{
+        //    return num % 2 == 0;
+        //}
+
+        ///////////////////////////////////////////////////////////////
+        
+        // Task 6 - Rectangle Area & Perimeter Functions
+        public static double CalculateArea(double length, double width)
         {
-            return num % 2 == 0;
+            double area = length * width;
+            Console.WriteLine("The Area is " + area);
+            return area;
         }
-
-
+        public static double CalculatePerimeter(double length, double width)
+        {
+            double perimeter = 2* (length + width);
+            Console.WriteLine("The Perimeter is " + perimeter);
+            return perimeter;
+        }
 
         static void Main(string[] args)
         {
             //Console.WriteLine("Enter your name");
             //string name = Console.ReadLine();
             //PrintWelcome(name);
-
+            ///////////////////////////////////////////////////////////////////////
             //Console.WriteLine("Enter a number ");
             //int x = int.Parse(Console.ReadLine());
             //Square(x);
-
+            //////////////////////////////////////////////////////////////////////
             //Console.WriteLine("Enter the Temperature as Celsius ");
             //double C = double.Parse(Console.ReadLine());
             //CelsiusToFahrenheit(C);
-
+            /////////////////////////////////////////////////////////////////////
             //DisplayMenu();
+            /////////////////////////////////////////////////////////////////////
+            //Console.WriteLine("Enter a number");
+            //int num = int.Parse(Console.ReadLine());
+            ////////////////////////////////////////////////////////////////////
+            //if (IsEven(num))
+            //{
+            //    Console.WriteLine("The number is Even");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("The number is Odd");
+            //}
+            ////////////////////////////////////////////////////////////////////
+            Console.Write("Enter the Length of rectangle: ");
+            double length = double.Parse(Console.ReadLine());
+            Console.Write("Enter the Width of rectangle: ");
+            double width = double.Parse(Console.ReadLine());
 
-            Console.WriteLine("Enter a number");
-            int num = int.Parse(Console.ReadLine());
-
-            if (IsEven(num))
-            {
-                Console.WriteLine("The number is Even");
-            }
-            else
-            {
-                Console.WriteLine("The number is Odd");
-            }
+            CalculateArea(length, width);
+            CalculatePerimeter(length, width);
             
             
+
         }
     }
 }

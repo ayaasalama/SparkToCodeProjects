@@ -46,15 +46,31 @@
 
             // Task 3 - Browsing History Stack
 
-            Stack<string> browserHistory = new Stack<string>();
-            Console.WriteLine("Enter 3 website URLs:");
+            //Stack<string> browserHistory = new Stack<string>();
+            //Console.WriteLine("Enter 3 website URLs:");
 
-            browserHistory.Push(Console.ReadLine());
-            browserHistory.Push(Console.ReadLine());
-            browserHistory.Push(Console.ReadLine());
+            //browserHistory.Push(Console.ReadLine());
+            //browserHistory.Push(Console.ReadLine());
+            //browserHistory.Push(Console.ReadLine());
 
-            string url = browserHistory.Pop();
-            Console.WriteLine("The page currently landed on is " + browserHistory.Peek());
+            //string url = browserHistory.Pop();
+            //Console.WriteLine("The page currently landed on is " + browserHistory.Peek());
+
+            ////////////////////////////////////////////////////////////////////////////////
+            
+            // Task 4 - Customer Service Queue
+
+            Queue<string> Customers = new Queue<string>();
+            Console.WriteLine("Enter 3 Customer Names");
+
+            Customers.Enqueue(Console.ReadLine());
+            Customers.Enqueue(Console.ReadLine());
+            Customers.Enqueue(Console.ReadLine());
+
+            string name = Customers.Dequeue();
+            Console.WriteLine("Served Customer: " + name);
+
+
 
         }
     }

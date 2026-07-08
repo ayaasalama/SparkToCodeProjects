@@ -57,18 +57,48 @@
             //Console.WriteLine("The page currently landed on is " + browserHistory.Peek());
 
             ////////////////////////////////////////////////////////////////////////////////
-            
+
             // Task 4 - Customer Service Queue
 
-            Queue<string> Customers = new Queue<string>();
-            Console.WriteLine("Enter 3 Customer Names");
+            //Queue<string> Customers = new Queue<string>();
+            //Console.WriteLine("Enter 3 Customer Names");
 
-            Customers.Enqueue(Console.ReadLine());
-            Customers.Enqueue(Console.ReadLine());
-            Customers.Enqueue(Console.ReadLine());
+            //Customers.Enqueue(Console.ReadLine());
+            //Customers.Enqueue(Console.ReadLine());
+            //Customers.Enqueue(Console.ReadLine());
 
-            string name = Customers.Dequeue();
-            Console.WriteLine("Served Customer: " + name);
+            //string name = Customers.Dequeue();
+            //Console.WriteLine("Served Customer: " + name);
+
+            /////////////////////////////////////////////////////////////////////
+
+            // Task 5 - Array Grade Range
+
+            int[] Grades = new int[5];
+
+            int a;
+            for (a=0; a<5; a++)
+            {
+                Console.WriteLine("Enter a grade:");
+                Grades[a] = int.Parse(Console.ReadLine());
+            }
+
+            Array.Sort(Grades);
+
+            int sum = 0;
+            for (int b = 0; b < 5; b++)
+            {
+                sum += Grades[b];
+            }
+            double average = sum / 5.0;
+
+            Console.WriteLine("Lowest Grade: " + Grades[0]);
+            Console.WriteLine("Highest Grade: " + Grades[4]);
+            Console.WriteLine("Average Grade: " + average);
+
+            ////////////////////////////////////////////////////
+
+            
 
 
 

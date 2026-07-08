@@ -141,22 +141,52 @@
 
             // Task 7 - High Score Podium
 
-            List<int> Score = new List<int>();
+            //List<int> Score = new List<int>();
 
-            Console.WriteLine("Enter 5 game scores:");
-            int s;
-            for (s=0; s<5; s++)
+            //Console.WriteLine("Enter 5 game scores:");
+            //int s;
+            //for (s=0; s<5; s++)
+            //{
+            //    Console.WriteLine("Enter a score:");
+            //    Score.Add(int.Parse(Console.ReadLine()));
+            //}
+
+            //Score.Sort();
+            //Score.Reverse();
+
+            //Console.WriteLine("1st place: " + Score[0]);
+            //Console.WriteLine("2nd place: " + Score[1]);
+            //Console.WriteLine("3rd place: " + Score[2]);
+
+            //////////////////////////////////////////////////////////////////////////
+
+            // Task 8 - Undo Last Action
+
+            Stack<string> actions = new Stack<string>();
+
+            while (true)
             {
-                Console.WriteLine("Enter a score:");
-                Score.Add(int.Parse(Console.ReadLine()));
+                Console.Write("Enter editor action (or type 'stop'): ");
+                string action = Console.ReadLine();
+
+                if (action.ToLower() == "stop")
+                {
+                    break;
+                }
+
+                actions.Push(action);
             }
 
-            Score.Sort();
-            Score.Reverse();
+            Console.WriteLine("Undone: " + actions.Pop());
+            Console.WriteLine("Undone: " + actions.Pop());
 
-            Console.WriteLine("1st place: " + Score[0]);
-            Console.WriteLine("2nd place: " + Score[1]);
-            Console.WriteLine("3rd place: " + Score[2]);
+            Console.WriteLine("Remaining Actions");
+            foreach (string remainingAction in actions)
+            {
+                Console.WriteLine("- " + remainingAction);
+            }
+
+            //////////////////////////////////////////////////////////////////////////////
 
 
 

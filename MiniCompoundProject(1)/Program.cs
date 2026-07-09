@@ -76,7 +76,7 @@ namespace MiniCompoundProject_1_
             }
         }
 
-        static void AddAccount()
+        public static void AddAccount()
         {
             Console.Write("Enter customer name: ");
             string name = Console.ReadLine();
@@ -108,7 +108,7 @@ namespace MiniCompoundProject_1_
             Console.WriteLine("Balance       : " + initDeposit.ToString("F2") + " OMR");
         }
 
-        static void DepositMoney()
+        public static void DepositMoney()
         {
             Console.WriteLine("Enter account number: ");
             string accountNum = Console.ReadLine();
@@ -132,7 +132,7 @@ namespace MiniCompoundProject_1_
             Console.WriteLine("The updated balance is: " + balances[FoundAccount].ToString("F2") + " OMR");
         }
 
-        static void WithdrawMoney()
+        public static void WithdrawMoney()
         {
             Console.WriteLine("Enter account number: ");
             string accountNum = Console.ReadLine();
@@ -163,7 +163,7 @@ namespace MiniCompoundProject_1_
             Console.WriteLine("The updated balance is: " + balances[FoundAccount].ToString("F2") + " OMR");
         }
 
-        static void ShowBalance()
+        public static void ShowBalance()
         {
             Console.WriteLine("Enter account number: ");
             string accountNum = Console.ReadLine();
@@ -180,7 +180,7 @@ namespace MiniCompoundProject_1_
             Console.WriteLine("Balance       : " + balances[FoundAccount].ToString("F2") + " OMR");
         }
 
-        static void TransferAmount()
+        public static void TransferAmount()
         {
             Console.WriteLine("Enter Sender's account number: ");
             string SenderAccNum = Console.ReadLine();
@@ -227,6 +227,10 @@ namespace MiniCompoundProject_1_
             Console.WriteLine("The Receiver's Updated balance is: " + balances[ReceiverFoundAccount] + " OMR");
         }
 
+        public static void SearchbyCostumerName()
+        {
+
+        }
 
     }
 }

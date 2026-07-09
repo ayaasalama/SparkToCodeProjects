@@ -76,6 +76,39 @@ namespace MiniCompoundProject_1_
             }
         }
 
+        static void AddAccount()
+        {
+            Console.Write("Enter customer name: ");
+            string name = Console.ReadLine();
+            Console.Write("Enter new account number: ");
+            string accountNum = Console.ReadLine();
+
+            if (accountNumbers.Contains(accountNum))
+            {
+                Console.WriteLine("Error: Account number already in use!");
+                return;
+            }
+
+            Console.Write("Enter an initial deposit amount: ");
+            double initDeposit = double.Parse(Console.ReadLine());
+
+            if (initDeposit < 0)
+            {
+                Console.WriteLine("Error: Initial deposit cannot be negative!");
+                return;
+            }
+
+            customerNames.Add(name);
+            accountNumbers.Add(accountNum);
+            balances.Add(initDeposit);
+
+            Console.WriteLine("\n--- Account Created Successfully ---");
+            Console.WriteLine("Customer Name : " + name);
+            Console.WriteLine("Account Number: " + accountNum);
+            Console.WriteLine("Balance       : " + initDeposit.ToString("F2") + " OMR");
+        }
+
+
 
     }
 }

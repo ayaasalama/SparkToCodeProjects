@@ -16,7 +16,7 @@ namespace MiniCompoundProject_1_
 
             while (exitApp == false)
             {
-                Console.WriteLine("\n===== Welcome to Spark Bank =====");
+                Console.WriteLine("\n====== Welcome to Spark Bank ======");
                 Console.WriteLine("1. Add New Account");
                 Console.WriteLine("2. Deposit Money");
                 Console.WriteLine("3. Withdraw Money");
@@ -129,7 +129,7 @@ namespace MiniCompoundProject_1_
             }
 
             balances[FoundAccount] += deposit;
-            Console.WriteLine("The updated balance is: " + balances[FoundAccount].ToString("F2") + " OMR");
+            Console.WriteLine("\nThe updated balance is: " + balances[FoundAccount].ToString("F2") + " OMR");
         }
 
         public static void WithdrawMoney()
@@ -150,7 +150,7 @@ namespace MiniCompoundProject_1_
             {
                 if (withdraw > balances[FoundAccount])
                 {
-                    Console.WriteLine("Withdraw amount cannot be more that balance");
+                    Console.WriteLine("Balance insufficient!");
                 }
                 else
                 {
@@ -160,7 +160,7 @@ namespace MiniCompoundProject_1_
             }
 
             balances[FoundAccount] -= withdraw;
-            Console.WriteLine("The updated balance is: " + balances[FoundAccount].ToString("F2") + " OMR");
+            Console.WriteLine("\nThe updated balance is: " + balances[FoundAccount].ToString("F2") + " OMR");
         }
 
         public static void ShowBalance()
@@ -175,7 +175,7 @@ namespace MiniCompoundProject_1_
                 return;
             }
 
-            Console.WriteLine("Customer Name : " + customerNames[FoundAccount]);
+            Console.WriteLine("\nCustomer Name : " + customerNames[FoundAccount]);
             Console.WriteLine("Account Number: " + accountNumbers[FoundAccount]);
             Console.WriteLine("Balance       : " + balances[FoundAccount].ToString("F2") + " OMR");
         }
@@ -223,7 +223,7 @@ namespace MiniCompoundProject_1_
             balances[SenderFoundAccount] -= transfer;
             balances[ReceiverFoundAccount] += transfer;
 
-            Console.WriteLine("The Sender's Updated balance is: " + balances[SenderFoundAccount] + " OMR");
+            Console.WriteLine("\nThe Sender's Updated balance is: " + balances[SenderFoundAccount] + " OMR");
             Console.WriteLine("The Receiver's Updated balance is: " + balances[ReceiverFoundAccount] + " OMR");
         }
 
@@ -266,7 +266,7 @@ namespace MiniCompoundProject_1_
 
             if (balances[FoundAccount] > 0)
             {
-                Console.WriteLine("Cannot close account. Please withdraw the remaining balance first!");
+                Console.WriteLine("\nCannot close account. Please withdraw the remaining balance first!");
                 return;
             }
 
@@ -274,7 +274,7 @@ namespace MiniCompoundProject_1_
             accountNumbers.RemoveAt(FoundAccount);
             balances.RemoveAt(FoundAccount);
 
-            Console.WriteLine("Account Successfully Closed!");
+            Console.WriteLine("\nAccount Successfully Closed!");
         }
 
     }

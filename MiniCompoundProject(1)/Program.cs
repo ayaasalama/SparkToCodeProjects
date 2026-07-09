@@ -163,6 +163,23 @@ namespace MiniCompoundProject_1_
             Console.WriteLine("The updated balance is: " + balances[FoundAccount].ToString("F2") + " OMR");
         }
 
+        static void ShowBalance()
+        {
+            Console.WriteLine("Enter account number: ");
+            string accountNum = Console.ReadLine();
+
+            int FoundAccount = accountNumbers.IndexOf(accountNum);
+            if (FoundAccount == -1)
+            {
+                Console.WriteLine("Account Not Found!");
+                return;
+            }
+
+            Console.WriteLine("Customer Name : " + customerNames[FoundAccount]);
+            Console.WriteLine("Account Number: " + accountNumbers[FoundAccount]);
+            Console.WriteLine("Balance       : " + balances[FoundAccount].ToString("F2") + " OMR");
+        }
+
 
     }
 }

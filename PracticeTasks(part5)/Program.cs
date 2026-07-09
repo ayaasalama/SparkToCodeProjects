@@ -190,54 +190,111 @@
 
             // Task 9 - Grade Analyzer with Functions
 
-            Console.Write("How many grades do you want to enter? ");
-            int num = int.Parse(Console.ReadLine());
+            //Console.Write("How many grades do you want to enter? ");
+            //int num = int.Parse(Console.ReadLine());
 
-            List<int> grades = new List<int>();
+            //List<int> grades = new List<int>();
 
-            for (int x = 0; x < num; x++)
+            //for (int x = 0; x < num; x++)
+            //{
+            //    Console.Write($"Enter grade {x + 1}: ");
+            //    grades.Add(int.Parse(Console.ReadLine()));
+            //}
+
+            //double avg = CalculateAverage(grades);
+            //Console.WriteLine("Average Grade: " + avg.ToString("F2"));
+
+            //int failingGrade = FindFirstFailing(grades);
+
+            //if (failingGrade == 0)
+            //{
+            //    Console.WriteLine("First Failing Grade: No failing grades found!");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("First Failing Grade: " + failingGrade);
+            //}
+
+            /////////////////////////////////////////////////////////////////////////////////////////
+
+            // Task 10 - Print Queue Manager
+
+            Queue<string> printQueue = new Queue<string>();
+
+            while (true)
             {
-                Console.Write($"Enter grade {x + 1}: ");
-                grades.Add(int.Parse(Console.ReadLine()));
+                Console.Write("Enter a print job name (or type 'done'): ");
+                string job = Console.ReadLine();
+
+                if (job.ToLower() == "done")
+                {
+                    break;
+                }
+
+                printQueue.Enqueue(job);
             }
 
-            double avg = CalculateAverage(grades);
-            Console.WriteLine("Average Grade: " + avg.ToString("F2"));
-
-            int failingGrade = FindFirstFailing(grades);
-
-            if (failingGrade == 0)
+            Console.WriteLine("Print Queue Before Cancellation:");
+            foreach (string job in printQueue)
             {
-                Console.WriteLine("First Failing Grade: No failing grades found!");
-            }
-            else
-            {
-                Console.WriteLine("First Failing Grade: " + failingGrade);
+                Console.WriteLine("- " + job);
             }
 
+            // name of job to cancel
+            Console.Write("Enter the name of the job to cancel: ");
+            string jobToCancel = Console.ReadLine();
+
+            printQueue = RemoveJob(printQueue, jobToCancel);
+
+            Console.WriteLine("Print Queue After Cancellation:");
+            foreach (string job in printQueue)
+            {
+                Console.WriteLine("- " + job);
+            }
 
         }
 
         // The task 9 functions
-        public static double CalculateAverage(List<int> list)
+        //public static double CalculateAverage(List<int> list)
+        //{
+        //    if (list.Count == 0)
+        //    {
+        //        return 0;
+        //    }
+
+        //    int sum = 0;
+        //    foreach (int grade in list)
+        //    {
+        //        sum += grade;
+        //    }
+        //    return (double)sum / list.Count;
+        //}
+
+        //public static int FindFirstFailing(List<int> list)
+        //{
+        //    return list.Find(x => x < 60);
+        //}
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+
+        // The task 10 functions
+
+        public static Queue<string> RemoveJob(Queue<string> currentQueue, string cancelName)
         {
-            if (list.Count == 0)
+            Queue<string> newQueue = new Queue<string>();
+
+            while (currentQueue.Count > 0)
             {
-                return 0;
+                string currentJob = currentQueue.Dequeue();
+
+                if (currentJob != cancelName)
+                {
+                    newQueue.Enqueue(currentJob);
+                }
             }
 
-            int sum = 0;
-            foreach (int grade in list)
-            {
-                sum += grade;
-            }
-            return (double)sum / list.Count;
+            return newQueue;
         }
-
-        public static int FindFirstFailing(List<int> list)
-        {
-            return list.Find(x => x < 60);
-        }
-
+        ///////////////////////////////////////////////////////////////////////////////////////////
     }
 }

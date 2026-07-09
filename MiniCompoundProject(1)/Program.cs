@@ -122,13 +122,44 @@ namespace MiniCompoundProject_1_
 
             Console.Write("Enter deposit amount: ");
             double deposit = double.Parse(Console.ReadLine());
-            if (deposit < 0)
+            if (deposit <= 0)
             {
                 Console.WriteLine("Error: Deposit cannot be negative!");
                 return;
             }
 
             balances[FoundAccount] += deposit;
+            Console.WriteLine("The updated balance is: " + balances[FoundAccount].ToString("F2") + " OMR");
+        }
+
+        static void WithdrawMoney()
+        {
+            Console.WriteLine("Enter account number: ");
+            string accountNum = Console.ReadLine();
+
+            int FoundAccount = accountNumbers.IndexOf(accountNum);
+            if (FoundAccount == -1)
+            {
+                Console.WriteLine("Account Not Found!");
+                return;
+            }
+
+            Console.Write("Enter withdraw amount: ");
+            double withdraw = double.Parse(Console.ReadLine());
+            if (withdraw <= 0 || withdraw > balances[FoundAccount])
+            {
+                if (withdraw > balances[FoundAccount])
+                {
+                    Console.WriteLine("Withdraw amount cannot be more that balance");
+                }
+                else
+                {
+                    Console.WriteLine("Error: Withdraw cannot be negative!");
+                }
+                return;
+            }
+
+            balances[FoundAccount] -= withdraw;
             Console.WriteLine("The updated balance is: " + balances[FoundAccount].ToString("F2") + " OMR");
         }
 

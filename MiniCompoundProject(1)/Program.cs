@@ -252,6 +252,30 @@ namespace MiniCompoundProject_1_
 
         }
 
+        public static void CloseAccount()
+        {
+            Console.WriteLine("Enter Account Number: ");
+            string accountNum = Console.ReadLine();
+
+            int FoundAccount = accountNumbers.IndexOf(accountNum);
+            if (FoundAccount == -1)
+            {
+                Console.WriteLine("Account Not Found!");
+                return;
+            }
+
+            if (balances[FoundAccount] > 0)
+            {
+                Console.WriteLine("Cannot close account. Please withdraw the remaining balance first!");
+                return;
+            }
+
+            customerNames.RemoveAt(FoundAccount);
+            accountNumbers.RemoveAt(FoundAccount);
+            balances.RemoveAt(FoundAccount);
+
+            Console.WriteLine("Account Successfully Closed!");
+        }
 
     }
 }

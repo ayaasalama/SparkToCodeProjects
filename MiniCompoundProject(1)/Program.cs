@@ -180,6 +180,53 @@ namespace MiniCompoundProject_1_
             Console.WriteLine("Balance       : " + balances[FoundAccount].ToString("F2") + " OMR");
         }
 
+        static void TransferAmount()
+        {
+            Console.WriteLine("Enter Sender's account number: ");
+            string SenderAccNum = Console.ReadLine();
+            Console.WriteLine("Enter Receiver's account number: ");
+            string ReceiverAccNum = Console.ReadLine();
+
+            int SenderFoundAccount = accountNumbers.IndexOf(SenderAccNum);
+            int ReceiverFoundAccount = accountNumbers.IndexOf(ReceiverAccNum);
+
+            if (SenderFoundAccount == -1 || ReceiverFoundAccount == -1)
+            {
+                if (SenderFoundAccount == -1)
+                {
+                    Console.WriteLine("Sender's Account Not Found");
+                    return;
+                }
+
+                if (ReceiverFoundAccount == -1)
+                {
+                    Console.WriteLine("Receiver's Account Not Found!");
+                    return;
+                }
+            }
+
+            Console.Write("Enter transfer amount: ");
+            double transfer = double.Parse(Console.ReadLine());
+            if (transfer <= 0 || transfer > balances[SenderFoundAccount])
+            {
+                if (transfer > balances[SenderFoundAccount])
+                {
+                    Console.WriteLine("Balance insufficient!");
+                }
+                else
+                {
+                    Console.WriteLine("Error: Transfer amount must be positive!");
+                }
+                return;
+            }
+
+            balances[SenderFoundAccount] -= transfer;
+            balances[ReceiverFoundAccount] += transfer;
+
+            Console.WriteLine("The Sender's Updated balance is: " + balances[SenderFoundAccount] + " OMR");
+            Console.WriteLine("The Receiver's Updated balance is: " + balances[ReceiverFoundAccount] + " OMR");
+        }
+
 
     }
 }

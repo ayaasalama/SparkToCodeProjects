@@ -27,8 +27,19 @@ namespace MiniCompoundProject_1_
                 Console.WriteLine("8. Exit");
                 Console.Write("Choose an option: ");
 
+                int choice;
+
+                try
+                {
+                    choice = int.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number from 1 to 8.");
+                    continue;
+
+                }
+
+
             }
-
-
-        }
 }

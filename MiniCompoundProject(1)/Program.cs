@@ -40,6 +40,42 @@ namespace MiniCompoundProject_1_
 
                 }
 
+                switch (choice)
+                {
+                    case 1:
+                        AddAccount();
+                        break;
+                    case 2:
+                        DepositMoney();
+                        break;
+                    case 3:
+                        WithdrawMoney();
+                        break;
+                    case 4:
+                        ShowBalance();
+                        break;
+                    case 5:
+                        TransferAmount();
+                        break;
+                    case 6:
+                        SearchbyCustomerName();
+                        break;
+                    case 7:
+                        CloseAccount();
+                        break;
+                    case 8:
+                        exitApp = true;
+                        Console.WriteLine("Thank you for banking with Spark Bank. Goodbye!");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option, please choose between 1 and 8.");
+                        break;
+                }
+
 
             }
+        }
+
+
+    }
 }

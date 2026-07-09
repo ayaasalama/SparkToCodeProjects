@@ -102,7 +102,7 @@ namespace MiniCompoundProject_1_
             accountNumbers.Add(accountNum);
             balances.Add(initDeposit);
 
-            Console.WriteLine("\n--- Account Created Successfully ---");
+            Console.WriteLine("\nAccount Created Successfully:");
             Console.WriteLine("Customer Name : " + name);
             Console.WriteLine("Account Number: " + accountNum);
             Console.WriteLine("Balance       : " + initDeposit.ToString("F2") + " OMR");
@@ -247,7 +247,7 @@ namespace MiniCompoundProject_1_
 
             if (!foundCustomer)
             {
-                Console.WriteLine("No accounts found under that name");
+                Console.WriteLine("\nNo accounts found under that name");
             }
 
         }

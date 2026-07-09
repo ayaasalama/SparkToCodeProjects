@@ -227,10 +227,31 @@ namespace MiniCompoundProject_1_
             Console.WriteLine("The Receiver's Updated balance is: " + balances[ReceiverFoundAccount] + " OMR");
         }
 
-        public static void SearchbyCostumerName()
+        public static void SearchbyCustomerName()
         {
+            Console.Write("Enter customer name to search: ");
+            string searchName = Console.ReadLine();
+            bool foundCustomer = false;
+
+            int i;
+            for ( i = 0; i < customerNames.Count; i++)
+            {
+                if (customerNames[i].ToLower() == searchName.ToLower())
+                {
+                    Console.WriteLine("\nFound Account for " + customerNames[i]);
+                    Console.WriteLine("Account Number: " + accountNumbers[i]);
+                    Console.WriteLine("Balance       : " + balances[i].ToString("F2") + " OMR");
+                    foundCustomer = true;
+                }
+            }
+
+            if (!foundCustomer)
+            {
+                Console.WriteLine("No accounts found under that name");
+            }
 
         }
+
 
     }
 }

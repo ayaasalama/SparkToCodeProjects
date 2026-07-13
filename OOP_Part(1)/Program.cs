@@ -102,7 +102,9 @@
         {
             PrintDetails();
 
-            return Price * StockQuantity;
+            double inventoryValue = Price * StockQuantity;
+            Console.WriteLine("Total Inventory Value: " + inventoryValue.ToString("F2") + " OMR");
+            return inventoryValue;
         }
         private void PrintDetails()
         {
@@ -339,7 +341,31 @@
             }
         }
 
-        // Case 5 - 
+        // Case 5 - View Product Details
+        public static void ViewProductDetails()
+        {
+            Console.WriteLine("Choose a Product (1 or 2)");
+
+            int account;
+            try
+            {
+                account = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return;
+            }
+
+            switch (account)
+            {
+                case 1: Product1.GetInventoryValue(); break;
+                case 2: Product2.GetInventoryValue(); break;
+                default: Console.WriteLine("Invalid number"); break;
+            }
+        }
+
+
     }
 
 }

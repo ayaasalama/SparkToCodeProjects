@@ -127,7 +127,7 @@
         static Student Student2 = new Student { Name = "Ahmed", Address = "Muscat", Grade = 70 };
 
         static Product Product1 = new Product { ProductName = "Wireless Mouse", Price = 5.500, StockQuantity = 50 };
-        static Product Product2 = new Product { ProductName = "Mechanical Keyboard", Price = 15.700, StockQuantity = 20 };
+        static Product Product2 = new Product { ProductName = "Mechanical Keyboard", Price = 15.750, StockQuantity = 20 };
 
         static void Main(string[] args)
         {

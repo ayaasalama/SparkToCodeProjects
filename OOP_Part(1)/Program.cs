@@ -201,9 +201,33 @@
             }
 
         }
+
+        // Case 1 - View Account Details
+        public static void ViewAccountDetails()
+        {
+            Console.WriteLine("Choose an account (1 or 2)");
+            
+            int account;
+            try
+            {
+                account = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return;
+            }
+
+            switch (account)
+            {
+                case 1: BankAccount1.CheckBalance(); break;
+                case 2: BankAccount2.CheckBalance(); break;
+                default : Console.WriteLine("Invalid number"); break;
+            }
+
+        }
+
+
     }
-
-
-
 
 }

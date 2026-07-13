@@ -227,6 +227,40 @@
 
         }
 
+        // Case 2 - Update Student Address
+        public static void  UpdateStudentAddress()
+        {
+            Console.WriteLine("Choose a Student (1 or 2)");
+
+            int choice;
+            try
+            {
+                choice = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return;
+            }
+
+            switch (choice)
+            {
+                case 1:
+                    Console.WriteLine("Enter the new address for Student1:");
+                    Student1.Address = Console.ReadLine();
+                    Console.WriteLine("Confirmation: Student 1 address updated to: " + Student1.Address);
+                break;
+
+                case 2:
+                    Console.WriteLine("Enter the new address for Student2: ");
+                    Student2.Address = Console.ReadLine();
+                    Console.WriteLine("Confirmation: Student 2 address updated to: " + Student2.Address);
+                    break;
+
+                default: Console.WriteLine("Invalid number"); break;
+            }
+        }
+
 
     }
 

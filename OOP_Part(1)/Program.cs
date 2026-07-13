@@ -119,6 +119,16 @@
 
     internal class Program
     {
+        // Declaring and Assigning Objects
+        static BankAccount BankAccount1 = new BankAccount { AccountNumber = 1163, HolderName = "Karim", Balance = 120 };
+        static BankAccount BankAccount2 = new BankAccount { AccountNumber = 15203, HolderName = "Ali", Balance = 63 };
+
+        static Student Student1 = new Student { Name = "Ali", Address = "Muscat", Grade = 65 };
+        static Student Student2 = new Student { Name = "Ahmed", Address = "Muscat", Grade = 70 };
+
+        static Product Product1 = new Product { ProductName = "Wireless Mouse", Price = 5.500, StockQuantity = 50 };
+        static Product Product2 = new Product { ProductName = "Mechanical Keyboard", Price = 15.700, StockQuantity = 20 };
+
         static void Main(string[] args)
         {
             

@@ -262,7 +262,7 @@
         }
 
         // Case 3 - Make a Deposit
-        public static void MakeDeposit(double amount)
+        public static void MakeDeposit()
         {
             Console.WriteLine("Choose an account (1 or 2)");
 
@@ -278,7 +278,7 @@
             }
 
             Console.WriteLine("Enter the amount to deposit:");
-            amount = double.Parse(Console.ReadLine());
+            double amount = double.Parse(Console.ReadLine());
 
             switch (account)
             {
@@ -301,7 +301,7 @@
         }
 
         // Case 4 - Make a Withdrawal
-        public static void MakeWithdrawal(double amount)
+        public static void MakeWithdrawal()
         {
             Console.WriteLine("Choose an account (1 or 2)");
 
@@ -317,7 +317,7 @@
             }
 
             Console.WriteLine("Enter the amount to Withdraw:");
-            amount = double.Parse(Console.ReadLine());
+            double amount = double.Parse(Console.ReadLine());
 
             switch (account)
             {
@@ -339,7 +339,7 @@
             }
         }
 
-
+        // Case 5 - 
     }
 
 }

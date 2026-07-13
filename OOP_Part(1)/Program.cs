@@ -300,6 +300,45 @@
             }
         }
 
+        // Case 4 - Make a Withdrawal
+        public static void MakeWithdrawal(double amount)
+        {
+            Console.WriteLine("Choose an account (1 or 2)");
+
+            int account;
+            try
+            {
+                account = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return;
+            }
+
+            Console.WriteLine("Enter the amount to Withdraw:");
+            amount = double.Parse(Console.ReadLine());
+
+            switch (account)
+            {
+                case 1:
+                    BankAccount1.Withdraw(amount);
+
+                    Console.WriteLine("Account Holder: " + BankAccount1.HolderName);
+                    Console.WriteLine("Updated Balance: " + BankAccount1.Balance.ToString("F2") + " OMR");
+                    break;
+
+                case 2:
+                    BankAccount2.Withdraw(amount);
+
+                    Console.WriteLine("Account Holder: " + BankAccount2.HolderName);
+                    Console.WriteLine("Updated Balance: " + BankAccount2.Balance.ToString("F2") + " OMR");
+                    break;
+
+                default: Console.WriteLine("Invalid number"); break;
+            }
+        }
+
 
     }
 

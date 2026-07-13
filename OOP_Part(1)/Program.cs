@@ -365,7 +365,40 @@
             }
         }
 
-        // 
+        // Case 6 - Register a Student
+        public static void RegisterStudent()
+        {
+            Console.WriteLine("Choose a Student (1 or 2)");
+
+            int choice;
+            try
+            {
+                choice = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return;
+            }
+
+            Console.Write("Enter student email address: ");
+            string inputEmail = Console.ReadLine();
+
+            switch (choice)
+            {
+                case 1:
+                    Student1.Register(inputEmail);
+                    Console.WriteLine("Success: Registration confirmed for " + Student1.Name);
+                break;
+
+                case 2:
+                    Student2.Register(inputEmail);
+                    Console.WriteLine("Success: Registration confirmed for " + Student2.Name);
+                break;
+
+                default: Console.WriteLine("Invalid number"); break;
+            }
+        }
 
     }
 

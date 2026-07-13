@@ -70,6 +70,52 @@
 
     }
 
+    // Third Class Product
+    public class Product
+    {
+       // Properties
+        public string ProductName { get; set; }
+        public double Price { get; set; }
+        public int StockQuantity { get; set; }
+
+        // Methods
+        public void Sell(int quantity)
+        {
+            if (StockQuantity >= quantity)
+            {
+                StockQuantity -= quantity;
+            }
+            else
+            {
+                Console.WriteLine("Stock not enough!");
+            }
+            
+            LogTransaction();
+        }
+        public void Restock(int quantity)
+        {
+            StockQuantity += quantity;
+
+            LogTransaction();
+        }
+        public double GetInventoryValue()
+        {
+            PrintDetails();
+
+            return Price * StockQuantity;
+        }
+        private void PrintDetails()
+        {
+            Console.WriteLine("ProductName: " + ProductName);
+            Console.WriteLine("Price: " + Price + " OMR");
+            Console.WriteLine("Stock Quantity: " + StockQuantity);
+        }
+        private void LogTransaction()
+        {
+            Console.WriteLine("The transaction is logged.. ");
+        }
+
+    }
 
     internal class Program
     {

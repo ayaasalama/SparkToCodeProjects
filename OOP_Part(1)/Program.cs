@@ -684,10 +684,10 @@ namespace OOP_Part_1_
         {
             Console.WriteLine("Choose a Product (1 or 2)");
 
-            int account;
+            int choice;
             try
             {
-                account = int.Parse(Console.ReadLine());
+                choice = int.Parse(Console.ReadLine());
             }
             catch (Exception)
             {
@@ -695,11 +695,41 @@ namespace OOP_Part_1_
                 return;
             }
 
-            switch (account)
+            Console.WriteLine("Enter a quantity to sell:");
+            int quantity;
+
+            try
             {
-                case 1: Product1.GetInventoryValue(); break;
-                case 2: Product2.GetInventoryValue(); break;
-                default: Console.WriteLine("Invalid number"); break;
+                quantity = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input.");
+                return;
+            }
+
+            Product selectedProduct;
+
+            switch (choice)
+            {
+                case 1: selectedProduct = Product1; break;
+                case 2: selectedProduct = Product2; break;
+                default:
+                    Console.WriteLine("Invalid selection.");
+                    return;
+            }
+
+            if (selectedProduct.StockQuantity < quantity)
+            {
+                quantity -= selectedProduct.StockQuantity;
+                Console.WriteLine("The additional units needed is: " + quantity);
+                return;
+            }
+            else
+            {
+                selectedProduct.Sell(quantity);
+                double revenue = selectedProduct.Price * quantity;
+                Console.WriteLine("The total revenue is: " + revenue + " OMR");
             }
         }
 

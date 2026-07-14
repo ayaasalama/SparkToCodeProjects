@@ -401,7 +401,7 @@
         }
 
         // Case 7 -  Compare Two Account Balances
-        public static void CompareAccountBalance()
+        public static void CompareAccountBalances()
         {
             double Balance1 = BankAccount1.Balance;
             double Balance2 = BankAccount2.Balance;
@@ -420,6 +420,9 @@
             }
 
         }
+
+        // Case 8 - Restock Product & Stock Level Check
+        public static void 
 
 
     }

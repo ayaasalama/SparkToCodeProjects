@@ -595,6 +595,52 @@ namespace OOP_Part_1_
 
         }
 
+        // Case 11 - Student Report Card
+        public static void StudentReportCard()
+        {
+            Console.WriteLine("Choose a Student (1 or 2 ):");
+            int choice;
+
+            try
+            {
+                choice = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return;
+            }
+
+            Student selectedStudent;
+
+            switch (choice)
+            {
+                case 1: selectedStudent = Student1; break;
+                case 2: selectedStudent = Student2; break;
+                default:
+                    Console.WriteLine("Invalid selection.");
+                    return;
+            }
+
+            Console.WriteLine("----- Student Report Card -----");
+            Console.WriteLine("Name: " + selectedStudent.Name);
+            Console.WriteLine("Address: " + selectedStudent.Address);
+            Console.WriteLine("Grade  : " + selectedStudent.Grade);
+
+            if (selectedStudent.Grade >= 60)
+            {
+                Console.WriteLine("Status : Pass");
+            }
+            else
+            {
+                Console.WriteLine("Status : Fail");
+            }
+
+        }
+
+
+
+
     }
 
 }

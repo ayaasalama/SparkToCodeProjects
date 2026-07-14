@@ -733,6 +733,75 @@ namespace OOP_Part_1_
             }
         }
 
+        // Case 14 - Scholarship Eligibility Check
+        public static void ScholarshipEligibilitycheck()
+        {
+            Console.WriteLine("Choose a Student (1 or 2 ):");
+            int choice;
+
+            try
+            {
+                choice = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return;
+            }
+
+            Console.WriteLine("Choose a Account (1 or 2 ):");
+            int account;
+
+            try
+            {
+                account = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return;
+            }
+
+            Student selectedStudent;
+            switch (choice)
+            {
+                case 1: selectedStudent = Student1; break;
+                case 2: selectedStudent = Student2; break;
+                default:
+                    Console.WriteLine("Invalid selection for Student.");
+                    return;
+            }
+
+            BankAccount selectedAccount;
+            switch (account)
+            {
+                case 1: selectedAccount = BankAccount1; break;
+                case 2: selectedAccount = BankAccount2; break;
+                default:
+                    Console.WriteLine("Invalid selection for Account.");
+                    return;
+            }
+
+            if (selectedStudent.Grade >= 80 && selectedAccount.Balance >= 100)
+            {
+                Console.WriteLine("Eligible");
+            }
+            else
+            {
+                if (selectedStudent.Grade < 80)
+                {
+                    Console.WriteLine("Failed: Student's Grade is below 80.");
+                }
+
+                if (selectedAccount.Balance < 100)
+                {
+                    Console.WriteLine("Failed: Account Balance is below 100.");
+                }
+            }
+        }
+
+
+
     }
 
 }

@@ -638,7 +638,46 @@ namespace OOP_Part_1_
 
         }
 
+        // Case 12 - Account Health Status
+        public static void AccountHealthStatus()
+        {
+            Console.WriteLine("Choose a Account (1 or 2 ):");
+            int account;
 
+            try
+            {
+                account = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return;
+            }
+
+            BankAccount selectedAccount;
+
+            switch (account)
+            {
+                case 1: selectedAccount = BankAccount1; break;
+                case 2: selectedAccount = BankAccount2; break;
+                default:
+                    Console.WriteLine("Invalid selection.");
+                    return;
+            }
+
+            if (selectedAccount.Balance < 50)
+            {
+                Console.WriteLine("Status : Low Balance");
+            }
+            else if (selectedAccount.Balance >= 50 && selectedAccount.Balance <= 1000)
+            {
+                Console.WriteLine("Status : Healthy");
+            }
+            else
+            {
+                Console.WriteLine("Premium");
+            }
+        }
 
 
     }

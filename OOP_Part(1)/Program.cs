@@ -422,7 +422,66 @@
         }
 
         // Case 8 - Restock Product & Stock Level Check
-        public static void 
+        public static void RestockProduct()
+        {
+            Console.WriteLine("Choose a Product (1 or 2)");
+
+            int product;
+            try
+            {
+                product = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return;
+            }
+
+            Console.WriteLine("Enter the Restock Quantity:");
+            int quantity = int.Parse(Console.ReadLine());
+
+            switch (product)
+            {
+                case 1: 
+                    Product1.Restock(quantity); 
+
+                    if (Product1.StockQuantity < 10)
+                    {
+                        Console.WriteLine("Product1 Stock is Low.");
+                    }
+                    else if (Product1.StockQuantity >= 10 && Product1.StockQuantity < 50)
+                    {
+                        Console.WriteLine("Product1 Stock is Moderate.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Product1 is Well Stocked.");
+                    }
+
+                break;
+
+                case 2: 
+                    Product2.Restock(quantity);
+
+                    if (Product2.StockQuantity < 10)
+                    {
+                        Console.WriteLine("Product2 Stock is Low.");
+                    }
+                    else if (Product2.StockQuantity >= 10 && Product2.StockQuantity < 50)
+                    {
+                        Console.WriteLine("Product2 Stock is Moderate.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Product2 is Well Stocked.");
+                    }
+
+                    break;
+
+                default: Console.WriteLine("Invalid number"); break;
+            }
+
+        }
 
 
     }

@@ -1,4 +1,5 @@
-﻿using System.Security.Principal;
+﻿using System.Collections;
+using System.Security.Principal;
 
 namespace OOP_Part_1_
 {
@@ -486,7 +487,7 @@ namespace OOP_Part_1_
         }
 
         // Case 9 - Transfer between Accounts
-        public static void TranferBetweenAccounts()
+        public static void TransferBetweenAccounts()
         {
             BankAccount sourceAccount;
             BankAccount destinationAccount;
@@ -544,7 +545,11 @@ namespace OOP_Part_1_
 
         }
 
+        // Case 10 - Update Student Greade (validated)
+        public static void UpdateStudentGrade()
+        {
 
+        }
 
     }
 

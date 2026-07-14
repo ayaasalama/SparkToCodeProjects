@@ -548,6 +548,50 @@ namespace OOP_Part_1_
         // Case 10 - Update Student Greade (validated)
         public static void UpdateStudentGrade()
         {
+            Console.WriteLine("Choose a Student (1 or 2 ):");
+            int choice;
+
+            try
+            {
+                choice = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return;
+            }
+
+            Console.WriteLine("Enter the new Grade (0-100):");
+            int newGrade;
+
+            try
+            {
+                newGrade = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Grade must be a valid whole number.");
+                return; 
+            }
+
+            if (newGrade < 0 || newGrade > 100)
+            {
+                Console.WriteLine("Rejecting update: Grade falls outside the 0-100 range.");
+                return; 
+            }
+
+            switch (choice)
+            {
+                case 1:
+                    Student1.Grade = newGrade;
+                    Console.WriteLine("Confirmation: Student 1 grade updated to: " + Student1.Grade);
+                    break;
+
+                case 2:
+                    Student2.Grade = newGrade;
+                    Console.WriteLine("Confirmation: Student 2 grade updated to: " + Student2.Grade);
+                    break;
+            }
 
         }
 

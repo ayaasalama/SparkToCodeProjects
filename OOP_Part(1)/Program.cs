@@ -1,4 +1,6 @@
-﻿namespace OOP_Part_1_
+﻿using System.Security.Principal;
+
+namespace OOP_Part_1_
 {
     // First Class BankAccount
     public class BankAccount
@@ -482,6 +484,66 @@
             }
 
         }
+
+        // Case 9 - Transfer between Accounts
+        public static void TranferBetweenAccounts()
+        {
+            BankAccount sourceAccount;
+            BankAccount destinationAccount;
+
+            Console.WriteLine("Choose Source Account (1 or 2):");
+            int senderchoice = int.Parse(Console.ReadLine());
+
+            switch(senderchoice)
+            {
+                case 1:
+                    sourceAccount = BankAccount1;
+                    break;
+
+                case 2:
+                    sourceAccount = BankAccount2;
+                    break;
+
+                default: Console.WriteLine("Invalid Selection."); return;
+
+            }
+
+            Console.WriteLine("Choose Destination Account (1 or 2):");
+            int destinationchoice = int.Parse(Console.ReadLine());
+
+            switch (destinationchoice)
+            {
+                case 1:
+                    destinationAccount = BankAccount1;
+                    break;
+
+                case 2:
+                    destinationAccount = BankAccount2;
+                    break;
+
+                default: Console.WriteLine("Invalid Selection."); return;
+
+            }
+
+            Console.WriteLine("Enter the Transfer Amount:");
+            double transferAmount = double.Parse(Console.ReadLine());
+
+            if (sourceAccount.Balance >= transferAmount)
+            {
+                sourceAccount.Withdraw(transferAmount);
+                destinationAccount.Deposit(transferAmount);
+
+                Console.WriteLine("\n--- Transfer Successful ---");
+                Console.WriteLine("Source Account New Balance: " + sourceAccount.Balance.ToString("F2") +  " OMR");
+                Console.WriteLine("Destination Account New Balance: " + destinationAccount.Balance.ToString("F2") + " OMR");
+            }
+            else
+            {
+                Console.WriteLine("Transfer Failed: Source account has insufficient funds!");
+            }
+
+        }
+
 
 
     }

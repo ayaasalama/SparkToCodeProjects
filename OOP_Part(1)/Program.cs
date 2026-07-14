@@ -400,6 +400,28 @@
             }
         }
 
+        // Case 7 -  Compare Two Account Balances
+        public static void CompareAccountBalance()
+        {
+            double Balance1 = BankAccount1.Balance;
+            double Balance2 = BankAccount2.Balance;
+
+            if (Balance1 > Balance2)
+            {
+                Console.WriteLine("Balance in BankAccount1 Holds more Money.");
+            }
+            else if (Balance1 < Balance2)
+            {
+                Console.WriteLine("Balance in BankAccount2 Holds more Money.");
+            }
+            else
+            {
+                Console.WriteLine("Both Account Balances are equal.");
+            }
+
+        }
+
+
     }
 
 }

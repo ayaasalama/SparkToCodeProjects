@@ -349,10 +349,10 @@ namespace OOP_Part_1_
         {
             Console.WriteLine("Choose a Product (1 or 2)");
 
-            int account;
+            int choice;
             try
             {
-                account = int.Parse(Console.ReadLine());
+                choice = int.Parse(Console.ReadLine());
             }
             catch (Exception)
             {
@@ -360,7 +360,7 @@ namespace OOP_Part_1_
                 return;
             }
 
-            switch (account)
+            switch (choice)
             {
                 case 1: Product1.GetInventoryValue(); break;
                 case 2: Product2.GetInventoryValue(); break;
@@ -679,6 +679,29 @@ namespace OOP_Part_1_
             }
         }
 
+        // Case 13 - Bulk Sale With Revenue Calculation
+        public static void BulkSaleWithRevenue()
+        {
+            Console.WriteLine("Choose a Product (1 or 2)");
+
+            int account;
+            try
+            {
+                account = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return;
+            }
+
+            switch (account)
+            {
+                case 1: Product1.GetInventoryValue(); break;
+                case 2: Product2.GetInventoryValue(); break;
+                default: Console.WriteLine("Invalid number"); break;
+            }
+        }
 
     }
 

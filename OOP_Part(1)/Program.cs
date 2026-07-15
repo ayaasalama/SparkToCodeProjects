@@ -309,8 +309,31 @@ namespace OOP_Part_1_
                     return null;
             }
         }
-        
 
+        // Product Choose
+        public static Product SelectedProduct()
+        {
+            Console.Write("Choose a Product (1 or 2):");
+            int choice;
+            try
+            {
+                choice = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return null;
+            }
+
+            switch (choice)
+            {
+                case 1: return Product1;
+                case 2: return Product2;
+                default:
+                    Console.WriteLine("Invalid selection.");
+                    return null;
+            }
+        }
 
         // Case 1 - View Account Details
         public static void ViewAccountDetails()
@@ -370,25 +393,11 @@ namespace OOP_Part_1_
         // Case 5 - View Product Details
         public static void ViewProductDetails()
         {
-            Console.Write("Choose a Product (1 or 2)");
+            Product selectedProduct = SelectedProduct();
+            if (selectedProduct == null) return;
 
-            int choice;
-            try
-            {
-                choice = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
+            selectedProduct.GetInventoryValue();
 
-            switch (choice)
-            {
-                case 1: Product1.GetInventoryValue(); break;
-                case 2: Product2.GetInventoryValue(); break;
-                default: Console.WriteLine("Invalid number"); break;
-            }
         }
 
         // Case 6 - Register a Student
@@ -429,61 +438,25 @@ namespace OOP_Part_1_
         // Case 8 - Restock Product & Stock Level Check
         public static void RestockProduct()
         {
-            Console.Write("Choose a Product (1 or 2)");
-
-            int product;
-            try
-            {
-                product = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
+            Product selectedProduct = SelectedProduct();
+            if (selectedProduct == null) return;
 
             Console.Write("Enter the Restock Quantity:");
             int quantity = int.Parse(Console.ReadLine());
 
-            switch (product)
+            selectedProduct.Restock(quantity);
+
+            if (selectedProduct.StockQuantity < 10)
             {
-                case 1: 
-                    Product1.Restock(quantity); 
-
-                    if (Product1.StockQuantity < 10)
-                    {
-                        Console.WriteLine("Product1 Stock is Low.");
-                    }
-                    else if (Product1.StockQuantity >= 10 && Product1.StockQuantity < 50)
-                    {
-                        Console.WriteLine("Product1 Stock is Moderate.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Product1 is Well Stocked.");
-                    }
-
-                break;
-
-                case 2: 
-                    Product2.Restock(quantity);
-
-                    if (Product2.StockQuantity < 10)
-                    {
-                        Console.WriteLine("Product2 Stock is Low.");
-                    }
-                    else if (Product2.StockQuantity >= 10 && Product2.StockQuantity < 50)
-                    {
-                        Console.WriteLine("Product2 Stock is Moderate.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Product2 is Well Stocked.");
-                    }
-
-                    break;
-
-                default: Console.WriteLine("Invalid number"); break;
+                Console.WriteLine("Stock is Low.");
+            }
+            else if (selectedProduct.StockQuantity >= 10 && selectedProduct.StockQuantity < 50)
+            {
+                Console.WriteLine("Stock is Moderate.");
+            }
+            else
+            {
+                Console.WriteLine("Well Stocked.");
             }
 
         }
@@ -609,18 +582,8 @@ namespace OOP_Part_1_
         // Case 13 - Bulk Sale With Revenue Calculation
         public static void BulkSaleWithRevenue()
         {
-            Console.Write("Choose a Product (1 or 2)");
-
-            int choice;
-            try
-            {
-                choice = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
+            Product selectedProduct = SelectedProduct();
+            if (selectedProduct == null) return;
 
             Console.Write("Enter a quantity to sell:");
             int quantity;
@@ -633,17 +596,6 @@ namespace OOP_Part_1_
             {
                 Console.WriteLine("Invalid input.");
                 return;
-            }
-
-            Product selectedProduct;
-
-            switch (choice)
-            {
-                case 1: selectedProduct = Product1; break;
-                case 2: selectedProduct = Product2; break;
-                default:
-                    Console.WriteLine("Invalid selection.");
-                    return;
             }
 
             if (selectedProduct.StockQuantity < quantity)

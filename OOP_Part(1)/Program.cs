@@ -734,7 +734,7 @@ namespace OOP_Part_1_
         }
 
         // Case 14 - Scholarship Eligibility Check
-        public static void ScholarshipEligibilitycheck()
+        public static void ScholarshipEligibilityCheck()
         {
             Console.WriteLine("Choose a Student (1 or 2 ):");
             int choice;
@@ -798,6 +798,48 @@ namespace OOP_Part_1_
                     Console.WriteLine("Failed: Account Balance is below 100.");
                 }
             }
+        }
+
+        // Case 15 - Full Balance Top-Up Flow
+        public static void FullBalanceTopUpFlow ()
+        {
+            Console.WriteLine("Choose an account (1 or 2)");
+
+            int account;
+            try
+            {
+                account = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return;
+            }
+           
+            BankAccount selectedAccount;
+
+            switch (account)
+            {
+                case 1: selectedAccount = BankAccount1; break;
+                case 2: selectedAccount = BankAccount2; break;
+                default:
+                    Console.WriteLine("Invalid selection.");
+                    return;
+            }
+
+            if (selectedAccount.Balance < 50)
+            {
+                Console.WriteLine("Balance before Top-Up is: " + selectedAccount.Balance);
+                double amount = 100 - selectedAccount.Balance;
+                selectedAccount.Deposit(amount);
+
+                Console.WriteLine("Balance after Top-Up is: " + selectedAccount.Balance);
+            }
+            else
+            {
+                Console.WriteLine("No top-Up is needed.");
+            }
+
         }
 
 

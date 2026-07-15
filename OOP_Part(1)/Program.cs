@@ -49,7 +49,7 @@ namespace OOP_Part_1_
         private void PrintInformation()
         {
             Console.WriteLine("HolderName: " + HolderName);
-            Console.WriteLine("Balance: " + Balance);
+            Console.WriteLine("Balance: " + Balance + " OMR");
         }
         private void SendEmail()
         {

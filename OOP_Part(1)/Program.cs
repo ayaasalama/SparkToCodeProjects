@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Runtime.Intrinsics.X86;
 using System.Security.Principal;
 
 namespace OOP_Part_1_
@@ -284,6 +285,32 @@ namespace OOP_Part_1_
             }
         }
 
+        // Student Choose
+        public static Student SelectedStudent()
+        {
+            Console.Write("Choose a Student (1 or 2):");
+            int choice;
+            try
+            {
+                choice = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return null;
+            }
+
+            switch (choice)
+            {
+                case 1: return Student1;
+                case 2: return Student2;
+                default:
+                    Console.WriteLine("Invalid selection.");
+                    return null;
+            }
+        }
+        
+
 
         // Case 1 - View Account Details
         public static void ViewAccountDetails()
@@ -299,35 +326,13 @@ namespace OOP_Part_1_
         // Case 2 - Update Student Address
         public static void  UpdateStudentAddress()
         {
-            Console.Write("Choose a Student (1 or 2)");
+            Student selectedStudent = SelectedStudent();
+            if (selectedStudent == null) return;
 
-            int choice;
-            try
-            {
-                choice = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
+            Console.Write("Enter the new address:");
+            string Address = Console.ReadLine();
+            Console.WriteLine("Confirmation: Address updated to: " + selectedStudent.Address);
 
-            switch (choice)
-            {
-                case 1:
-                    Console.Write("Enter the new address for Student1:");
-                    Student1.Address = Console.ReadLine();
-                    Console.WriteLine("Confirmation: Student 1 address updated to: " + Student1.Address);
-                break;
-
-                case 2:
-                    Console.Write("Enter the new address for Student2: ");
-                    Student2.Address = Console.ReadLine();
-                    Console.WriteLine("Confirmation: Student 2 address updated to: " + Student2.Address);
-                    break;
-
-                default: Console.WriteLine("Invalid number"); break;
-            }
         }
 
         // Case 3 - Make a Deposit
@@ -389,36 +394,15 @@ namespace OOP_Part_1_
         // Case 6 - Register a Student
         public static void RegisterStudent()
         {
-            Console.Write("Choose a Student (1 or 2)");
-
-            int choice;
-            try
-            {
-                choice = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
+            Student selectedStudent = SelectedStudent();
+            if (selectedStudent == null) return;
 
             Console.Write("Enter student email address: ");
             string inputEmail = Console.ReadLine();
 
-            switch (choice)
-            {
-                case 1:
-                    Student1.Register(inputEmail);
-                    Console.WriteLine("Success: Registration confirmed for " + Student1.Name);
-                break;
+            selectedStudent.Register(inputEmail);
+            Console.WriteLine("Success: Registration confirmed for " + selectedStudent.Name);
 
-                case 2:
-                    Student2.Register(inputEmail);
-                    Console.WriteLine("Success: Registration confirmed for " + Student2.Name);
-                break;
-
-                default: Console.WriteLine("Invalid number"); break;
-            }
         }
 
         // Case 7 -  Compare Two Account Balances
@@ -552,18 +536,8 @@ namespace OOP_Part_1_
         // Case 10 - Update Student Greade (validated)
         public static void UpdateStudentGrade()
         {
-            Console.Write("Choose a Student (1 or 2 ):");
-            int choice;
-
-            try
-            {
-                choice = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
+            Student selectedStudent = SelectedStudent();
+            if (selectedStudent == null) return;
 
             Console.Write("Enter the new Grade (0-100):");
             int newGrade;
@@ -584,47 +558,16 @@ namespace OOP_Part_1_
                 return; 
             }
 
-            switch (choice)
-            {
-                case 1:
-                    Student1.Grade = newGrade;
-                    Console.WriteLine("Confirmation: Student 1 grade updated to: " + Student1.Grade);
-                    break;
-
-                case 2:
-                    Student2.Grade = newGrade;
-                    Console.WriteLine("Confirmation: Student 2 grade updated to: " + Student2.Grade);
-                    break;
-            }
+            selectedStudent.Grade = newGrade;
+            Console.WriteLine("Confirmation: Grade updated to: " + selectedStudent.Grade);
 
         }
 
         // Case 11 - Student Report Card
         public static void StudentReportCard()
         {
-            Console.Write("Choose a Student (1 or 2 ):");
-            int choice;
-
-            try
-            {
-                choice = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
-
-            Student selectedStudent;
-
-            switch (choice)
-            {
-                case 1: selectedStudent = Student1; break;
-                case 2: selectedStudent = Student2; break;
-                default:
-                    Console.WriteLine("Invalid selection.");
-                    return;
-            }
+            Student selectedStudent = SelectedStudent();
+            if (selectedStudent == null) return;
 
             Console.WriteLine("----- Student Report Card -----");
             Console.WriteLine("Name: " + selectedStudent.Name);
@@ -720,28 +663,8 @@ namespace OOP_Part_1_
         // Case 14 - Scholarship Eligibility Check
         public static void ScholarshipEligibilityCheck()
         {
-            Console.Write("Choose a Student (1 or 2 ):");
-            int choice;
-
-            try
-            {
-                choice = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
-
-            Student selectedStudent;
-            switch (choice)
-            {
-                case 1: selectedStudent = Student1; break;
-                case 2: selectedStudent = Student2; break;
-                default:
-                    Console.WriteLine("Invalid selection for Student.");
-                    return;
-            }
+            Student selectedStudent = SelectedStudent();
+            if (selectedStudent == null) return;
 
             BankAccount selectedAccount = SelectedAccount();
             if (selectedAccount == null) return;
@@ -852,29 +775,8 @@ namespace OOP_Part_1_
         // Case 19 - Set Student Security PIN [Write-Only Property]
         public static void SetStudentSecurityPin()
         {
-            Console.Write("Choose a Student (1 or 2):");
-
-            int Choice;
-            try
-            {
-                Choice = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
-
-            Student selectedStudent;
-
-            switch (Choice)
-            {
-                case 1: selectedStudent = Student1; break;
-                case 2: selectedStudent = Student2; break;
-                default:
-                    Console.WriteLine("Invalid selection.");
-                    return;
-            }
+            Student selectedStudent = SelectedStudent();
+            if (selectedStudent == null) return;
 
             Console.Write("Enter a 4-digit security PIN:");
             int pin;

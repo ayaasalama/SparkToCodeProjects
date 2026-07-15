@@ -81,6 +81,17 @@ namespace OOP_Part_1_
         private string email {  get; set; }
         int age { get; set; }
 
+        // Case 19 - Set Student Security PIN [Write-Only Property]
+        private int securityPin;
+
+        public int SecurityPIN
+        {
+            set
+            {
+                securityPin = value;
+            }
+        }
+
         // Case 17 - Total Students Counter [Static Fields & Methods]
         private static int studentCount = 0;
 
@@ -961,6 +972,56 @@ namespace OOP_Part_1_
                 Console.WriteLine("The account is NOT overdrawn.");
                 Console.WriteLine("Current Balance: " + selectedAccount.Balance + " OMR");
             }
+        }
+
+        // Case 19 - Set Student Security PIN [Write-Only Property]
+        public static void SetStudentSecurityPINFlow()
+        {
+            Console.WriteLine("Choose a Student (1 or 2):");
+
+            int Choice;
+            try
+            {
+                Choice = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return;
+            }
+
+            Student selectedStudent;
+
+            switch (Choice)
+            {
+                case 1: selectedStudent = Student1; break;
+                case 2: selectedStudent = Student2; break;
+                default:
+                    Console.WriteLine("Invalid selection.");
+                    return;
+            }
+
+            Console.WriteLine("Enter a 4-digit security PIN:");
+            int pin;
+            try
+            {
+                pin = int.Parse(Console.ReadLine());
+
+                if (pin < 1000 || pin > 9999)
+                {
+                    Console.WriteLine("Error: The PIN must be exactly 4 digits.");
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter a valid number.");
+                return;
+            }
+
+            selectedStudent.SecurityPIN = pin;
+
+            Console.WriteLine("Confirmation: The security PIN has been successfully set.");
         }
 
     }

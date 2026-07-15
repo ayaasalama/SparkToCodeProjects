@@ -975,7 +975,7 @@ namespace OOP_Part_1_
         }
 
         // Case 19 - Set Student Security PIN [Write-Only Property]
-        public static void SetStudentSecurityPIN()
+        public static void SetStudentSecurityPin()
         {
             Console.WriteLine("Choose a Student (1 or 2):");
 

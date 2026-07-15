@@ -250,6 +250,10 @@ namespace OOP_Part_1_
                         Console.WriteLine("Invalid option, please choose between 1 and 20.");
                         break;
                 }
+
+                Console.WriteLine("Press any Key.");
+                Console.ReadKey();
+                Console.Clear();
             }
 
         }
@@ -257,7 +261,7 @@ namespace OOP_Part_1_
         // Case 1 - View Account Details
         public static void ViewAccountDetails()
         {
-            Console.WriteLine("Choose an account (1 or 2)");
+            Console.Write("Choose an account (1 or 2)");
             
             int account;
             try
@@ -282,7 +286,7 @@ namespace OOP_Part_1_
         // Case 2 - Update Student Address
         public static void  UpdateStudentAddress()
         {
-            Console.WriteLine("Choose a Student (1 or 2)");
+            Console.Write("Choose a Student (1 or 2)");
 
             int choice;
             try
@@ -298,13 +302,13 @@ namespace OOP_Part_1_
             switch (choice)
             {
                 case 1:
-                    Console.WriteLine("Enter the new address for Student1:");
+                    Console.Write("Enter the new address for Student1:");
                     Student1.Address = Console.ReadLine();
                     Console.WriteLine("Confirmation: Student 1 address updated to: " + Student1.Address);
                 break;
 
                 case 2:
-                    Console.WriteLine("Enter the new address for Student2: ");
+                    Console.Write("Enter the new address for Student2: ");
                     Student2.Address = Console.ReadLine();
                     Console.WriteLine("Confirmation: Student 2 address updated to: " + Student2.Address);
                     break;
@@ -316,7 +320,7 @@ namespace OOP_Part_1_
         // Case 3 - Make a Deposit
         public static void MakeDeposit()
         {
-            Console.WriteLine("Choose an account (1 or 2)");
+            Console.Write("Choose an account (1 or 2)");
 
             int account;
             try
@@ -329,7 +333,7 @@ namespace OOP_Part_1_
                 return;
             }
 
-            Console.WriteLine("Enter the amount to deposit:");
+            Console.Write("Enter the amount to deposit:");
             double amount = double.Parse(Console.ReadLine());
 
             switch (account)
@@ -355,7 +359,7 @@ namespace OOP_Part_1_
         // Case 4 - Make a Withdrawal
         public static void MakeWithdrawal()
         {
-            Console.WriteLine("Choose an account (1 or 2)");
+            Console.Write("Choose an account (1 or 2)");
 
             int account;
             try
@@ -368,7 +372,7 @@ namespace OOP_Part_1_
                 return;
             }
 
-            Console.WriteLine("Enter the amount to Withdraw:");
+            Console.Write("Enter the amount to Withdraw:");
             double amount = double.Parse(Console.ReadLine());
 
             switch (account)
@@ -394,7 +398,7 @@ namespace OOP_Part_1_
         // Case 5 - View Product Details
         public static void ViewProductDetails()
         {
-            Console.WriteLine("Choose a Product (1 or 2)");
+            Console.Write("Choose a Product (1 or 2)");
 
             int choice;
             try
@@ -418,7 +422,7 @@ namespace OOP_Part_1_
         // Case 6 - Register a Student
         public static void RegisterStudent()
         {
-            Console.WriteLine("Choose a Student (1 or 2)");
+            Console.Write("Choose a Student (1 or 2)");
 
             int choice;
             try
@@ -474,7 +478,7 @@ namespace OOP_Part_1_
         // Case 8 - Restock Product & Stock Level Check
         public static void RestockProduct()
         {
-            Console.WriteLine("Choose a Product (1 or 2)");
+            Console.Write("Choose a Product (1 or 2)");
 
             int product;
             try
@@ -487,7 +491,7 @@ namespace OOP_Part_1_
                 return;
             }
 
-            Console.WriteLine("Enter the Restock Quantity:");
+            Console.Write("Enter the Restock Quantity:");
             int quantity = int.Parse(Console.ReadLine());
 
             switch (product)
@@ -539,7 +543,7 @@ namespace OOP_Part_1_
             BankAccount sourceAccount;
             BankAccount destinationAccount;
 
-            Console.WriteLine("Choose Source Account (1 or 2):");
+            Console.Write("Choose Source Account (1 or 2):");
             int senderchoice = int.Parse(Console.ReadLine());
 
             switch(senderchoice)
@@ -556,7 +560,7 @@ namespace OOP_Part_1_
 
             }
 
-            Console.WriteLine("Choose Destination Account (1 or 2):");
+            Console.Write("Choose Destination Account (1 or 2):");
             int destinationchoice = int.Parse(Console.ReadLine());
 
             switch (destinationchoice)
@@ -573,7 +577,7 @@ namespace OOP_Part_1_
 
             }
 
-            Console.WriteLine("Enter the Transfer Amount:");
+            Console.Write("Enter the Transfer Amount:");
             double transferAmount = double.Parse(Console.ReadLine());
 
             if (sourceAccount.Balance >= transferAmount)
@@ -595,7 +599,7 @@ namespace OOP_Part_1_
         // Case 10 - Update Student Greade (validated)
         public static void UpdateStudentGrade()
         {
-            Console.WriteLine("Choose a Student (1 or 2 ):");
+            Console.Write("Choose a Student (1 or 2 ):");
             int choice;
 
             try
@@ -608,7 +612,7 @@ namespace OOP_Part_1_
                 return;
             }
 
-            Console.WriteLine("Enter the new Grade (0-100):");
+            Console.Write("Enter the new Grade (0-100):");
             int newGrade;
 
             try
@@ -645,7 +649,7 @@ namespace OOP_Part_1_
         // Case 11 - Student Report Card
         public static void StudentReportCard()
         {
-            Console.WriteLine("Choose a Student (1 or 2 ):");
+            Console.Write("Choose a Student (1 or 2 ):");
             int choice;
 
             try
@@ -688,7 +692,7 @@ namespace OOP_Part_1_
         // Case 12 - Account Health Status
         public static void AccountHealthStatus()
         {
-            Console.WriteLine("Choose a Account (1 or 2 ):");
+            Console.Write("Choose a Account (1 or 2 ):");
             int account;
 
             try
@@ -729,7 +733,7 @@ namespace OOP_Part_1_
         // Case 13 - Bulk Sale With Revenue Calculation
         public static void BulkSaleWithRevenue()
         {
-            Console.WriteLine("Choose a Product (1 or 2)");
+            Console.Write("Choose a Product (1 or 2)");
 
             int choice;
             try
@@ -742,7 +746,7 @@ namespace OOP_Part_1_
                 return;
             }
 
-            Console.WriteLine("Enter a quantity to sell:");
+            Console.Write("Enter a quantity to sell:");
             int quantity;
 
             try
@@ -783,7 +787,7 @@ namespace OOP_Part_1_
         // Case 14 - Scholarship Eligibility Check
         public static void ScholarshipEligibilityCheck()
         {
-            Console.WriteLine("Choose a Student (1 or 2 ):");
+            Console.Write("Choose a Student (1 or 2 ):");
             int choice;
 
             try
@@ -796,7 +800,7 @@ namespace OOP_Part_1_
                 return;
             }
 
-            Console.WriteLine("Choose a Account (1 or 2 ):");
+            Console.Write("Choose a Account (1 or 2 ):");
             int account;
 
             try
@@ -850,7 +854,7 @@ namespace OOP_Part_1_
         // Case 15 - Full Balance Top-Up Flow
         public static void FullBalanceTopUpFlow ()
         {
-            Console.WriteLine("Choose an account (1 or 2)");
+            Console.Write("Choose an account (1 or 2)");
 
             int account;
             try
@@ -892,7 +896,7 @@ namespace OOP_Part_1_
         // Case 16 - Quick Account Opening [Parameterized Constructor]
         public static void QuickAccountOpening()
         {
-            Console.WriteLine("Enter Account Number:");
+            Console.Write("Enter Account Number:");
             int accNum;
             try
             {
@@ -904,10 +908,10 @@ namespace OOP_Part_1_
                 return;
             }
 
-            Console.WriteLine("Enter Holder Name:");
+            Console.Write("Enter Holder Name:");
             string name = Console.ReadLine();
 
-            Console.WriteLine("Enter Starting Balance:");
+            Console.Write("Enter Starting Balance:");
             double balance;
             try
             {
@@ -938,7 +942,7 @@ namespace OOP_Part_1_
         // Case 18 - Overdrawn Account Check[Read - Only Property]
         public static void OverdrawnAccountCheck()
         {
-            Console.WriteLine("Choose an account (1 or 2):");
+            Console.Write("Choose an account (1 or 2):");
 
             int account;
             try
@@ -977,7 +981,7 @@ namespace OOP_Part_1_
         // Case 19 - Set Student Security PIN [Write-Only Property]
         public static void SetStudentSecurityPin()
         {
-            Console.WriteLine("Choose a Student (1 or 2):");
+            Console.Write("Choose a Student (1 or 2):");
 
             int Choice;
             try
@@ -1001,7 +1005,7 @@ namespace OOP_Part_1_
                     return;
             }
 
-            Console.WriteLine("Enter a 4-digit security PIN:");
+            Console.Write("Enter a 4-digit security PIN:");
             int pin;
             try
             {

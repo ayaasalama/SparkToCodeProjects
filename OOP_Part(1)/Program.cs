@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Runtime.Intrinsics.X86;
 using System.Security.Principal;
 
 namespace OOP_Part_1_
@@ -250,204 +251,167 @@ namespace OOP_Part_1_
                         Console.WriteLine("Invalid option, please choose between 1 and 20.");
                         break;
                 }
+
+                Console.WriteLine("Press any Key.");
+                Console.ReadKey();
+                Console.Clear();
             }
 
+        }
+
+        // Helper Functions
+        // BankAccount Choose
+        public static BankAccount SelectedAccount()
+        {
+            Console.Write("Choose an account (1 or 2):");
+            int choice;
+            try
+            {
+                choice = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return null;
+            }
+
+            switch (choice)
+            {
+                case 1: return BankAccount1;
+                case 2: return BankAccount2;
+                default:
+                    Console.WriteLine("Invalid selection.");
+                    return null;
+            }
+        }
+
+        // Student Choose
+        public static Student SelectedStudent()
+        {
+            Console.Write("Choose a Student (1 or 2):");
+            int choice;
+            try
+            {
+                choice = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return null;
+            }
+
+            switch (choice)
+            {
+                case 1: return Student1;
+                case 2: return Student2;
+                default:
+                    Console.WriteLine("Invalid selection.");
+                    return null;
+            }
+        }
+
+        // Product Choose
+        public static Product SelectedProduct()
+        {
+            Console.Write("Choose a Product (1 or 2):");
+            int choice;
+            try
+            {
+                choice = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return null;
+            }
+
+            switch (choice)
+            {
+                case 1: return Product1;
+                case 2: return Product2;
+                default:
+                    Console.WriteLine("Invalid selection.");
+                    return null;
+            }
         }
 
         // Case 1 - View Account Details
         public static void ViewAccountDetails()
         {
-            Console.WriteLine("Choose an account (1 or 2)");
-            
-            int account;
-            try
-            {
-                account = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
+            BankAccount selectedAccount = SelectedAccount();
 
-            switch (account)
-            {
-                case 1: BankAccount1.CheckBalance(); break;
-                case 2: BankAccount2.CheckBalance(); break;
-                default : Console.WriteLine("Invalid number"); break;
-            }
+            if (selectedAccount == null) return;
+
+            selectedAccount.CheckBalance();
 
         }
 
         // Case 2 - Update Student Address
         public static void  UpdateStudentAddress()
         {
-            Console.WriteLine("Choose a Student (1 or 2)");
+            Student selectedStudent = SelectedStudent();
+            if (selectedStudent == null) return;
 
-            int choice;
-            try
-            {
-                choice = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
+            Console.Write("Enter the new address:");
+            string Address = Console.ReadLine();
+            Console.WriteLine("Confirmation: Address updated to: " + selectedStudent.Address);
 
-            switch (choice)
-            {
-                case 1:
-                    Console.WriteLine("Enter the new address for Student1:");
-                    Student1.Address = Console.ReadLine();
-                    Console.WriteLine("Confirmation: Student 1 address updated to: " + Student1.Address);
-                break;
-
-                case 2:
-                    Console.WriteLine("Enter the new address for Student2: ");
-                    Student2.Address = Console.ReadLine();
-                    Console.WriteLine("Confirmation: Student 2 address updated to: " + Student2.Address);
-                    break;
-
-                default: Console.WriteLine("Invalid number"); break;
-            }
         }
 
         // Case 3 - Make a Deposit
         public static void MakeDeposit()
         {
-            Console.WriteLine("Choose an account (1 or 2)");
+            BankAccount selectedAccount = SelectedAccount();
 
-            int account;
-            try
-            {
-                account = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
+            if (selectedAccount == null) return;
 
-            Console.WriteLine("Enter the amount to deposit:");
+            Console.Write("Enter the amount to deposit:");
             double amount = double.Parse(Console.ReadLine());
 
-            switch (account)
-            {
-                case 1: 
-                    BankAccount1.Deposit(amount);
+            selectedAccount.Deposit(amount);
+            Console.WriteLine("Account Holder: " + selectedAccount.HolderName);
+            Console.WriteLine("Updated Balance: " + selectedAccount.Balance.ToString("F2") + " OMR");
 
-                    Console.WriteLine("Account Holder: " + BankAccount1.HolderName);
-                    Console.WriteLine("Updated Balance: " + BankAccount1.Balance.ToString("F2") + " OMR");
-                break;
-
-                case 2:
-                    BankAccount2.Deposit(amount);
-
-                    Console.WriteLine("Account Holder: " + BankAccount2.HolderName);
-                    Console.WriteLine("Updated Balance: " + BankAccount2.Balance.ToString("F2") + " OMR");
-                break;
-
-                default: Console.WriteLine("Invalid number"); break;
-            }
         }
 
         // Case 4 - Make a Withdrawal
         public static void MakeWithdrawal()
         {
-            Console.WriteLine("Choose an account (1 or 2)");
+            BankAccount selectedAccount = SelectedAccount();
 
-            int account;
-            try
-            {
-                account = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
+            if (selectedAccount == null) return;
 
-            Console.WriteLine("Enter the amount to Withdraw:");
+            Console.Write("Enter the amount to Withdraw:");
             double amount = double.Parse(Console.ReadLine());
 
-            switch (account)
-            {
-                case 1:
-                    BankAccount1.Withdraw(amount);
+            selectedAccount.Withdraw(amount);
+            Console.WriteLine("Account Holder: " + selectedAccount.HolderName);
+            Console.WriteLine("Updated Balance: " + selectedAccount.Balance.ToString("F2") + " OMR");
 
-                    Console.WriteLine("Account Holder: " + BankAccount1.HolderName);
-                    Console.WriteLine("Updated Balance: " + BankAccount1.Balance.ToString("F2") + " OMR");
-                    break;
-
-                case 2:
-                    BankAccount2.Withdraw(amount);
-
-                    Console.WriteLine("Account Holder: " + BankAccount2.HolderName);
-                    Console.WriteLine("Updated Balance: " + BankAccount2.Balance.ToString("F2") + " OMR");
-                    break;
-
-                default: Console.WriteLine("Invalid number"); break;
-            }
         }
 
         // Case 5 - View Product Details
         public static void ViewProductDetails()
         {
-            Console.WriteLine("Choose a Product (1 or 2)");
+            Product selectedProduct = SelectedProduct();
+            if (selectedProduct == null) return;
 
-            int choice;
-            try
-            {
-                choice = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
+            selectedProduct.GetInventoryValue();
 
-            switch (choice)
-            {
-                case 1: Product1.GetInventoryValue(); break;
-                case 2: Product2.GetInventoryValue(); break;
-                default: Console.WriteLine("Invalid number"); break;
-            }
         }
 
         // Case 6 - Register a Student
         public static void RegisterStudent()
         {
-            Console.WriteLine("Choose a Student (1 or 2)");
-
-            int choice;
-            try
-            {
-                choice = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
+            Student selectedStudent = SelectedStudent();
+            if (selectedStudent == null) return;
 
             Console.Write("Enter student email address: ");
             string inputEmail = Console.ReadLine();
 
-            switch (choice)
-            {
-                case 1:
-                    Student1.Register(inputEmail);
-                    Console.WriteLine("Success: Registration confirmed for " + Student1.Name);
-                break;
+            selectedStudent.Register(inputEmail);
+            Console.WriteLine("Success: Registration confirmed for " + selectedStudent.Name);
 
-                case 2:
-                    Student2.Register(inputEmail);
-                    Console.WriteLine("Success: Registration confirmed for " + Student2.Name);
-                break;
-
-                default: Console.WriteLine("Invalid number"); break;
-            }
         }
 
         // Case 7 -  Compare Two Account Balances
@@ -474,61 +438,25 @@ namespace OOP_Part_1_
         // Case 8 - Restock Product & Stock Level Check
         public static void RestockProduct()
         {
-            Console.WriteLine("Choose a Product (1 or 2)");
+            Product selectedProduct = SelectedProduct();
+            if (selectedProduct == null) return;
 
-            int product;
-            try
-            {
-                product = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
-
-            Console.WriteLine("Enter the Restock Quantity:");
+            Console.Write("Enter the Restock Quantity:");
             int quantity = int.Parse(Console.ReadLine());
 
-            switch (product)
+            selectedProduct.Restock(quantity);
+
+            if (selectedProduct.StockQuantity < 10)
             {
-                case 1: 
-                    Product1.Restock(quantity); 
-
-                    if (Product1.StockQuantity < 10)
-                    {
-                        Console.WriteLine("Product1 Stock is Low.");
-                    }
-                    else if (Product1.StockQuantity >= 10 && Product1.StockQuantity < 50)
-                    {
-                        Console.WriteLine("Product1 Stock is Moderate.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Product1 is Well Stocked.");
-                    }
-
-                break;
-
-                case 2: 
-                    Product2.Restock(quantity);
-
-                    if (Product2.StockQuantity < 10)
-                    {
-                        Console.WriteLine("Product2 Stock is Low.");
-                    }
-                    else if (Product2.StockQuantity >= 10 && Product2.StockQuantity < 50)
-                    {
-                        Console.WriteLine("Product2 Stock is Moderate.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Product2 is Well Stocked.");
-                    }
-
-                    break;
-
-                default: Console.WriteLine("Invalid number"); break;
+                Console.WriteLine("Stock is Low.");
+            }
+            else if (selectedProduct.StockQuantity >= 10 && selectedProduct.StockQuantity < 50)
+            {
+                Console.WriteLine("Stock is Moderate.");
+            }
+            else
+            {
+                Console.WriteLine("Well Stocked.");
             }
 
         }
@@ -536,53 +464,39 @@ namespace OOP_Part_1_
         // Case 9 - Transfer between Accounts
         public static void TransferBetweenAccounts()
         {
-            BankAccount sourceAccount;
-            BankAccount destinationAccount;
+            Console.WriteLine("Source Account Selection");
+            BankAccount sourceAccount = SelectedAccount();
+            if (sourceAccount == null) return;
 
-            Console.WriteLine("Choose Source Account (1 or 2):");
-            int senderchoice = int.Parse(Console.ReadLine());
+            Console.WriteLine("Destination Account Selection");
+            BankAccount destinationAccount = SelectedAccount();
+            if (destinationAccount == null) return;
 
-            switch(senderchoice)
+            if (sourceAccount.AccountNumber == destinationAccount.AccountNumber)
             {
-                case 1:
-                    sourceAccount = BankAccount1;
-                    break;
-
-                case 2:
-                    sourceAccount = BankAccount2;
-                    break;
-
-                default: Console.WriteLine("Invalid Selection."); return;
-
+                Console.WriteLine("Transfer Failed: Source and Destination accounts cannot be the same.");
+                return;
             }
 
-            Console.WriteLine("Choose Destination Account (1 or 2):");
-            int destinationchoice = int.Parse(Console.ReadLine());
-
-            switch (destinationchoice)
+            Console.Write("\nEnter the Transfer Amount: ");
+            double transferAmount;
+            try
             {
-                case 1:
-                    destinationAccount = BankAccount1;
-                    break;
-
-                case 2:
-                    destinationAccount = BankAccount2;
-                    break;
-
-                default: Console.WriteLine("Invalid Selection."); return;
-
+                transferAmount = double.Parse(Console.ReadLine());
             }
-
-            Console.WriteLine("Enter the Transfer Amount:");
-            double transferAmount = double.Parse(Console.ReadLine());
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid amount input.");
+                return;
+            }
 
             if (sourceAccount.Balance >= transferAmount)
             {
                 sourceAccount.Withdraw(transferAmount);
                 destinationAccount.Deposit(transferAmount);
 
-                Console.WriteLine("\n--- Transfer Successful ---");
-                Console.WriteLine("Source Account New Balance: " + sourceAccount.Balance.ToString("F2") +  " OMR");
+                Console.WriteLine("Transfer Successful:");
+                Console.WriteLine("Source Account New Balance: " + sourceAccount.Balance.ToString("F2") + " OMR");
                 Console.WriteLine("Destination Account New Balance: " + destinationAccount.Balance.ToString("F2") + " OMR");
             }
             else
@@ -595,20 +509,10 @@ namespace OOP_Part_1_
         // Case 10 - Update Student Greade (validated)
         public static void UpdateStudentGrade()
         {
-            Console.WriteLine("Choose a Student (1 or 2 ):");
-            int choice;
+            Student selectedStudent = SelectedStudent();
+            if (selectedStudent == null) return;
 
-            try
-            {
-                choice = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
-
-            Console.WriteLine("Enter the new Grade (0-100):");
+            Console.Write("Enter the new Grade (0-100):");
             int newGrade;
 
             try
@@ -627,47 +531,16 @@ namespace OOP_Part_1_
                 return; 
             }
 
-            switch (choice)
-            {
-                case 1:
-                    Student1.Grade = newGrade;
-                    Console.WriteLine("Confirmation: Student 1 grade updated to: " + Student1.Grade);
-                    break;
-
-                case 2:
-                    Student2.Grade = newGrade;
-                    Console.WriteLine("Confirmation: Student 2 grade updated to: " + Student2.Grade);
-                    break;
-            }
+            selectedStudent.Grade = newGrade;
+            Console.WriteLine("Confirmation: Grade updated to: " + selectedStudent.Grade);
 
         }
 
         // Case 11 - Student Report Card
         public static void StudentReportCard()
         {
-            Console.WriteLine("Choose a Student (1 or 2 ):");
-            int choice;
-
-            try
-            {
-                choice = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
-
-            Student selectedStudent;
-
-            switch (choice)
-            {
-                case 1: selectedStudent = Student1; break;
-                case 2: selectedStudent = Student2; break;
-                default:
-                    Console.WriteLine("Invalid selection.");
-                    return;
-            }
+            Student selectedStudent = SelectedStudent();
+            if (selectedStudent == null) return;
 
             Console.WriteLine("----- Student Report Card -----");
             Console.WriteLine("Name: " + selectedStudent.Name);
@@ -688,29 +561,9 @@ namespace OOP_Part_1_
         // Case 12 - Account Health Status
         public static void AccountHealthStatus()
         {
-            Console.WriteLine("Choose a Account (1 or 2 ):");
-            int account;
+            BankAccount selectedAccount = SelectedAccount();
 
-            try
-            {
-                account = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
-
-            BankAccount selectedAccount;
-
-            switch (account)
-            {
-                case 1: selectedAccount = BankAccount1; break;
-                case 2: selectedAccount = BankAccount2; break;
-                default:
-                    Console.WriteLine("Invalid selection.");
-                    return;
-            }
+            if (selectedAccount == null) return;
 
             if (selectedAccount.Balance < 50)
             {
@@ -722,27 +575,17 @@ namespace OOP_Part_1_
             }
             else
             {
-                Console.WriteLine("Premium");
+                Console.WriteLine("Status : Premium");
             }
         }
 
         // Case 13 - Bulk Sale With Revenue Calculation
         public static void BulkSaleWithRevenue()
         {
-            Console.WriteLine("Choose a Product (1 or 2)");
+            Product selectedProduct = SelectedProduct();
+            if (selectedProduct == null) return;
 
-            int choice;
-            try
-            {
-                choice = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
-
-            Console.WriteLine("Enter a quantity to sell:");
+            Console.Write("Enter a quantity to sell:");
             int quantity;
 
             try
@@ -753,17 +596,6 @@ namespace OOP_Part_1_
             {
                 Console.WriteLine("Invalid input.");
                 return;
-            }
-
-            Product selectedProduct;
-
-            switch (choice)
-            {
-                case 1: selectedProduct = Product1; break;
-                case 2: selectedProduct = Product2; break;
-                default:
-                    Console.WriteLine("Invalid selection.");
-                    return;
             }
 
             if (selectedProduct.StockQuantity < quantity)
@@ -783,51 +615,11 @@ namespace OOP_Part_1_
         // Case 14 - Scholarship Eligibility Check
         public static void ScholarshipEligibilityCheck()
         {
-            Console.WriteLine("Choose a Student (1 or 2 ):");
-            int choice;
+            Student selectedStudent = SelectedStudent();
+            if (selectedStudent == null) return;
 
-            try
-            {
-                choice = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
-
-            Console.WriteLine("Choose a Account (1 or 2 ):");
-            int account;
-
-            try
-            {
-                account = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
-
-            Student selectedStudent;
-            switch (choice)
-            {
-                case 1: selectedStudent = Student1; break;
-                case 2: selectedStudent = Student2; break;
-                default:
-                    Console.WriteLine("Invalid selection for Student.");
-                    return;
-            }
-
-            BankAccount selectedAccount;
-            switch (account)
-            {
-                case 1: selectedAccount = BankAccount1; break;
-                case 2: selectedAccount = BankAccount2; break;
-                default:
-                    Console.WriteLine("Invalid selection for Account.");
-                    return;
-            }
+            BankAccount selectedAccount = SelectedAccount();
+            if (selectedAccount == null) return;
 
             if (selectedStudent.Grade >= 80 && selectedAccount.Balance >= 100)
             {
@@ -850,29 +642,8 @@ namespace OOP_Part_1_
         // Case 15 - Full Balance Top-Up Flow
         public static void FullBalanceTopUpFlow ()
         {
-            Console.WriteLine("Choose an account (1 or 2)");
-
-            int account;
-            try
-            {
-                account = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
-           
-            BankAccount selectedAccount;
-
-            switch (account)
-            {
-                case 1: selectedAccount = BankAccount1; break;
-                case 2: selectedAccount = BankAccount2; break;
-                default:
-                    Console.WriteLine("Invalid selection.");
-                    return;
-            }
+            BankAccount selectedAccount = SelectedAccount();
+            if (selectedAccount == null) return;
 
             if (selectedAccount.Balance < 50)
             {
@@ -892,7 +663,7 @@ namespace OOP_Part_1_
         // Case 16 - Quick Account Opening [Parameterized Constructor]
         public static void QuickAccountOpening()
         {
-            Console.WriteLine("Enter Account Number:");
+            Console.Write("Enter Account Number:");
             int accNum;
             try
             {
@@ -904,10 +675,10 @@ namespace OOP_Part_1_
                 return;
             }
 
-            Console.WriteLine("Enter Holder Name:");
+            Console.Write("Enter Holder Name:");
             string name = Console.ReadLine();
 
-            Console.WriteLine("Enter Starting Balance:");
+            Console.Write("Enter Starting Balance:");
             double balance;
             try
             {
@@ -938,29 +709,8 @@ namespace OOP_Part_1_
         // Case 18 - Overdrawn Account Check[Read - Only Property]
         public static void OverdrawnAccountCheck()
         {
-            Console.WriteLine("Choose an account (1 or 2):");
-
-            int account;
-            try
-            {
-                account = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
-
-            BankAccount selectedAccount;
-
-            switch (account)
-            {
-                case 1: selectedAccount = BankAccount1; break;
-                case 2: selectedAccount = BankAccount2; break;
-                default:
-                    Console.WriteLine("Invalid selection.");
-                    return;
-            }
+            BankAccount selectedAccount = SelectedAccount();
+            if (selectedAccount == null) return;
 
             if (selectedAccount.IsOverdrawn)
             {
@@ -977,31 +727,10 @@ namespace OOP_Part_1_
         // Case 19 - Set Student Security PIN [Write-Only Property]
         public static void SetStudentSecurityPin()
         {
-            Console.WriteLine("Choose a Student (1 or 2):");
+            Student selectedStudent = SelectedStudent();
+            if (selectedStudent == null) return;
 
-            int Choice;
-            try
-            {
-                Choice = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
-
-            Student selectedStudent;
-
-            switch (Choice)
-            {
-                case 1: selectedStudent = Student1; break;
-                case 2: selectedStudent = Student2; break;
-                default:
-                    Console.WriteLine("Invalid selection.");
-                    return;
-            }
-
-            Console.WriteLine("Enter a 4-digit security PIN:");
+            Console.Write("Enter a 4-digit security PIN:");
             int pin;
             try
             {

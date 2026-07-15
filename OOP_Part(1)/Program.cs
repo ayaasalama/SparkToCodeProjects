@@ -258,28 +258,41 @@ namespace OOP_Part_1_
 
         }
 
-        // Case 1 - View Account Details
-        public static void ViewAccountDetails()
+        // Helper Functions
+        // BankAccount Choose
+        public static BankAccount SelectedAccount()
         {
-            Console.Write("Choose an account (1 or 2)");
-            
-            int account;
+            Console.Write("Choose an account (1 or 2):");
+            int choice;
             try
             {
-                account = int.Parse(Console.ReadLine());
+                choice = int.Parse(Console.ReadLine());
             }
             catch (Exception)
             {
                 Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
+                return null;
             }
 
-            switch (account)
+            switch (choice)
             {
-                case 1: BankAccount1.CheckBalance(); break;
-                case 2: BankAccount2.CheckBalance(); break;
-                default : Console.WriteLine("Invalid number"); break;
+                case 1: return BankAccount1;
+                case 2: return BankAccount2;
+                default:
+                    Console.WriteLine("Invalid selection.");
+                    return null;
             }
+        }
+
+
+        // Case 1 - View Account Details
+        public static void ViewAccountDetails()
+        {
+            BankAccount selectedAccount = SelectedAccount();
+
+            if (selectedAccount == null) return;
+
+            selectedAccount.CheckBalance();
 
         }
 
@@ -320,79 +333,33 @@ namespace OOP_Part_1_
         // Case 3 - Make a Deposit
         public static void MakeDeposit()
         {
-            Console.Write("Choose an account (1 or 2)");
+            BankAccount selectedAccount = SelectedAccount();
 
-            int account;
-            try
-            {
-                account = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
+            if (selectedAccount == null) return;
 
             Console.Write("Enter the amount to deposit:");
             double amount = double.Parse(Console.ReadLine());
 
-            switch (account)
-            {
-                case 1: 
-                    BankAccount1.Deposit(amount);
+            selectedAccount.Deposit(amount);
+            Console.WriteLine("Account Holder: " + selectedAccount.HolderName);
+            Console.WriteLine("Updated Balance: " + selectedAccount.Balance.ToString("F2") + " OMR");
 
-                    Console.WriteLine("Account Holder: " + BankAccount1.HolderName);
-                    Console.WriteLine("Updated Balance: " + BankAccount1.Balance.ToString("F2") + " OMR");
-                break;
-
-                case 2:
-                    BankAccount2.Deposit(amount);
-
-                    Console.WriteLine("Account Holder: " + BankAccount2.HolderName);
-                    Console.WriteLine("Updated Balance: " + BankAccount2.Balance.ToString("F2") + " OMR");
-                break;
-
-                default: Console.WriteLine("Invalid number"); break;
-            }
         }
 
         // Case 4 - Make a Withdrawal
         public static void MakeWithdrawal()
         {
-            Console.Write("Choose an account (1 or 2)");
+            BankAccount selectedAccount = SelectedAccount();
 
-            int account;
-            try
-            {
-                account = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
+            if (selectedAccount == null) return;
 
             Console.Write("Enter the amount to Withdraw:");
             double amount = double.Parse(Console.ReadLine());
 
-            switch (account)
-            {
-                case 1:
-                    BankAccount1.Withdraw(amount);
+            selectedAccount.Withdraw(amount);
+            Console.WriteLine("Account Holder: " + selectedAccount.HolderName);
+            Console.WriteLine("Updated Balance: " + selectedAccount.Balance.ToString("F2") + " OMR");
 
-                    Console.WriteLine("Account Holder: " + BankAccount1.HolderName);
-                    Console.WriteLine("Updated Balance: " + BankAccount1.Balance.ToString("F2") + " OMR");
-                    break;
-
-                case 2:
-                    BankAccount2.Withdraw(amount);
-
-                    Console.WriteLine("Account Holder: " + BankAccount2.HolderName);
-                    Console.WriteLine("Updated Balance: " + BankAccount2.Balance.ToString("F2") + " OMR");
-                    break;
-
-                default: Console.WriteLine("Invalid number"); break;
-            }
         }
 
         // Case 5 - View Product Details
@@ -540,53 +507,39 @@ namespace OOP_Part_1_
         // Case 9 - Transfer between Accounts
         public static void TransferBetweenAccounts()
         {
-            BankAccount sourceAccount;
-            BankAccount destinationAccount;
+            Console.WriteLine("Source Account Selection");
+            BankAccount sourceAccount = SelectedAccount();
+            if (sourceAccount == null) return;
 
-            Console.Write("Choose Source Account (1 or 2):");
-            int senderchoice = int.Parse(Console.ReadLine());
+            Console.WriteLine("Destination Account Selection");
+            BankAccount destinationAccount = SelectedAccount();
+            if (destinationAccount == null) return;
 
-            switch(senderchoice)
+            if (sourceAccount.AccountNumber == destinationAccount.AccountNumber)
             {
-                case 1:
-                    sourceAccount = BankAccount1;
-                    break;
-
-                case 2:
-                    sourceAccount = BankAccount2;
-                    break;
-
-                default: Console.WriteLine("Invalid Selection."); return;
-
+                Console.WriteLine("Transfer Failed: Source and Destination accounts cannot be the same.");
+                return;
             }
 
-            Console.Write("Choose Destination Account (1 or 2):");
-            int destinationchoice = int.Parse(Console.ReadLine());
-
-            switch (destinationchoice)
+            Console.Write("\nEnter the Transfer Amount: ");
+            double transferAmount;
+            try
             {
-                case 1:
-                    destinationAccount = BankAccount1;
-                    break;
-
-                case 2:
-                    destinationAccount = BankAccount2;
-                    break;
-
-                default: Console.WriteLine("Invalid Selection."); return;
-
+                transferAmount = double.Parse(Console.ReadLine());
             }
-
-            Console.Write("Enter the Transfer Amount:");
-            double transferAmount = double.Parse(Console.ReadLine());
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid amount input.");
+                return;
+            }
 
             if (sourceAccount.Balance >= transferAmount)
             {
                 sourceAccount.Withdraw(transferAmount);
                 destinationAccount.Deposit(transferAmount);
 
-                Console.WriteLine("\n--- Transfer Successful ---");
-                Console.WriteLine("Source Account New Balance: " + sourceAccount.Balance.ToString("F2") +  " OMR");
+                Console.WriteLine("Transfer Successful:");
+                Console.WriteLine("Source Account New Balance: " + sourceAccount.Balance.ToString("F2") + " OMR");
                 Console.WriteLine("Destination Account New Balance: " + destinationAccount.Balance.ToString("F2") + " OMR");
             }
             else
@@ -692,29 +645,9 @@ namespace OOP_Part_1_
         // Case 12 - Account Health Status
         public static void AccountHealthStatus()
         {
-            Console.Write("Choose a Account (1 or 2 ):");
-            int account;
+            BankAccount selectedAccount = SelectedAccount();
 
-            try
-            {
-                account = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
-
-            BankAccount selectedAccount;
-
-            switch (account)
-            {
-                case 1: selectedAccount = BankAccount1; break;
-                case 2: selectedAccount = BankAccount2; break;
-                default:
-                    Console.WriteLine("Invalid selection.");
-                    return;
-            }
+            if (selectedAccount == null) return;
 
             if (selectedAccount.Balance < 50)
             {
@@ -726,7 +659,7 @@ namespace OOP_Part_1_
             }
             else
             {
-                Console.WriteLine("Premium");
+                Console.WriteLine("Status : Premium");
             }
         }
 
@@ -800,19 +733,6 @@ namespace OOP_Part_1_
                 return;
             }
 
-            Console.Write("Choose a Account (1 or 2 ):");
-            int account;
-
-            try
-            {
-                account = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
-
             Student selectedStudent;
             switch (choice)
             {
@@ -823,15 +743,8 @@ namespace OOP_Part_1_
                     return;
             }
 
-            BankAccount selectedAccount;
-            switch (account)
-            {
-                case 1: selectedAccount = BankAccount1; break;
-                case 2: selectedAccount = BankAccount2; break;
-                default:
-                    Console.WriteLine("Invalid selection for Account.");
-                    return;
-            }
+            BankAccount selectedAccount = SelectedAccount();
+            if (selectedAccount == null) return;
 
             if (selectedStudent.Grade >= 80 && selectedAccount.Balance >= 100)
             {
@@ -854,29 +767,8 @@ namespace OOP_Part_1_
         // Case 15 - Full Balance Top-Up Flow
         public static void FullBalanceTopUpFlow ()
         {
-            Console.Write("Choose an account (1 or 2)");
-
-            int account;
-            try
-            {
-                account = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
-           
-            BankAccount selectedAccount;
-
-            switch (account)
-            {
-                case 1: selectedAccount = BankAccount1; break;
-                case 2: selectedAccount = BankAccount2; break;
-                default:
-                    Console.WriteLine("Invalid selection.");
-                    return;
-            }
+            BankAccount selectedAccount = SelectedAccount();
+            if (selectedAccount == null) return;
 
             if (selectedAccount.Balance < 50)
             {
@@ -942,29 +834,8 @@ namespace OOP_Part_1_
         // Case 18 - Overdrawn Account Check[Read - Only Property]
         public static void OverdrawnAccountCheck()
         {
-            Console.Write("Choose an account (1 or 2):");
-
-            int account;
-            try
-            {
-                account = int.Parse(Console.ReadLine());
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
-                return;
-            }
-
-            BankAccount selectedAccount;
-
-            switch (account)
-            {
-                case 1: selectedAccount = BankAccount1; break;
-                case 2: selectedAccount = BankAccount2; break;
-                default:
-                    Console.WriteLine("Invalid selection.");
-                    return;
-            }
+            BankAccount selectedAccount = SelectedAccount();
+            if (selectedAccount == null) return;
 
             if (selectedAccount.IsOverdrawn)
             {

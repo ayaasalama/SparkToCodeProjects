@@ -11,6 +11,15 @@ namespace OOP_Part_1_
         public string HolderName { get; set; }
         public double Balance { get; set; }
 
+        // Case 18 - Overdrawn Account Check[Read - Only Property]
+        public bool IsOverdrawn
+        {
+            get
+            {
+                return Balance < 0;
+            }
+        }
+
         // Methods
         public void Deposit(double amount)
         {
@@ -915,6 +924,44 @@ namespace OOP_Part_1_
             Console.WriteLine("Total Student objects created in the system: " + total);
         }
 
+        // Case 18 - Overdrawn Account Check[Read - Only Property]
+        public static void OverdrawnAccountCheck()
+        {
+            Console.WriteLine("Choose an account (1 or 2):");
+
+            int account;
+            try
+            {
+                account = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                return;
+            }
+
+            BankAccount selectedAccount;
+
+            switch (account)
+            {
+                case 1: selectedAccount = BankAccount1; break;
+                case 2: selectedAccount = BankAccount2; break;
+                default:
+                    Console.WriteLine("Invalid selection.");
+                    return;
+            }
+
+            if (selectedAccount.IsOverdrawn)
+            {
+                Console.WriteLine("The account is currently OVERDRAWN.");
+                Console.WriteLine("Current Balance: " + selectedAccount.Balance + " OMR");
+            }
+            else
+            {
+                Console.WriteLine("The account is NOT overdrawn.");
+                Console.WriteLine("Current Balance: " + selectedAccount.Balance + " OMR");
+            }
+        }
 
     }
 

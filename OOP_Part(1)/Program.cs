@@ -72,6 +72,19 @@ namespace OOP_Part_1_
         private string email {  get; set; }
         int age { get; set; }
 
+        // Case 17 - Total Students Counter [Static Fields & Methods]
+        private static int studentCount = 0;
+
+        public Student()
+        {
+            studentCount++; 
+        }
+
+        public static int GetTotalStudents()
+        {
+            return studentCount;
+        }
+
         // Methods
         public void Register(string Email)
         {
@@ -893,6 +906,15 @@ namespace OOP_Part_1_
             Console.WriteLine("Holder Name: " + newAccount.HolderName);
             Console.WriteLine("Balance: " + newAccount.Balance + " OMR");
         }
+
+        // Case 17 - Total Students Counter [Static Fields & Methods]
+        public static void TotalStudentsCounter()
+        {
+            int total = Student.GetTotalStudents();
+
+            Console.WriteLine("Total Student objects created in the system: " + total);
+        }
+
 
     }
 

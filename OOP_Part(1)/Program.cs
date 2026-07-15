@@ -46,6 +46,20 @@ namespace OOP_Part_1_
         {
             Console.WriteLine("Sending an Email...");
         }
+
+        // To stop showing errors after Case 16
+        public BankAccount()
+        {
+        }
+
+        // case 16 - Quick Account Opening [Parameterized Constructor]
+        public BankAccount(int accountNumber, string holderName, double startingBalance)
+        {
+            AccountNumber = accountNumber;
+            HolderName = holderName;
+            Balance = startingBalance;
+        }
+
     }
 
     // Second Class Student
@@ -842,7 +856,43 @@ namespace OOP_Part_1_
 
         }
 
+        // Case 16 - Quick Account Opening [Parameterized Constructor]
+        public static void QuickAccountOpening()
+        {
+            Console.WriteLine("Enter Account Number:");
+            int accNum;
+            try
+            {
+                accNum = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid account number input.");
+                return;
+            }
 
+            Console.WriteLine("Enter Holder Name:");
+            string name = Console.ReadLine();
+
+            Console.WriteLine("Enter Starting Balance:");
+            double balance;
+            try
+            {
+                balance = double.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid balance input.");
+                return;
+            }
+
+            BankAccount newAccount = new BankAccount(accNum, name, balance);
+
+            Console.WriteLine("Account Created Successfully!");
+            Console.WriteLine("Account Number: " + newAccount.AccountNumber);
+            Console.WriteLine("Holder Name: " + newAccount.HolderName);
+            Console.WriteLine("Balance: " + newAccount.Balance + " OMR");
+        }
 
     }
 

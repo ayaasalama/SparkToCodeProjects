@@ -285,6 +285,25 @@
 
         }
 
+        // Case 4 - View All Rooms
+        public static void ViewAllRooms(List<Room> rooms)
+        {
+            if (rooms.Count == 0)
+            {
+                Console.WriteLine("No rooms have been added yet.");
+                return;
+            }
+
+            List<Room> AllRooms = rooms.OrderBy(r => r.RoomNumber).ToList();
+
+            Console.WriteLine("Total Room Count: " + AllRooms.Count);
+
+            foreach (Room room in AllRooms)
+            {
+                room.DisplayRoom();
+                Console.WriteLine();
+            }
+        }
 
 
     }

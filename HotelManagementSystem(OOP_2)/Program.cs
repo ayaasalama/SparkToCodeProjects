@@ -132,7 +132,7 @@
 
                 switch (choice)
                 {
-                    case 1: AddNewRoom(); break;
+                    case 1: AddNewRoom(rooms); break;
                     case 2: RegisterNewGuest(); break;
                     case 3: BookRoomForGuest(); break;
                     case 4: ViewAllRooms(); break;
@@ -162,10 +162,49 @@
             }
         }
 
-        public static void AddNewRoom ()
+        public static void AddNewRoom (List<Room> rooms)
         {
-            Console.WriteLine("Enter Room Details");
-           
+            Console.Write("Enter Room Number: ");
+            string roomNumber = Console.ReadLine();
+
+            if ( rooms.Any(r => r.RoomNumber == roomNumber))
+            {
+                Console.WriteLine("Room already Exists.");
+                return;
+            }
+
+            Console.Write("Enter Room Type (Single/ Double/ Suite)");
+            string roomType = Console.ReadLine();
+
+            Console.Write("Enter Price per Night:");
+            double pricePerNight;
+
+            try
+            {
+                pricePerNight = double.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Price must be a valid number!");
+                return;
+            }
+
+            if ( pricePerNight < 0 )
+            {
+                Console.WriteLine("Price must be Positive.");
+                return;
+            }
+
+            rooms.Add(new Room(roomNumber, roomType, pricePerNight, true));
+
+            Console.WriteLine("\nRoom Added Successfully:");
+            Console.WriteLine("Room Number: " + roomNumber);
+            Console.WriteLine("Room Type  : " + roomType);
+            Console.WriteLine("Price/Night: " + pricePerNight.ToString("F2") + " OMR");
+            Console.WriteLine("Total Rooms: " + rooms.Count);
+
+
+
         }
 
     }

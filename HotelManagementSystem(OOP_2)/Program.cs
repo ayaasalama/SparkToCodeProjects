@@ -135,7 +135,7 @@
                     case 1: AddNewRoom(rooms); break;
                     case 2: RegisterNewGuest(guests); break;
                     case 3: BookRoomForGuest(guests, rooms); break;
-                    case 4: ViewAllRooms(); break;
+                    case 4: ViewAllRooms(rooms); break;
                     case 5: ViewAllGuests(); break;
                     case 6: SearchFilterRooms(); break;
                     case 7: GuestBookingStatistics(); break;

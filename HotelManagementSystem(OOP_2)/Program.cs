@@ -136,7 +136,7 @@
                     case 2: RegisterNewGuest(guests); break;
                     case 3: BookRoomForGuest(guests, rooms); break;
                     case 4: ViewAllRooms(rooms); break;
-                    case 5: ViewAllGuests(); break;
+                    case 5: ViewAllGuests(guests); break;
                     case 6: SearchFilterRooms(); break;
                     case 7: GuestBookingStatistics(); break;
                     case 8: UpdateRoomPrice(); break;
@@ -305,6 +305,25 @@
             }
         }
 
+        // Case 5 - View All Guests
+        public static void ViewAllGuests(List<Guest> guests)
+        {
+            if (guests.Count == 0)
+            {
+                Console.WriteLine("No guests have been registered yet.");
+                return;
+            }
+
+            List<Guest> AllGuests = guests.OrderBy(g => g.GuestName).ToList();
+
+            Console.WriteLine("Total Guest Count: " + AllGuests.Count);
+
+            foreach (Guest guest in AllGuests)
+            {
+                guest.DisplayGuest();
+                Console.WriteLine();
+            }
+        }
 
     }
 }

@@ -134,7 +134,7 @@
                 {
                     case 1: AddNewRoom(rooms); break;
                     case 2: RegisterNewGuest(guests); break;
-                    case 3: BookRoomForGuest(); break;
+                    case 3: BookRoomForGuest(guests, rooms); break;
                     case 4: ViewAllRooms(); break;
                     case 5: ViewAllGuests(); break;
                     case 6: SearchFilterRooms(); break;
@@ -240,5 +240,52 @@
 
 
         }
+
+        // Case 3 - Book a Room For a Guest
+        public static void BookRoomForGuest (List<Guest> guests, List<Room> rooms)
+        {
+            Console.Write("Enter the Guest Id: ");
+            string guestId = Console.ReadLine();
+
+            Guest guest = guests.FirstOrDefault(g => g.GuestId == guestId);
+            
+            if (guest == null)
+            {
+                Console.WriteLine("Guest Id not Available.");
+                return;
+            }
+
+            Console.Write("Enter Room Number: ");
+            string roomNumber = Console.ReadLine();
+
+            Room room = rooms.FirstOrDefault(r => r.RoomNumber == roomNumber);
+
+            if (room == null)
+            {
+                Console.WriteLine("Room Number not Available.");
+                return;
+            }
+
+            if (!room.IsAvailable)
+            {
+                Console.WriteLine("Room is already booked.");
+                return;
+            }
+
+            guest.RoomNumber = room.RoomNumber;
+            room.IsAvailable = false;
+
+            Console.WriteLine("\nBooking Confirmed:");
+            Console.WriteLine("Guest Name : " + guest.GuestName);
+            Console.WriteLine("Room Number: " + room.RoomNumber);
+            Console.WriteLine("Room Type  : " + room.RoomType);
+            Console.WriteLine("Price/Night: " + room.PricePerNight.ToString("F2") + " OMR");
+            Console.WriteLine("Total Nights: " + guest.TotalNights);
+            Console.WriteLine("Total Cost : " + guest.CalculateTotalCost(room.PricePerNight).ToString("F2") + " OMR");
+
+        }
+
+
+
     }
 }

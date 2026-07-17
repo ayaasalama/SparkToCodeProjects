@@ -84,6 +84,15 @@
             List<Room> rooms = new List<Room>();
             List<Guest> guests = new List<Guest>();
 
+            // Adding 6 Rooms
+
+            rooms.Add(new Room("101", "Single", 25.0, true));
+            rooms.Add(new Room("102", "Single", 25.0, true));
+            rooms.Add(new Room("201", "Double", 40.0, true));
+            rooms.Add(new Room("202", "Double", 40.0, true));
+            rooms.Add(new Room("301", "Suite", 75.0, true));
+            rooms.Add(new Room("302", "Suite", 80.0, true));
+
             bool exitApp = false;
 
             while (exitApp == false)
@@ -151,12 +160,12 @@
                 Console.ReadKey();
                 Console.Clear();
             }
-
         }
 
         public static void AddNewRoom ()
         {
-
+            Console.WriteLine("Enter Room Details");
+           
         }
 
     }

@@ -123,21 +123,21 @@
 
                 switch (choice)
                 {
-                    case 1: AddNewRoom(rooms); break;
-                    case 2: RegisterNewGuest(guests); break;
-                    case 3: BookRoomForGuest(rooms, guests); break;
-                    case 4: ViewAllRooms(rooms); break;
-                    case 5: ViewAllGuests(guests); break;
-                    case 6: SearchFilterRooms(rooms); break;
-                    case 7: GuestBookingStatistics(rooms, guests); break;
-                    case 8: UpdateRoomPrice(rooms); break;
-                    case 9: GuestLookupByName(guests); break;
-                    case 10: RoomTypeBreakdownReport(rooms); break;
-                    case 11: CheckOutGuest(rooms, guests); break;
-                    case 12: RemoveUnavailableRooms(rooms, guests); break;
-                    case 13: ExtemdGuestStay(guests); break;
-                    case 14: HighestRevenueBooking(guests); break;
-                    case 15: GuestPaginationViewer(guests); break;
+                    case 1: AddNewRoom(); break;
+                    case 2: RegisterNewGuest(); break;
+                    case 3: BookRoomForGuest(); break;
+                    case 4: ViewAllRooms(); break;
+                    case 5: ViewAllGuests(); break;
+                    case 6: SearchFilterRooms(); break;
+                    case 7: GuestBookingStatistics(); break;
+                    case 8: UpdateRoomPrice(); break;
+                    case 9: GuestLookupByName(); break;
+                    case 10: RoomTypeBreakdownReport(); break;
+                    case 11: CheckOutGuest(); break;
+                    case 12: RemoveUnavailableRooms(); break;
+                    case 13: ExtemdGuestStay(); break;
+                    case 14: HighestRevenueBooking(); break;
+                    case 15: GuestPaginationViewer(); break;
                     case 0:
                         exitApp = true;
                         Console.WriteLine("Goodbye!");
@@ -153,5 +153,13 @@
             }
 
         }
+
+        public static void AddNewRoom ()
+        {
+
+        }
+
     }
+
+
 }

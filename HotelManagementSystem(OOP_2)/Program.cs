@@ -139,7 +139,7 @@
                     case 5: ViewAllGuests(guests); break;
                     case 6: SearchFilterRooms(rooms); break;
                     case 7: GuestBookingStatistics(guests, rooms); break;
-                    case 8: UpdateRoomPrice(); break;
+                    case 8: UpdateRoomPrice(rooms); break;
                     case 9: GuestLookupByName(); break;
                     case 10: RoomTypeBreakdownReport(); break;
                     case 11: CheckOutGuest(); break;
@@ -543,6 +543,45 @@
 
         }
 
+
+        // Case 8 - Update Room Price 
+        public static void UpdateRoomPrice(List<Room> rooms)
+        {
+            Console.Write("Enter the Room Number: ");
+            string roomNumber = Console.ReadLine();
+
+            Room room = rooms.FirstOrDefault(r => r.RoomNumber ==  roomNumber);
+
+            if (room == null)
+            {
+                Console.WriteLine("Room Number not Found.");
+                return;
+            }
+
+            Console.Write("Enter the New Price per Night: ");
+            double newPrice;
+            try
+            {
+                newPrice = double.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalide Input. ");
+                return;
+            }
+
+            if (newPrice < 0)
+            {
+                Console.WriteLine("The Price must be Positive.");
+                return;
+            }
+
+            Console.WriteLine("The Price Before: " + room.PricePerNight.ToString("F2") + " OMR");
+            room.PricePerNight = newPrice;
+
+            Console.WriteLine("The New Price: " + newPrice.ToString("F2") + " OMR");
+
+        }
 
     }
 }

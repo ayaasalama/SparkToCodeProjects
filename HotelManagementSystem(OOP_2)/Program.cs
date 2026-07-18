@@ -145,7 +145,7 @@
                     case 11: CheckOutGuest(guests, rooms); break;
                     case 12: RemoveUnavailableRooms(rooms, guests); break;
                     case 13: ExtendGuestStay(guests, rooms); break;
-                    case 14: HighestRevenueBooking(); break;
+                    case 14: HighestRevenueBooking(guests, rooms); break;
                     case 15: GuestPaginationViewer(); break;
                     case 0:
                         exitApp = true;
@@ -829,6 +829,28 @@
 
         }
 
+        // Case 14 - Highest Revenue Booking
+        public static void HighestRevenueBooking(List<Guest> guests, List<Room> rooms)
+        {
+            List<Guest> activeGuests = guests.Where(g => g.RoomNumber != "Not Assigned").ToList();
+
+            if (activeGuests.Count == 0)
+            {
+                Console.WriteLine("No active bookings recorded.");
+                return;
+            }
+
+            var topBooking = activeGuests.Select(g => new { g.GuestName, g.RoomNumber,
+                            TotalCost = g.CalculateTotalCost(rooms.FirstOrDefault(r => r.RoomNumber == g.RoomNumber).PricePerNight)})
+                                         .OrderByDescending(g => g.TotalCost)
+                                         .Take(1)
+                                         .FirstOrDefault();
+
+            Console.WriteLine("\nHighest Revenue Booking:");
+            Console.WriteLine("Guest Name : " + topBooking.GuestName);
+            Console.WriteLine("Room Number: " + topBooking.RoomNumber);
+            Console.WriteLine("Total Cost : " + topBooking.TotalCost.ToString("F2") + " OMR");
+        }
 
     }
 }

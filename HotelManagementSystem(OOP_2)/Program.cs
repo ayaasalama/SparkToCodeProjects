@@ -146,7 +146,7 @@
                     case 12: RemoveUnavailableRooms(rooms, guests); break;
                     case 13: ExtendGuestStay(guests, rooms); break;
                     case 14: HighestRevenueBooking(guests, rooms); break;
-                    case 15: GuestPaginationViewer(); break;
+                    case 15: GuestPaginationViewer(guests); break;
                     case 0:
                         exitApp = true;
                         Console.WriteLine("Goodbye!");
@@ -850,6 +850,49 @@
             Console.WriteLine("Guest Name : " + topBooking.GuestName);
             Console.WriteLine("Room Number: " + topBooking.RoomNumber);
             Console.WriteLine("Total Cost : " + topBooking.TotalCost.ToString("F2") + " OMR");
+        }
+
+        // Case 15 - Guest Pagination Viewer
+        public static void GuestPaginationViewer(List<Guest> guests)
+        {
+            const int pageSize = 3;
+
+            if (guests.Count == 0)
+            {
+                Console.WriteLine("No guests have been registered yet.");
+                return;
+            }
+
+            int totalPages = (int)Math.Ceiling(guests.Count / (double)pageSize);
+
+            Console.Write("Enter page number (1 to " + totalPages + "): ");
+            int pageNumber;
+            try
+            {
+                pageNumber = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter a valid number.");
+                return;
+            }
+
+            if (pageNumber < 1 || pageNumber > totalPages)
+            {
+                Console.WriteLine("That page does not exist.");
+                return;
+            }
+
+            List<Guest> pageGuests = guests.Skip((pageNumber - 1) * pageSize)
+                                           .Take(pageSize)
+                                           .ToList();
+
+            Console.WriteLine("\nPage " + pageNumber + " of " + totalPages);
+            foreach (Guest guest in pageGuests)
+            {
+                guest.DisplayGuest();
+                Console.WriteLine();
+            }
         }
 
     }

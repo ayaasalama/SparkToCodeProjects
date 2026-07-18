@@ -142,7 +142,7 @@
                     case 8: UpdateRoomPrice(rooms); break;
                     case 9: GuestLookupByName(guests); break;
                     case 10: RoomTypeBreakdownReport(rooms); break;
-                    case 11: CheckOutGuest(); break;
+                    case 11: CheckOutGuest(guests, rooms); break;
                     case 12: RemoveUnavailableRooms(); break;
                     case 13: ExtemdGuestStay(); break;
                     case 14: HighestRevenueBooking(); break;
@@ -655,6 +655,76 @@
             Console.WriteLine("The Overall Average Across all Rooms: " + avgAll.ToString("F2"));
 
         }
+
+        // Case 11 - Check Out a Guest 
+        public static void CheckOutGuest(List<Guest> guests, List<Room> rooms)
+        {
+            Console.Write("Enter the Guest Id: ");
+            string guestId = Console.ReadLine().Trim();
+
+            if (!guestId.StartsWith("G") || guestId.Length != 4)
+            {
+                Console.WriteLine("Invalid Guest ID format. Expected format: G001.");
+                return;
+            }
+
+            Guest guest = guests.FirstOrDefault(g => g.GuestId == guestId);
+            if (guest == null)
+            {
+                Console.WriteLine("Guest ID not found.");
+                return;
+            }
+
+            if (guest.RoomNumber == "Not Assigned")
+            {
+                Console.WriteLine("This guest has no active booking.");
+                return;
+            }
+
+            Room room = rooms.FirstOrDefault(r => r.RoomNumber == guest.RoomNumber);
+
+            Console.WriteLine();
+            Console.WriteLine("The Bill: ");
+            Console.WriteLine("Guest Name : " + guest.GuestName);
+            Console.WriteLine("Room Number: " + room.RoomNumber);
+            Console.WriteLine("Room Type  : " + room.RoomType);
+            Console.WriteLine("Price/Night: " + room.PricePerNight.ToString("F2") + " OMR");
+            Console.WriteLine("Total Nights: " + guest.TotalNights);
+            Console.WriteLine("Total Cost : " + guest.CalculateTotalCost(room.PricePerNight).ToString("F2") + " OMR");
+
+            Console.WriteLine();
+            Console.Write("Confirm Checkout (Y/N): ");
+            char confirm;
+            try
+            {
+                confirm = char.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid Input. Enter 'Y' or 'N'. ");
+                return;
+            }
+
+            if (char.ToUpper(confirm) == 'Y')
+            {
+                room.IsAvailable = true;
+                guests.Remove(guest);
+
+                Console.WriteLine("\nCheckout Summary:");
+                Console.WriteLine("Updated Guests Count: " + guests.Count());
+                Console.WriteLine("Updated Available Rooms Count: " + rooms.Count(r => r.IsAvailable));
+
+                bool roomConfirmedAvailable = rooms.Any(r => r.RoomNumber == room.RoomNumber && r.IsAvailable);
+                Console.WriteLine("Room " + room.RoomNumber + " is now available: " + roomConfirmedAvailable);
+            }
+            else
+            {
+                Console.WriteLine("Checkout cancelled. No changes made.");
+            }
+
+        }
+
+
 
     }
 }

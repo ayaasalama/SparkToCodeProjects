@@ -141,7 +141,7 @@
                     case 7: GuestBookingStatistics(guests, rooms); break;
                     case 8: UpdateRoomPrice(rooms); break;
                     case 9: GuestLookupByName(guests); break;
-                    case 10: RoomTypeBreakdownReport(); break;
+                    case 10: RoomTypeBreakdownReport(rooms); break;
                     case 11: CheckOutGuest(); break;
                     case 12: RemoveUnavailableRooms(); break;
                     case 13: ExtemdGuestStay(); break;
@@ -606,6 +606,55 @@
 
         }
 
+        // Case 10 - Room Type Breakdown Report 
+        public static void RoomTypeBreakdownReport (List<Room> rooms)
+        {
+            int singleCount = rooms.Count(r => r.RoomType == "Single");
+            if (singleCount == 0 )
+            {
+                Console.WriteLine("The Number of Single Rooms: 0");
+                Console.WriteLine("Average Price for Single: N/A");
+            }
+            else
+            {
+                Console.WriteLine("The Number of Single Rooms: " + singleCount);
+                double avgSingle = rooms.Where(r => r.RoomType == "Single")
+                                        .Average(r => r.PricePerNight);
+                Console.WriteLine("The Average Price per Night for Single: " + avgSingle.ToString("F2"));
+            }
+            
+            int doubleCount = rooms.Count(r => r.RoomType == "Double");
+            if (doubleCount == 0)
+            {
+                Console.WriteLine("The Number of Double Rooms: 0");
+                Console.WriteLine("Average Price for Double: N/A");
+            }
+            else
+            {
+                Console.WriteLine("The Number of Double Rooms: " + doubleCount);
+                double avgDouble = rooms.Where(r => r.RoomType == "Double")
+                                        .Average(r => r.PricePerNight);
+                Console.WriteLine("The Average Price per Night for Double: " + avgDouble.ToString("F2"));
+            }
+            
+            int suiteCount = rooms.Count(r => r.RoomType == "Suite");
+            if (suiteCount == 0)
+            {
+                Console.WriteLine("The Number of Suite Rooms: 0");
+                Console.WriteLine("Average Price for Suite: N/A");
+            }
+            else
+            {
+                Console.WriteLine("The Number of Suite Rooms: " + suiteCount);
+                double avgSuite = rooms.Where(r => r.RoomType == "Suite")
+                                        .Average(r => r.PricePerNight);
+                Console.WriteLine("The Average Price per Night for Suite: " + avgSuite.ToString("F2"));
+            }
+
+            double avgAll = rooms.Average(r => r.PricePerNight);
+            Console.WriteLine("The Overall Average Across all Rooms: " + avgAll.ToString("F2"));
+
+        }
 
     }
 }

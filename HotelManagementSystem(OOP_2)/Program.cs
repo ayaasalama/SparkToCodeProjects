@@ -140,7 +140,7 @@
                     case 6: SearchFilterRooms(rooms); break;
                     case 7: GuestBookingStatistics(guests, rooms); break;
                     case 8: UpdateRoomPrice(rooms); break;
-                    case 9: GuestLookupByName(); break;
+                    case 9: GuestLookupByName(guests); break;
                     case 10: RoomTypeBreakdownReport(); break;
                     case 11: CheckOutGuest(); break;
                     case 12: RemoveUnavailableRooms(); break;
@@ -582,6 +582,30 @@
             Console.WriteLine("The New Price: " + newPrice.ToString("F2") + " OMR");
 
         }
+
+        // Case 9 - Guest Lookup by Name
+        public static void GuestLookupByName (List<Guest> guests)
+        {
+            Console.WriteLine("Enter Name or Part of it: ");
+            string searchName = Console.ReadLine().ToLower().Trim();
+
+            List<Guest> matches = guests.Where(g => g.GuestName.ToLower().Contains(searchName)).ToList(); 
+
+            int matchesCount = matches.Count();
+            if (matchesCount == 0 )
+            {
+                Console.WriteLine("No guests matched that search.");
+                return;
+            }
+            Console.WriteLine("Number of matches found: " + matchesCount);
+
+            foreach ( Guest match in matches )
+            {
+                Console.WriteLine("Guest ID: " + match.GuestId + ", Name: " + match.GuestName + ", Room Number: " + match.RoomNumber);
+            }
+
+        }
+
 
     }
 }

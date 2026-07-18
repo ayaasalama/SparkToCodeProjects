@@ -138,7 +138,7 @@
                     case 4: ViewAllRooms(rooms); break;
                     case 5: ViewAllGuests(guests); break;
                     case 6: SearchFilterRooms(rooms); break;
-                    case 7: GuestBookingStatistics(); break;
+                    case 7: GuestBookingStatistics(guests, rooms); break;
                     case 8: UpdateRoomPrice(); break;
                     case 9: GuestLookupByName(); break;
                     case 10: RoomTypeBreakdownReport(); break;
@@ -482,6 +482,65 @@
                 }
 
             }
+        }
+
+
+        // Helper Function Check if Guest has Active Booking
+        public static bool HasActiveBookings(List<Guest> guests)
+        {
+            return guests.Any(g => g.RoomNumber != "Not Assigned");
+        }
+
+        // Case 7 - Guest & Booking Statistics 
+        public static void GuestBookingStatistics(List<Guest> guests, List<Room> rooms)
+        {
+            int guestCount = guests.Count();
+            Console.WriteLine("The Total Number of Registered Guests: " + guestCount);
+
+            int guestCountAssigned = guests.Count(g => g.RoomNumber != "Not Assigned");
+            Console.WriteLine("The Number of Guests Assigned to a Room: " + guestCountAssigned);
+
+            int roomCount = rooms.Count();
+            Console.WriteLine("The Total Number of Rooms: " + roomCount);
+
+            int roomCountBooked = rooms.Count(r => r.IsAvailable == false);
+            Console.WriteLine("The Number of Booked Rooms: " + roomCountBooked);
+
+            if (!HasActiveBookings(guests))
+            {
+                Console.WriteLine("No active bookings recorded.");
+                return;
+            }
+
+            double avgNights = guests.Where(g => g.RoomNumber != "Not Assigned")
+                                     .Average(g => g.TotalNights);
+            Console.WriteLine("Average Nights (active bookings): " + avgNights.ToString("F2"));
+
+            List<Guest> topSpenders = guests.Where(g => g.RoomNumber != "Not Assigned")
+                                    .OrderByDescending(g => g.CalculateTotalCost(rooms.FirstOrDefault(r => r.RoomNumber == g.RoomNumber).PricePerNight))
+                                    .Take(3)
+                                    .ToList();
+
+            Console.WriteLine("\nTop Spending Guests:");
+            foreach (Guest guest in topSpenders)
+            {
+                Room room = rooms.FirstOrDefault(r => r.RoomNumber == guest.RoomNumber);
+
+                double totalCost = guest.CalculateTotalCost(room.PricePerNight);
+                Console.WriteLine(guest.GuestName + " — Room " + guest.RoomNumber + " — OMR " + totalCost.ToString("F2"));
+            }
+
+            List<string> guestSummaries = guests.Where(g => g.RoomNumber != "Not Assigned")
+                                                .Select(g => g.GuestName + " — Room " + g.RoomNumber + " — " + g.TotalNights + " nights — OMR " +
+                                                        g.CalculateTotalCost(rooms.FirstOrDefault(r => r.RoomNumber == g.RoomNumber).PricePerNight).ToString("F2"))
+                                                .ToList();
+
+            Console.WriteLine("\nBooking Summary:");
+            foreach (string line in guestSummaries)
+            {
+                Console.WriteLine(line);
+            }
+
         }
 
 

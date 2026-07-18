@@ -144,7 +144,7 @@
                     case 10: RoomTypeBreakdownReport(rooms); break;
                     case 11: CheckOutGuest(guests, rooms); break;
                     case 12: RemoveUnavailableRooms(rooms, guests); break;
-                    case 13: ExtemdGuestStay(); break;
+                    case 13: ExtendGuestStay(guests, rooms); break;
                     case 14: HighestRevenueBooking(); break;
                     case 15: GuestPaginationViewer(); break;
                     case 0:
@@ -777,6 +777,56 @@
             {
                 Console.WriteLine("Removal cancelled. No rooms removed.");
             }
+        }
+
+        // Case 13 - Extend Guest Stay
+        public static void ExtendGuestStay (List<Guest> guests, List<Room> rooms)
+        {
+            Console.Write("Enter the Guest Id: ");
+            string guestId = Console.ReadLine().Trim();
+
+            if (!guestId.StartsWith("G") || guestId.Length != 4)
+            {
+                Console.WriteLine("Invalid Guest ID format. Expected format: G001.");
+                return;
+            }
+
+            Guest guest = guests.FirstOrDefault(g => g.GuestId == guestId);
+            if (guest == null)
+            {
+                Console.WriteLine("Guest ID not found.");
+                return;
+            }
+
+            if (guest.RoomNumber == "Not Assigned")
+            {
+                Console.WriteLine("This guest has no active booking to extend.");
+                return;
+            }
+
+            Console.Write("\n Enter the Number of Additional Nights: ");
+            int addNights;
+            try
+            {
+                addNights = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid Input. Enter a Valid Number.");
+                return;
+            }
+            if (addNights <= 0)
+            {
+                Console.WriteLine("The Number must be Positive.");
+                return;
+            }
+
+            guest.TotalNights += addNights;
+            Console.WriteLine("\nThe new Total of Nights: " + guest.TotalNights);
+
+            Room room = rooms.FirstOrDefault(r => r.RoomNumber == guest.RoomNumber);
+            Console.WriteLine("Total Cost : " + guest.CalculateTotalCost(room.PricePerNight).ToString("F2") + " OMR");
+
         }
 
 

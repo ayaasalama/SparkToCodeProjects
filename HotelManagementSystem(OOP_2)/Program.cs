@@ -143,7 +143,7 @@
                     case 9: GuestLookupByName(guests); break;
                     case 10: RoomTypeBreakdownReport(rooms); break;
                     case 11: CheckOutGuest(guests, rooms); break;
-                    case 12: RemoveUnavailableRooms(); break;
+                    case 12: RemoveUnavailableRooms(rooms, guests); break;
                     case 13: ExtemdGuestStay(); break;
                     case 14: HighestRevenueBooking(); break;
                     case 15: GuestPaginationViewer(); break;
@@ -724,6 +724,60 @@
 
         }
 
+        // Case 12 - Remove Unavailable Rooms 
+        public static void RemoveUnavailableRooms(List<Room> rooms, List<Guest> guests)
+        {
+            List<Room> removableRooms = rooms.Where(r => r.IsAvailable == false &&
+                                                          !guests.Any(g => g.RoomNumber == r.RoomNumber))
+                                              .OrderBy(r => r.RoomNumber)
+                                              .ToList();
+
+            if (removableRooms.Count == 0)
+            {
+                Console.WriteLine("All unavailable rooms are currently occupied. No rooms can be decommissioned.");
+                return;
+            }
+
+            Console.WriteLine("\nRooms safe to remove:");
+            foreach (Room room in removableRooms)
+            {
+                Console.WriteLine("Room Number: " + room.RoomNumber + ", Type: " + room.RoomType + ", Price: " + room.PricePerNight.ToString("F2") + " OMR");
+            }
+
+            Console.WriteLine("\nCount of removable rooms: " + removableRooms.Count);
+
+            Console.Write("\nConfirm Removal (Y/N): ");
+            char confirm;
+            try
+            {
+                confirm = char.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid Input. Enter 'Y' or 'N'.");
+                return;
+            }
+
+            if (char.ToUpper(confirm) == 'Y')
+            {
+                int removedCount = rooms.RemoveAll(r => r.IsAvailable == false &&
+                                                         !guests.Any(g => g.RoomNumber == r.RoomNumber));
+
+                Console.WriteLine("\n" + removedCount + " room(s) removed.");
+                Console.WriteLine("Updated Total Room Count: " + rooms.Count);
+
+                var remaining = rooms.Select(r => new { r.RoomNumber, r.RoomType }).ToList();
+                Console.WriteLine("\nRemaining Rooms:");
+                foreach (var r in remaining)
+                {
+                    Console.WriteLine("Room Number: " + r.RoomNumber + ", Type: " + r.RoomType);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Removal cancelled. No rooms removed.");
+            }
+        }
 
 
     }

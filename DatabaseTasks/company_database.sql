@@ -16,3 +16,15 @@ CREATE TABLE EMPLOYEE
     FOREIGN KEY (Super_ssn)
         REFERENCES EMPLOYEE(Ssn)
 );
+
+CREATE TABLE DEPARTMENT
+(
+    Dnumber INT PRIMARY KEY,
+    Dname VARCHAR(50) UNIQUE,
+    Mgr_ssn CHAR(9),
+    Mgr_start_date DATE,
+
+    FOREIGN KEY (Mgr_ssn)
+        REFERENCES EMPLOYEE(Ssn)
+);
+

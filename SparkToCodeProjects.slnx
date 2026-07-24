@@ -1,14 +1,64 @@
 <Solution>
-  <Project Path="CsharpSession1/CsharpSession1.csproj" Id="c3c8e044-0249-4018-b517-160ca71dfa40" />
-  <Project Path="CsharpSession2/CsharpSession2.csproj" Id="9393ec5f-d6b6-4159-a6c8-7efba5df5e41" />
-  <Project Path="FunctionsPractice(1)/FunctionsPractice(1).csproj" Id="d3f4eeeb-c001-4436-9d18-821fa8667406" />
-  <Project Path="HotelManagementSystem(OOP_2)/HotelManagementSystem(OOP_2).csproj" Id="57a3370c-53e8-433a-8306-96e7960d7bde" />
-  <Project Path="MiniCompoundProject(1)/MiniCompoundProject(1).csproj" Id="c0afa199-01ca-4d7f-bf0d-83eac19399fe" />
-  <Project Path="OOP_Part(1)/OOP_TasksPart(1).csproj" Id="ea1375ea-8d05-4504-ac76-6d2c4ba93f14" />
-  <Project Path="PracticeTasks(1)/PracticeTasks(1).csproj" Id="069d6662-3423-4f10-b006-1df1455b34eb" />
-  <Project Path="PracticeTasks(2)/PracticeTasks(2).csproj" Id="0253c946-2eee-48b5-b351-d08d4ab2a4a5" />
-  <Project Path="PracticeTasks(3)/PracticeTasks(3).csproj" Id="218a343b-bcb1-4cf4-8dc3-6c85e9c03887" />
-  <Project Path="PracticeTasks(part4)/PracticeTasks(part4).csproj" Id="0af22a05-a67d-42dc-8937-fa85d0110ea6" />
-  <Project Path="PracticeTasks(part5)/PracticeTasks(part5).csproj" Id="47ae335d-3df0-4862-8d4f-ca73c39364b1" />
-  <Project Path="UserDefinedFunctions/UserDefinedFunctions.csproj" Id="4b5377f2-4a4e-439d-a994-0350fc5848cf" />
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Default" />
+    <BuildType Name="Release" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path="DatabaseTasks/Airline Information System Mapping.png" />
+    <File Path="DatabaseTasks/AirlineInformationSystemERD.png" />
+    <File Path="DatabaseTasks/College Management System Mapping.png" />
+    <File Path="DatabaseTasks/CollegeMagementSystemERD.png" />
+    <File Path="DatabaseTasks/Company database Mapping.png" />
+    <File Path="DatabaseTasks/CompanyDatabaseERD.png" />
+    <File Path="DatabaseTasks/company_database.sql" />
+  </Folder>
+  <Project Path="CsharpSession1/CsharpSession1.csproj" Id="c3c8e044-0249-4018-b517-160ca71dfa40">
+    <BuildType Solution="Default|*" Project="Release" />
+    <Build Solution="Default|*" Project="false" />
+  </Project>
+  <Project Path="CsharpSession2/CsharpSession2.csproj" Id="9393ec5f-d6b6-4159-a6c8-7efba5df5e41">
+    <BuildType Solution="Default|*" Project="Release" />
+    <Build Solution="Default|*" Project="false" />
+  </Project>
+  <Project Path="FunctionsPractice(1)/FunctionsPractice(1).csproj" Id="d3f4eeeb-c001-4436-9d18-821fa8667406">
+    <BuildType Solution="Default|*" Project="Release" />
+    <Build Solution="Default|*" Project="false" />
+  </Project>
+  <Project Path="HotelManagementSystem(OOP_2)/HotelManagementSystem(OOP_2).csproj" Id="57a3370c-53e8-433a-8306-96e7960d7bde">
+    <BuildType Solution="Default|*" Project="Release" />
+    <Build Solution="Default|*" Project="false" />
+  </Project>
+  <Project Path="MiniCompoundProject(1)/MiniCompoundProject(1).csproj" Id="c0afa199-01ca-4d7f-bf0d-83eac19399fe">
+    <BuildType Solution="Default|*" Project="Release" />
+    <Build Solution="Default|*" Project="false" />
+  </Project>
+  <Project Path="OOP_Part(1)/OOP_TasksPart(1).csproj" Id="ea1375ea-8d05-4504-ac76-6d2c4ba93f14">
+    <BuildType Solution="Default|*" Project="Release" />
+    <Build Solution="Default|*" Project="false" />
+  </Project>
+  <Project Path="PracticeTasks(1)/PracticeTasks(1).csproj" Id="069d6662-3423-4f10-b006-1df1455b34eb">
+    <BuildType Solution="Default|*" Project="Release" />
+    <Build Solution="Default|*" Project="false" />
+  </Project>
+  <Project Path="PracticeTasks(2)/PracticeTasks(2).csproj" Id="0253c946-2eee-48b5-b351-d08d4ab2a4a5">
+    <BuildType Solution="Default|*" Project="Release" />
+    <Build Solution="Default|*" Project="false" />
+  </Project>
+  <Project Path="PracticeTasks(3)/PracticeTasks(3).csproj" Id="218a343b-bcb1-4cf4-8dc3-6c85e9c03887">
+    <BuildType Solution="Default|*" Project="Release" />
+    <Build Solution="Default|*" Project="false" />
+  </Project>
+  <Project Path="PracticeTasks(part4)/PracticeTasks(part4).csproj" Id="0af22a05-a67d-42dc-8937-fa85d0110ea6">
+    <BuildType Solution="Default|*" Project="Release" />
+    <Build Solution="Default|*" Project="false" />
+  </Project>
+  <Project Path="PracticeTasks(part5)/PracticeTasks(part5).csproj" Id="47ae335d-3df0-4862-8d4f-ca73c39364b1">
+    <BuildType Solution="Default|*" Project="Release" />
+    <Build Solution="Default|*" Project="false" />
+  </Project>
+  <Project Path="UserDefinedFunctions/UserDefinedFunctions.csproj" Id="4b5377f2-4a4e-439d-a994-0350fc5848cf">
+    <BuildType Solution="Default|*" Project="Release" />
+    <Build Solution="Default|*" Project="false" />
+  </Project>
 </Solution>

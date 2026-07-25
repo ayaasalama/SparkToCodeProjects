@@ -56,3 +56,14 @@ CREATE TABLE PROJECT
         REFERENCES DEPARTMENT(Dnumber)
 );
 
+CREATE TABLE WORKS_ON
+(
+    Essn CHAR(9),
+    Pno INT,
+    Hours DECIMAL(4,1),
+
+    PRIMARY KEY (Essn, Pno),
+
+    FOREIGN KEY (Essn)
+        REFERENCES EMPLOYEE(Ssn)
+);

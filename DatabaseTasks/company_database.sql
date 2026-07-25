@@ -42,3 +42,17 @@ CREATE TABLE DEPT_LOCATIONS
     FOREIGN KEY (Dnumber)
         REFERENCES DEPARTMENT(Dnumber)
 );
+
+CREATE TABLE PROJECT
+(
+    Pname VARCHAR(50),
+    Pnumber INT,
+    Plocation VARCHAR(50),
+    Dnum INT,
+
+    PRIMARY KEY (Pnumber, Plocation),
+
+    FOREIGN KEY (Dnum)
+        REFERENCES DEPARTMENT(Dnumber)
+);
+

@@ -74,3 +74,16 @@ ADD UNIQUE (Pnumber);
 ALTER TABLE WORKS_ON
 ADD FOREIGN KEY (Pno)
 REFERENCES PROJECT(Pnumber);
+
+CREATE TABLE DEPENDENT(
+    Essn CHAR(9),
+    Dependent_name VARCHAR(50),
+    Sex CHAR(1),
+    Bdate DATE,
+    Relationship VARCHAR(20),
+    
+    PRIMARY KEY (Essn, Dependent_name),
+
+    FOREIGN KEY (Essn) 
+         REFERENCES EMPLOYEE(Ssn)
+);

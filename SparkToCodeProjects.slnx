@@ -21,6 +21,9 @@
     <BuildType Solution="Default|*" Project="Release" />
     <Build Solution="Default|*" Project="false" />
   </Project>
+  <Project Path="EFCore(Part1)/EFCore(Part1).csproj" Id="11af8dbc-5148-40be-8b29-1552a9eeef0e">
+    <BuildType Solution="Default|*" Project="Release" />
+  </Project>
   <Project Path="FunctionsPractice(1)/FunctionsPractice(1).csproj" Id="d3f4eeeb-c001-4436-9d18-821fa8667406">
     <BuildType Solution="Default|*" Project="Release" />
     <Build Solution="Default|*" Project="false" />

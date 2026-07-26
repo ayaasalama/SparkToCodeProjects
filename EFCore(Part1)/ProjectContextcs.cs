@@ -6,7 +6,7 @@ using System.Text;
 
 namespace EFCore_Part1_
 {
-    public class ProjectContextcs : DbContext
+    public class ProjectContext : DbContext
     {
         public DbSet<Employee> employees { get; set; }
         public DbSet<Department> departments { get; set; }
@@ -16,7 +16,7 @@ namespace EFCore_Part1_
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlServer(
-                "Server = .; Database= CompanyDB; Trusted_Connection=True; " +
+                "Server = DESKTOP-NB7NDOC\\SQLEXPRESS; Database= CompanyDB; Trusted_Connection=True; " +
                 "TrustServerCertificate=True;"
             );
         }

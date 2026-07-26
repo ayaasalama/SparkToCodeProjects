@@ -1,4 +1,6 @@
-﻿namespace EFCore_Part1_
+﻿using EFCore_Part1_.models;
+
+namespace EFCore_Part1_
 {
     internal class Program
     {

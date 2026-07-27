@@ -16,7 +16,12 @@ namespace EFCore_Part1_.models
         [InverseProperty("Dept")]
         public List<Employee> Employees { get; set; }
 
+        // Manage
+        [ForeignKey("Employee")]
+        public int EmployeeId { get; set; }
+        public Employee Employee { get; set; }
 
+        public DateTime ManageStartDate { get; set; }
 
     }
 }

@@ -36,5 +36,8 @@ namespace EFCore_Part1_.models
         public int DepartmentID { get; set; }
         public Department Dept { get; set; }
 
+        // Manage
+        [InverseProperty("Employee")]
+        public Department ManagedDepart { get; set; }
     }
 }

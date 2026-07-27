@@ -13,8 +13,10 @@ namespace EFCore_Part1_.models
         public DateTime MsgStartDate  { get; set; }
 
         // Worksfor
-        [InverseProperty("D")]
+        [InverseProperty("Dept")]
         public List<Employee> Employees { get; set; }
+
+
 
     }
 }

@@ -39,5 +39,8 @@ namespace EFCore_Part1_.models
         // Manage
         [InverseProperty("Employee")]
         public Department ManagedDepart { get; set; }
+
+        // Works_on
+        public List<WorksOn> worksOn { get; set; }
     }
 }

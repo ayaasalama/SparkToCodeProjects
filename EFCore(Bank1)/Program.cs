@@ -13,15 +13,18 @@ namespace EFCore_Bank1_
                 //    HolderName = "Aya", Balance = 350
                 //});
 
-                context.SaveChanges();
+                //context.SaveChanges();
 
-                BankAccount account = context.BankAccounts.FirstOrDefault(a => a.HolderName == "Aya");
-                if (account != null)
-                {
-                    account.Balance += 100; 
-                    context.SaveChanges();
-                }
+                //BankAccount account = context.BankAccounts.FirstOrDefault(a => a.HolderName == "Aya");
+                //if (account != null)
+                //{
+                //    account.Balance += 100; 
+                //    context.SaveChanges();
+                //}
 
+                List<BankAccount> all = context.BankAccounts.ToList(); 
+                foreach (BankAccount a in all)
+                    Console.WriteLine($"{a.AccountId}: {a.HolderName} - {a.Balance}");
             }
         }
     }

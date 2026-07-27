@@ -6,7 +6,16 @@ namespace EFCore_Bank1_
     {
         static void Main(string[] args)
         {
-           
+            using (var context = new BankDbContext())
+            {
+                context.BankAccounts.Add(new BankAccount 
+                {
+                    HolderName = "Aya", Balance = 350
+                });
+
+                context.SaveChanges();
+                
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace EFCore_Part1_.models
 {
-    [PrimaryKey(nameof(EmployeeId), nameof(DependentName))]
+    [PrimaryKey(nameof(EmployeeSsn), nameof(DependentName))]
     public class Dependent
     {
         public int DependentId { get; set; }
@@ -17,7 +17,7 @@ namespace EFCore_Part1_.models
 
         // 
         [ForeignKey("employee")]
-        public int EmployeeId { get; set; }
+        public int EmployeeSsn { get; set; }
         public Employee employee { get; set; }
     }
 }

@@ -20,15 +20,13 @@ namespace EFCore_Part1_.models
 
         // Manage
         [ForeignKey("Employee")]
-        public int EmployeeId { get; set; }
+        public int EmployeeSsn { get; set; }
         public Employee Employee { get; set; }
 
         public DateTime ManageStartDate { get; set; }
 
         //Controlls 
-        [ForeignKey("Project")]
-        public int ProjectId { get; set; }
-        public Project Project { get; set; }
+        public List<Project> Project { get; set; }
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace EFCore_Part1_.models
@@ -17,7 +18,9 @@ namespace EFCore_Part1_.models
         public List<WorksOn> WorksOn { get; set; }
 
         // Controlled by
-        public List<Department> Department { get; set; }
+        [ForeignKey("Department")]
+        public int DepartmentNumber { get; set; }
+        public Department Department { get; set; }
 
     }
 }

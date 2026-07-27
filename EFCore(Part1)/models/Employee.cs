@@ -33,7 +33,7 @@ namespace EFCore_Part1_.models
 
         // Worksfor (1-M)
         [ForeignKey("Dept")]
-        public int DepartmentID { get; set; }
+        public int DepartmentNumber { get; set; }
         public Department Dept { get; set; }
 
         // Manage

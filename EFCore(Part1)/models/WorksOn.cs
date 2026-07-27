@@ -6,15 +6,15 @@ using System.Text;
 
 namespace EFCore_Part1_.models
 {
-    [PrimaryKey(nameof(EmployeeId), nameof(ProjectId))]
+    [PrimaryKey(nameof(EmployeeSsn), nameof(ProjectNumber))]
     public class WorksOn
     {
         [ForeignKey("employee")]
-        public int EmployeeId { get; set; }
+        public int EmployeeSsn { get; set; }
         public Employee employee { get; set; }
 
         [ForeignKey("project")]
-        public int ProjectId { get; set; }
+        public int ProjectNumber { get; set; }
         public Project project { get; set; }
 
         public int Hours { get; set; }

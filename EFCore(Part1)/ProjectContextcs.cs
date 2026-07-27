@@ -12,6 +12,8 @@ namespace EFCore_Part1_
         public DbSet<Department> departments { get; set; }
         public DbSet <Project> projects { get; set; }
         public DbSet<Dependent> dependents { get; set; }
+        public DbSet<WorksOn> worksOns { get; set; }
+        public DbSet<DeptLocations> deptLocations { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {

@@ -8,13 +8,20 @@ namespace EFCore_Bank1_
         {
             using (var context = new BankDbContext())
             {
-                context.BankAccounts.Add(new BankAccount 
-                {
-                    HolderName = "Aya", Balance = 350
-                });
+                //context.BankAccounts.Add(new BankAccount 
+                //{
+                //    HolderName = "Aya", Balance = 350
+                //});
 
                 context.SaveChanges();
-                
+
+                BankAccount account = context.BankAccounts.FirstOrDefault(a => a.HolderName == "Aya");
+                if (account != null)
+                {
+                    account.Balance += 100; 
+                    context.SaveChanges();
+                }
+
             }
         }
     }

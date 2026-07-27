@@ -26,6 +26,7 @@ namespace EFCore_Bank1_
                 foreach (BankAccount a in all)
                     Console.WriteLine($"{a.AccountId}: {a.HolderName} - {a.Balance}");
             }
+
         }
     }
 }

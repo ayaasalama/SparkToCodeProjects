@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace EFCore_Part1_.models
@@ -10,6 +11,10 @@ namespace EFCore_Part1_.models
         public int DepartmentNumber { get; set; }
         public string DepartmentName { get; set; }
         public DateTime MsgStartDate  { get; set; }
+
+        // Worksfor
+        [InverseProperty("D")]
+        public List<Employee> Employees { get; set; }
 
     }
 }

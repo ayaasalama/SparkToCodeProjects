@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace EFCore_Part1_.models
@@ -11,5 +12,10 @@ namespace EFCore_Part1_.models
         public char DependentSex { get; set; }
         public DateTime DependentBdate { get; set; }
         public string DependentRelationship { get; set; }
+
+        // 
+        [ForeignKey("employee")]
+        public int EmployeeId { get; set; }
+        public Employee employee { get; set; }
     }
 }

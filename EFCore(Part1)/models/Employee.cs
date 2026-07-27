@@ -18,7 +18,7 @@ namespace EFCore_Part1_.models
         public string EmployeeAddress { get; set; }
         public double EmployeeSalary { get; set; }
 
-        // Supervision
+        // Supervision (Self-Relation (1-M))
         [InverseProperty("supervisor")]
         public List<Employee> supervisee { get; set; }
 
@@ -27,5 +27,8 @@ namespace EFCore_Part1_.models
         public int SupervisorID { get; set; }
         public Employee supervisor { get; set; }
 
+
+        // Dependent (1-1)
+        public Dependent Dependent { get; set; }
     }
 }

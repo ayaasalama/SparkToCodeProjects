@@ -13,5 +13,9 @@ namespace EFCore_Part1_.models
 
         // WorksOn
         public List<WorksOn> WorksOn { get; set; }
+
+        // Controlled by
+        public List<Department> Department { get; set; }
+
     }
 }

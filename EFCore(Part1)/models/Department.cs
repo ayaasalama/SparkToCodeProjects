@@ -23,5 +23,10 @@ namespace EFCore_Part1_.models
 
         public DateTime ManageStartDate { get; set; }
 
+        //Controlls 
+        [ForeignKey("Project")]
+        public int ProjectId { get; set; }
+        public Project Project { get; set; }
+
     }
 }

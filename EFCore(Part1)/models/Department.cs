@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
@@ -8,6 +9,7 @@ namespace EFCore_Part1_.models
     public class Department
     {
         public int DepartmentId { get; set; }
+        [Key]
         public int DepartmentNumber { get; set; }
         public string DepartmentName { get; set; }
         public DateTime MsgStartDate  { get; set; }

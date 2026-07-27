@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace EFCore_Part1_.models
 {
+    [PrimaryKey(nameof(ProjectNumber), nameof(ProjectLocation))]
     public class Project
     {
         public int ProjectId { get; set; }

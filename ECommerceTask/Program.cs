@@ -717,5 +717,21 @@ namespace ECommerceTask
 
         }
 
+        // Case 11
+        public static void Logout()
+        {
+            Console.WriteLine("\nLogging out... ");
+
+            if (loggedInUserId == 0)
+            {
+                Console.WriteLine("No user is currently logged in.");
+                return;
+            }
+
+            loggedInUserId = 0;
+
+            Console.WriteLine("Logged out successfully.");
+        }
+
     }
 }

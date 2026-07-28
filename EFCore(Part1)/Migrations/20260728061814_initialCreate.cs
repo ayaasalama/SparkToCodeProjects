@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -76,7 +78,8 @@ namespace EFCore_Part1_.Migrations
                         column: x => x.SupervisorID,
                         principalTable: "employees",
                         principalColumn: "EmployeeSsn",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction,
+                        onUpdate: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -145,7 +148,8 @@ namespace EFCore_Part1_.Migrations
                         columns: x => new { x.ProjectNumber, x.ProjectName },
                         principalTable: "projects",
                         principalColumns: new[] { "ProjectNumber", "ProjectName" },
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction,
+                        onUpdate: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
@@ -186,7 +190,8 @@ namespace EFCore_Part1_.Migrations
                 column: "EmployeeSsn",
                 principalTable: "employees",
                 principalColumn: "EmployeeSsn",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction,
+                onUpdate: ReferentialAction.NoAction);
         }
 
         /// <inheritdoc />
@@ -194,7 +199,8 @@ namespace EFCore_Part1_.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_departments_employees_EmployeeSsn",
-                table: "departments");
+                table: "departments"
+            );
 
             migrationBuilder.DropTable(
                 name: "dependents");

@@ -61,6 +61,10 @@ namespace ECommerceTask
                         break;
                 }
 
+                Console.WriteLine("Press any Key.");
+                Console.ReadKey();
+                Console.Clear();
+
             }
         }
 

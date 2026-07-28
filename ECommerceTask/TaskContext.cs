@@ -12,6 +12,8 @@ namespace ECommerceTask
         public DbSet<Product> product { get; set; }
         public DbSet<User> user { get; set; }
         public DbSet<Order> order { get; set; }
+        public DbSet<OrderProduct> orderProducts { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {

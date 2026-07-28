@@ -18,5 +18,8 @@ namespace ECommerceTask.models
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 
+        // orderproduct
+        public OrderProduct orderProduct { get; set; }
+
     }
 }

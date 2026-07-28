@@ -20,5 +20,8 @@ namespace ECommerceTask.models
 
         // has
         public Review review { get; set; }
+
+        // orderProduct
+        public OrderProduct orderProduct { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace EFCore_Part1_.models
 {
-    [PrimaryKey(nameof(ProjectNumber), nameof(ProjectLocation))]
+    [PrimaryKey(nameof(ProjectNumber), nameof(ProjectName))]
     public class Project
     {
         public int ProjectId { get; set; }

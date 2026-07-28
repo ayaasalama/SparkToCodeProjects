@@ -1,4 +1,6 @@
-﻿namespace ECommerceTask
+﻿using ECommerceTask.models;
+
+namespace ECommerceTask
 {
     internal class Program
     {
@@ -61,6 +63,45 @@
             }
         }
 
+        // Case 1
+        static void RegisterUser()
+        {
+            Console.WriteLine("Register User:");
+            User user = new User();
+
+            Console.Write("Enter your Name: ");
+            user.UserName = Console.ReadLine();
+
+            Console.Write("Enter your Email: ");
+            user.UserEmail = Console.ReadLine();
+
+            Console.Write("Enter your Password: ");
+            user.UserPassword = Console.ReadLine();
+
+            if (user.UserName == null || user.UserName.Trim() == "" ||
+                   user.UserEmail == null || user.UserEmail.Trim() == "" ||
+                   user.UserPassword == null || user.UserPassword.Trim() == "")
+            {
+                Console.WriteLine("Registration failed. All fields are required.");
+                return;
+            }
+
+            // Check if email already exists
+            bool emailExists = context.user
+                .Any(u => u.UserEmail == user.UserEmail);
+
+            if (emailExists)
+            {
+                Console.WriteLine("Registration failed. This email is already registered.");
+                return;
+            }
+
+            context.user.Add(user);
+            context.SaveChanges();
+
+            Console.WriteLine("User registered successfully.");
+
+        }
 
 
     }

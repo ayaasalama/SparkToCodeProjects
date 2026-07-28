@@ -655,5 +655,67 @@ namespace ECommerceTask
             Console.WriteLine("Review added successfully.");
         }
 
+        // Case 10
+        public static void ViewReviewsForProduct()
+        {
+            Console.WriteLine("\nView All Reviews for a Product: ");
+
+            Console.Write("Enter Product ID: ");
+            int productId;
+
+            try
+            {
+                productId = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid Product ID. Please enter a number.");
+                return;
+            }
+
+            Product? selectedProduct = context.product.FirstOrDefault(p => p.ProductId == productId);
+
+            if (selectedProduct == null)
+            {
+                Console.WriteLine("Product not found.");
+                return;
+            }
+
+            // Find every order of that product
+            List<OrderProduct> orderProducts = context.orderProducts.Include(op => op.order)
+                                                                    .Where(op => op.ProductId == productId)
+                                                                    .ToList();
+
+            if (orderProducts.Count == 0)
+            {
+                Console.WriteLine("This product has not been included in any orders.");
+                return;
+            }
+
+            Console.WriteLine("\nProduct: " + selectedProduct.ProductName);
+            Console.WriteLine("Reviews:");
+
+            foreach (OrderProduct orderProduct in orderProducts)
+            {
+                Console.WriteLine("\nOrder ID: " + orderProduct.OrderId);
+                Console.WriteLine("Order Date: " + orderProduct.order.OrderDate);
+                Console.WriteLine("Quantity Ordered: " + orderProduct.Quantity);
+
+                // Find the review attached to this order
+                Review? orderReview = context.review.FirstOrDefault(r => r.OrderId == orderProduct.OrderId);
+
+                if (orderReview != null)
+                {
+                    Console.WriteLine("Rating: " + orderReview.Rating);
+                    Console.WriteLine("Comment: " + orderReview.Comment);
+                }
+                else
+                {
+                    Console.WriteLine("This order does not have a review.");
+                }
+            }
+
+        }
+
     }
 }

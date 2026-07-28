@@ -21,6 +21,9 @@
     <BuildType Solution="Default|*" Project="Release" />
     <Build Solution="Default|*" Project="false" />
   </Project>
+  <Project Path="ECommerceTask/ECommerceTask.csproj" Id="2f7d5fb4-253a-4d1b-813d-5df2aa304328">
+    <BuildType Solution="Default|*" Project="Release" />
+  </Project>
   <Project Path="EFCore(Bank1)/EFCore(Bank1).csproj" Id="d7bd7b07-b845-43c8-8558-366d0c305391">
     <BuildType Solution="Default|*" Project="Release" />
   </Project>

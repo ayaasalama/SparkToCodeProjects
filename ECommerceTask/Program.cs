@@ -1,4 +1,5 @@
 ﻿using ECommerceTask.models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceTask
 {
@@ -246,5 +247,87 @@ namespace ECommerceTask
 
             Console.WriteLine("Product added successfully.");
         }
+
+        // Case 5
+        static void ViewAllProducts()
+        {
+            Console.WriteLine("\nView Products: ");
+
+            if (context.product.Count() == 0)
+            {
+                Console.WriteLine("No products are available.");
+                return;
+            }
+
+            Console.WriteLine("Available Categories:");
+
+            List<Category> categories = context.category.ToList();
+
+            foreach (Category category in categories)
+            {
+                Console.WriteLine(
+                    category.CategoryId + ". " +
+                    category.CategoryName
+                );
+            }
+
+            Console.WriteLine("0. View All Products");
+            Console.Write("Enter a Category ID, or enter 0 to view all: ");
+
+            int categoryId;
+
+            try
+            {
+                categoryId = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid input. Please enter a number.");
+                return;
+            }
+
+            List<Product> products;
+
+            if (categoryId == 0)
+            {
+                // show all products and their categories
+                products = context.product.Include(p => p.Category)
+                                          .ToList();
+            }
+            else
+            {
+                Category selectedCategory = context.category.FirstOrDefault(c => c.CategoryId == categoryId);
+
+                if (selectedCategory == null)
+                {
+                    Console.WriteLine("Category not found.");
+                    return;
+                }
+
+                // Show products in the selected category
+                products = context.product.Include(p => p.Category)
+                                          .Where(p => p.CategoryId == categoryId)
+                                          .ToList();
+            }
+
+            if (products.Count == 0)
+            {
+                Console.WriteLine("No products were found in this category.");
+                return;
+            }
+
+            Console.WriteLine("\nProduct List =====");
+
+            foreach (Product product in products)
+            {
+                Console.WriteLine(
+                    "Name: " + product.ProductName +
+                    " | Price: " + product.ProductPrice.ToString("0.00") +
+                    " | Category: " + product.Category.CategoryName
+                );
+            }
+        }
+
+
     }
 }

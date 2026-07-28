@@ -103,6 +103,32 @@ namespace ECommerceTask
 
         }
 
+        // Case 2
+        static void Login()
+        {
+            Console.WriteLine("\nLogin: ");
+
+            Console.Write("Enter your Email: ");
+            string email = Console.ReadLine();
+
+            Console.Write("Enter your Password: ");
+            string password = Console.ReadLine();
+
+            User foundUser = context.user.FirstOrDefault(u => u.UserEmail == email && u.UserPassword == password);
+
+            if (foundUser != null)
+            {
+                loggedInUserId = foundUser.UserId;
+
+                Console.WriteLine("Login successful.");
+                Console.WriteLine("Welcome, " + foundUser.UserName + "!");
+            }
+            else
+            {
+                Console.WriteLine("Invalid email or password.");
+            }
+        }
+
 
     }
 }

@@ -470,6 +470,33 @@ namespace ECommerceTask
             Console.WriteLine("Order ID: " + order.OrderId);
         }
 
+        // Case 7
+        public static void ViewMyOrders()
+        {
+            Console.WriteLine("\nMy Orders: ");
+
+            if (!IsUserLoggedIn())
+            {
+                return;
+            }
+
+            List<Order> myOrders = context.order.Where(o => o.CustomerId == loggedInUserId)
+                                                .ToList();
+
+            if (myOrders.Count == 0)
+            {
+                Console.WriteLine("You have not placed any orders.");
+                return;
+            }
+
+            foreach (Order order in myOrders)
+            {
+                Console.WriteLine(
+                    "Order ID: " + order.OrderId +
+                    " | Order Date: " + order.OrderDate
+                );
+            }
+        }
 
     }
 }

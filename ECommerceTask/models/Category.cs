@@ -12,5 +12,9 @@ namespace ECommerceTask.models
         public string CategoryName { get; set; }
         public string CategoryType { get; set; }
 
+        // has
+        public List<Product> products { get; set; }
+
+
     }
 }

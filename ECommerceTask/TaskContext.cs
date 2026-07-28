@@ -9,6 +9,7 @@ namespace ECommerceTask
     public class TaskContext: DbContext
     {
         public DbSet<Category> category {  get; set; }
+        public DbSet<Product> product { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {

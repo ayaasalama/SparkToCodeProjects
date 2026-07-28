@@ -129,6 +129,34 @@ namespace ECommerceTask
             }
         }
 
+        // Case 3
+        static void AddCategory()
+        {
+            Console.WriteLine("\nAdd New Category: ");
+
+            Category category = new Category();
+
+            Console.Write("Enter Category Name: ");
+            category.CategoryName = Console.ReadLine();
+
+            Console.Write("Enter Category Type: ");
+            category.CategoryType = Console.ReadLine();
+
+            // Check whether any field is null or empty
+            if (category.CategoryName == null ||
+                category.CategoryName.Trim() == "" ||
+                category.CategoryType == null ||
+                category.CategoryType.Trim() == "")
+            {
+                Console.WriteLine("Category was not added. All fields are required.");
+                return;
+            }
+
+            context.category.Add(category);
+            context.SaveChanges();
+
+            Console.WriteLine("Category added successfully.");
+        }
 
     }
 }

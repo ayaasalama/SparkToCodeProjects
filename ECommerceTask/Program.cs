@@ -568,5 +568,92 @@ namespace ECommerceTask
                 Console.WriteLine("\nThis order does not have a review.");
             }
         }
+
+        // Case 9
+        public static void AddReview()
+        {
+            Console.WriteLine("\nAdd a Review for an Order:");
+
+            if (!IsUserLoggedIn())
+            {
+                return;
+            }
+
+            Console.Write("Enter Order ID: ");
+            int orderId;
+
+            try
+            {
+                orderId = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid Order ID. Please enter a number.");
+                return;
+            }
+
+            Order? selectedOrder = context.order.FirstOrDefault(o => o.OrderId == orderId);
+
+            if (selectedOrder == null)
+            {
+                Console.WriteLine("Order not found.");
+                return;
+            }
+
+            if (selectedOrder.CustomerId != loggedInUserId)
+            {
+                Console.WriteLine("You cannot review an order that does not belong to you.");
+                return;
+            }
+
+            Review? existingReview = context.review.FirstOrDefault(r => r.OrderId == orderId);
+
+            if (existingReview != null)
+            {
+                Console.WriteLine("This order already has a review.");
+                return;
+            }
+
+            Console.Write("Enter Rating: ");
+            float rating;
+
+            try
+            {
+                rating = float.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid rating. Please enter a number.");
+                return;
+            }
+
+            // rating is from 1 to 5
+            if (rating < 1 || rating > 5)
+            {
+                Console.WriteLine("Rating must be between 1 and 5.");
+                return;
+            }
+
+            Console.Write("Enter Comment: ");
+            string? comment = Console.ReadLine();
+
+            if (comment == null || comment.Trim() == "")
+            {
+                Console.WriteLine("Comment cannot be empty.");
+                return;
+            }
+
+            Review review = new Review();
+
+            review.OrderId = orderId;
+            review.Rating = rating;
+            review.Comment = comment;
+
+            context.review.Add(review);
+            context.SaveChanges();
+
+            Console.WriteLine("Review added successfully.");
+        }
+
     }
 }

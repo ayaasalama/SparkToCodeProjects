@@ -328,6 +328,136 @@ namespace ECommerceTask
             }
         }
 
+        // Case 6
+        static void PlaceOrder()
+        {
+            Console.WriteLine("Place an Order: ");
 
+            // if user is logged in
+            if (loggedInUserId == 0)
+            {
+                Console.WriteLine("You must log in before placing an order.");
+                return;
+            }
+
+            List<Product> products = context.product.ToList();
+
+            if (products.Count == 0)
+            {
+                Console.WriteLine("No products are available.");
+                return;
+            }
+
+            // Display the available products
+            Console.WriteLine("\nAvailable Products:");
+
+            foreach (Product product in products)
+            {
+                Console.WriteLine(
+                    product.ProductId + ". " +
+                    product.ProductName +
+                    " - Price: " +
+                    product.ProductPrice.ToString("0.00")
+                );
+            }
+
+            List<OrderProduct> selectedProducts = new List<OrderProduct>();
+
+            while (true)
+            {
+                Console.Write("\nEnter Product ID, or enter 0 to finish: ");
+                int productId;
+
+                try
+                {
+                    productId = int.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                    continue;
+                }
+                
+                if (productId == 0)
+                {
+                    break;
+                }
+
+                // Check if selected product exists
+                Product selectedProduct = products.FirstOrDefault(p => p.ProductId == productId);
+
+                if (selectedProduct == null)
+                {
+                    Console.WriteLine("Product not found.");
+                    continue;
+                }
+
+                // Prevent same product from being selected twice
+                bool alreadySelected = selectedProducts.Any(ap => ap.ProductId == productId);
+
+                if (alreadySelected)
+                {
+                    Console.WriteLine("This product has already been selected.");
+                    continue;
+                }
+
+                Console.Write("Enter Quantity: ");
+                int quantity;
+
+                try
+                {
+                    quantity = int.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Invalid quantity. Please enter a number.");
+                    continue;
+                }
+
+                if (quantity <= 0)
+                {
+                    Console.WriteLine("Quantity must be greater than zero.");
+                    continue;
+                }
+
+                OrderProduct orderProduct = new OrderProduct();
+
+                orderProduct.ProductId = productId;
+                orderProduct.Quantity = quantity;
+
+                selectedProducts.Add(orderProduct);
+
+                Console.WriteLine(
+                    selectedProduct.ProductName +
+                    " was added to the order."
+                );
+            }
+
+            if (selectedProducts.Count == 0)
+            {
+                Console.WriteLine("No products were selected. Order was not created.");
+                return;
+            }
+
+            Order order = new Order();
+
+            order.OrderDate = DateTime.Now;
+            order.CustomerId = loggedInUserId;
+
+            context.order.Add(order);
+            context.SaveChanges();
+
+            foreach (OrderProduct orderProduct in selectedProducts)
+            {
+                orderProduct.OrderId = order.OrderId;
+
+                context.orderProducts.Add(orderProduct);
+            }
+
+            context.SaveChanges();
+
+            Console.WriteLine("\nOrder placed successfully.");
+            Console.WriteLine("Order ID: " + order.OrderId);
+        }
     }
 }

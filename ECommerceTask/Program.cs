@@ -65,7 +65,7 @@ namespace ECommerceTask
         }
 
         // Case 1
-        static void RegisterUser()
+        public static void RegisterUser()
         {
             Console.WriteLine("Register User:");
             User user = new User();
@@ -105,7 +105,7 @@ namespace ECommerceTask
         }
 
         // Case 2
-        static void Login()
+        public static void Login()
         {
             Console.WriteLine("\nLogin: ");
 
@@ -131,7 +131,7 @@ namespace ECommerceTask
         }
 
         // Case 3
-        static void AddCategory()
+        public static void AddCategory()
         {
             Console.WriteLine("\nAdd New Category: ");
 
@@ -161,7 +161,7 @@ namespace ECommerceTask
 
 
         // Case 4
-        static void AddProduct()
+        public static void AddProduct()
         {
             Console.WriteLine("\nAdd New Product: ");
 
@@ -249,7 +249,7 @@ namespace ECommerceTask
         }
 
         // Case 5
-        static void ViewAllProducts()
+        public static void ViewAllProducts()
         {
             Console.WriteLine("\nView Products: ");
 
@@ -328,15 +328,25 @@ namespace ECommerceTask
             }
         }
 
+        // Helper Function
+        public static bool IsUserLoggedIn()
+        {
+            if (loggedInUserId == 0)
+            {
+                Console.WriteLine("You must log in first.");
+                return false;
+            }
+
+            return true;
+        }
+
         // Case 6
-        static void PlaceOrder()
+        public static void PlaceOrder()
         {
             Console.WriteLine("Place an Order: ");
 
-            // if user is logged in
-            if (loggedInUserId == 0)
+            if (!IsUserLoggedIn())
             {
-                Console.WriteLine("You must log in before placing an order.");
                 return;
             }
 
@@ -459,5 +469,7 @@ namespace ECommerceTask
             Console.WriteLine("\nOrder placed successfully.");
             Console.WriteLine("Order ID: " + order.OrderId);
         }
+
+
     }
 }

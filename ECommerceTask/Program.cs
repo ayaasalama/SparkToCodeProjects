@@ -158,5 +158,93 @@ namespace ECommerceTask
             Console.WriteLine("Category added successfully.");
         }
 
+
+        // Case 4
+        static void AddProduct()
+        {
+            Console.WriteLine("\nAdd New Product: ");
+
+            // Get existing categories
+            List<Category> categories = context.category.ToList();
+
+            // No categories then cant add the product
+            if (categories.Count == 0)
+            {
+                Console.WriteLine("No categories exist. Add a category first.");
+                return;
+            }
+
+            Product product = new Product();
+
+            Console.Write("Enter Product Name: ");
+            product.ProductName = Console.ReadLine();
+
+            if (product.ProductName == null ||
+                product.ProductName.Trim() == "")
+            {
+                Console.WriteLine("Product name is required.");
+                return;
+            }
+
+            Console.Write("Enter Product Price: ");
+            try
+            {
+                product.ProductPrice = double.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid price. Please enter a number.");
+                return;
+            }
+
+            if (product.ProductPrice <= 0)
+            {
+                Console.WriteLine("Product price must be greater than zero.");
+                return;
+            }
+
+            // Display existing categories
+            Console.WriteLine("\nAvailable Categories:");
+
+            foreach (Category category in categories)
+            {
+                Console.WriteLine(
+                    category.CategoryId + ". " +
+                    category.CategoryName + " - " +
+                    category.CategoryType
+                );
+            }
+
+            Console.Write("Enter the Category ID: ");
+            int categoryId;
+
+            try
+            {
+                categoryId = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid Category ID. Please enter a number.");
+                return;
+            }
+
+            // Check whether the selected category exists
+            Category? selectedCategory = context.category
+                .FirstOrDefault(c => c.CategoryId == categoryId);
+
+            if (selectedCategory == null)
+            {
+                Console.WriteLine("Category not found.");
+                return;
+            }
+
+            // Link the product to the selected category
+            product.CategoryId = selectedCategory.CategoryId;
+
+            context.product.Add(product);
+            context.SaveChanges();
+
+            Console.WriteLine("Product added successfully.");
+        }
     }
 }

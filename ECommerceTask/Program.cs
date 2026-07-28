@@ -498,5 +498,75 @@ namespace ECommerceTask
             }
         }
 
+
+        // Case 8
+        public static void ViewOrderDetails()
+        {
+            Console.WriteLine("\nView Order Details: ");
+
+            Console.Write("Enter Order ID: ");
+            int orderId;
+
+            try
+            {
+                orderId = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid Order ID. Please enter a number.");
+                return;
+            }
+
+            Order? selectedOrder = context.order.FirstOrDefault(o => o.OrderId == orderId);
+
+            if (selectedOrder == null)
+            {
+                Console.WriteLine("Order not found.");
+                return;
+            }
+
+            // Get all products belonging to this order
+            List<OrderProduct> orderProducts = context.orderProducts.Include(op => op.product)
+                                                                    .Where(op => op.OrderId == orderId)
+                                                                    .ToList();
+
+            Console.WriteLine("\nOrder ID: " + selectedOrder.OrderId);
+            Console.WriteLine("Order Date: " + selectedOrder.OrderDate);
+
+            double orderTotal = 0;
+
+            Console.WriteLine("\nProducts:");
+
+            foreach (OrderProduct orderProduct in orderProducts)
+            {
+                double productSubtotal = orderProduct.product.ProductPrice * orderProduct.Quantity;
+
+                orderTotal = orderTotal + productSubtotal;
+
+                Console.WriteLine(
+                    "Product: " + orderProduct.product.ProductName +
+                    " | Price: " + orderProduct.product.ProductPrice.ToString("0.00") +
+                    " | Quantity: " + orderProduct.Quantity +
+                    " | Subtotal: " + productSubtotal.ToString("0.00")
+                );
+            }
+
+            Console.WriteLine("\nOrder Total: " + orderTotal.ToString("0.00"));
+
+            // Check whether this order has a review
+            Review? orderReview = context.review
+                .FirstOrDefault(r => r.OrderId == orderId);
+
+            if (orderReview != null)
+            {
+                Console.WriteLine("\nReview:");
+                Console.WriteLine("Rating: " + orderReview.Rating);
+                Console.WriteLine("Comment: " + orderReview.Comment);
+            }
+            else
+            {
+                Console.WriteLine("\nThis order does not have a review.");
+            }
+        }
     }
 }

@@ -22,6 +22,6 @@ namespace ECommerceTask.models
         public Review review { get; set; }
 
         // orderProduct
-        public OrderProduct orderProduct { get; set; }
+        public List<OrderProduct> orderProducts { get; set; }
     }
 }

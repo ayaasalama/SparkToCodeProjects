@@ -9,13 +9,13 @@ namespace ECommerceTask.models
     [PrimaryKey(nameof(ProductId), nameof(OrderId))]
     public class OrderProduct
     {
-        [ForeignKey("products")]
+        [ForeignKey("product")]
         public int ProductId { get; set; }
-        public List<Product> products { get; set; }
+        public Product product { get; set; }
 
-        [ForeignKey("orders")]
+        [ForeignKey("order")]
         public int OrderId { get; set; }
-        public List<Order> orders { get; set; }
+        public Order order { get; set; }
 
         public int Quantity { get; set; }
 

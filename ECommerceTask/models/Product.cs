@@ -19,7 +19,7 @@ namespace ECommerceTask.models
         public Category Category { get; set; }
 
         // orderproduct
-        public OrderProduct orderProduct { get; set; }
+        public List<OrderProduct> orderProducts { get; set; }
 
     }
 }

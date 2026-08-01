@@ -29,5 +29,13 @@ namespace WebAPIProject.Controllers
             }
            
         }
+        public Product GetProduct (int id)
+        {
+            Product p = context.products.FirstOrDefault(p => p.ProductId == id);
+            return p;
+
+        }
+
+
     }
 }

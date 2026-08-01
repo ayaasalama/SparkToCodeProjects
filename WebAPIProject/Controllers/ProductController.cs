@@ -3,19 +3,18 @@ namespace WebAPIProject.Controllers
 {
     public class ProductController
     {
-        private ProjectContext _context;
-        public ProductController(ProjectContext context)
+        private ProjectContext context;
+        public ProductController(ProjectContext _context)
         {
-            _context = context;
+            context = _context;
         }
 
 
-        public void AddProduct()
+        public void AddProduct(Product p)
         {
-            
+            context.products.Add(p);
+            context.SaveChanges();
 
-     
-           
         }
     }
 }

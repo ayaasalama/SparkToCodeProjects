@@ -16,5 +16,18 @@ namespace WebAPIProject.Controllers
             context.SaveChanges();
 
         }
+
+        public void DeleteProduct(int id)
+        {
+            Product p = context.products.FirstOrDefault(p => p.ProductId == id);
+            if (p == null)
+            {
+            }
+            else 
+            {
+                context.products.Remove(p);
+            }
+           
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using WebAPIProject.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebAPIProject.Models;
 namespace WebAPIProject.Controllers
 {
     public class ProductController
@@ -40,6 +41,37 @@ namespace WebAPIProject.Controllers
         {
             List<Product> products = context.products.ToList();
             return products;
+        }
+
+        public void UpdateProductPrice(int id, double newPrice)
+        {
+            Product p = context.products.FirstOrDefault(p => p.ProductId == id);
+
+            p.Price = newPrice;
+
+            context.SaveChanges();
+        }
+
+        public void UpdateProductName(int id, string newName)
+        {
+            Product p = context.products.FirstOrDefault(p => p.ProductId == id);
+
+            p.ProductName = newName;
+
+            context.SaveChanges();
+
+        }
+
+        public void UpdateProduct(int id, Product newProduct)
+        {
+            Product p = context.products.FirstOrDefault(p => p.ProductId == id);
+
+            p.Price = newProduct.Price;
+            p.ProductName = newProduct.ProductName;
+            p.ProductDescription = newProduct.ProductDescription;
+
+            context.SaveChanges();
+
         }
 
     }

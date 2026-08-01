@@ -36,6 +36,11 @@ namespace WebAPIProject.Controllers
 
         }
 
+        public List<Product> GetProducts ()
+        {
+            List<Product> products = context.products.ToList();
+            return products;
+        }
 
     }
 }

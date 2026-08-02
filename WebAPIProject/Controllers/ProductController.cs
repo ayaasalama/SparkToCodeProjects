@@ -10,7 +10,7 @@ namespace WebAPIProject.Controllers
             context = _context;
         }
 
-
+        [HttpPost("AddProduct")]
         public void AddProduct(Product p)
         {
             context.products.Add(p);
@@ -18,6 +18,7 @@ namespace WebAPIProject.Controllers
 
         }
 
+        [HttpPost("DeleteProduct")]
         public void DeleteProduct(int id)
         {
             Product p = context.products.FirstOrDefault(p => p.ProductId == id);
@@ -30,6 +31,8 @@ namespace WebAPIProject.Controllers
             }
            
         }
+
+        [HttpGet("GetProduct")]
         public Product GetProduct (int id)
         {
             Product p = context.products.FirstOrDefault(p => p.ProductId == id);
@@ -37,12 +40,14 @@ namespace WebAPIProject.Controllers
 
         }
 
+        [HttpGet("GetProducts")]
         public List<Product> GetProducts ()
         {
             List<Product> products = context.products.ToList();
             return products;
         }
 
+        [HttpPatch("UpdateProductPrice")]
         public void UpdateProductPrice(int id, double newPrice)
         {
             Product p = context.products.FirstOrDefault(p => p.ProductId == id);
@@ -52,6 +57,7 @@ namespace WebAPIProject.Controllers
             context.SaveChanges();
         }
 
+        [HttpPatch("UpdateProductName")]
         public void UpdateProductName(int id, string newName)
         {
             Product p = context.products.FirstOrDefault(p => p.ProductId == id);
@@ -62,6 +68,7 @@ namespace WebAPIProject.Controllers
 
         }
 
+        [HttpPut("UpdateProduct")]
         public void UpdateProduct(int id, Product newProduct)
         {
             Product p = context.products.FirstOrDefault(p => p.ProductId == id);

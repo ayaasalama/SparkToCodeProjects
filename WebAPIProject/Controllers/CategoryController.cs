@@ -14,12 +14,14 @@ namespace WebAPIProject.Controllers
             context = _context;
         }
 
+        [HttpPost("AddCategory")]
         public void AddCategory(Category c)
         {
             context.categories.Add(c);
             context.SaveChanges();
         }
 
+        [HttpDelete("DeleteCategory")]
         public void DeleteCategory(int id)
         {
             Category c = context.categories.FirstOrDefault(c => c.CategoryId == id);
@@ -33,6 +35,7 @@ namespace WebAPIProject.Controllers
 
         }
 
+        [HttpGet("GetCategory")]
         public Category GetCategory(int id)
         {
             Category c = context.categories.FirstOrDefault(c => c.CategoryId == id);
@@ -40,6 +43,7 @@ namespace WebAPIProject.Controllers
 
         }
 
+        [HttpGet("GetCategories")]
         public List<Category> GetCategories()
         {
             List<Category> categories = context.categories.ToList();

@@ -30,7 +30,7 @@ namespace WebAPIProject.Controllers
             }
             else
             {
-                context.products.Remove(p);
+                context.categories.Remove(c);
             }
 
         }

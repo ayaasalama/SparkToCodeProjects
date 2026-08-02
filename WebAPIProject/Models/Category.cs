@@ -12,6 +12,7 @@ namespace WebAPIProject.Models
         public string CategoryName { get; set; }
         public string Description { get; set; }
 
+        [JsonIgnore]
         public List<Product> products { get; set; }
     }
 }

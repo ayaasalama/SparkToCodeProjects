@@ -9,7 +9,9 @@ namespace WebAPIProject.Models
         [Key]
         [JsonIgnore]
         public int CategoryId { get; set; }
+        [Required]
         public string CategoryName { get; set; }
+        [Required]
         public string Description { get; set; }
 
         [JsonIgnore]

@@ -2,7 +2,9 @@
 using WebAPIProject.Models;
 namespace WebAPIProject.Controllers
 {
-    public class ProductController
+    [ApiController]
+    [Route("Product")]
+    public class ProductController : ControllerBase
     {
         private ProjectContext context;
         public ProductController(ProjectContext _context)

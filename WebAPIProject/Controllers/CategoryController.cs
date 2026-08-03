@@ -15,39 +15,42 @@ namespace WebAPIProject.Controllers
         }
 
         [HttpPost("AddCategory")]
-        public void AddCategory(Category c)
+        public IActionResult AddCategory(Category c)
         {
             context.categories.Add(c);
             context.SaveChanges();
+            return Ok();
         }
 
         [HttpDelete("DeleteCategory")]
-        public void DeleteCategory(int id)
+        public IActionResult DeleteCategory(int id)
         {
             Category c = context.categories.FirstOrDefault(c => c.CategoryId == id);
             if (c == null)
             {
+                return NotFound("Category not Found.");
             }
             else
             {
                 context.categories.Remove(c);
+                return Ok("Category Deleted Successfully.");
             }
 
         }
 
         [HttpGet("GetCategory")]
-        public Category GetCategory(int id)
+        public IActionResult GetCategory(int id)
         {
             Category c = context.categories.FirstOrDefault(c => c.CategoryId == id);
-            return c;
+            return Ok(c);
 
         }
 
         [HttpGet("GetCategories")]
-        public List<Category> GetCategories()
+        public IActionResult GetCategories()
         {
             List<Category> categories = context.categories.ToList();
-            return categories;
+            return Ok(categories);
         }
 
     }

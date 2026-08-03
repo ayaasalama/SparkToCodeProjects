@@ -13,65 +13,71 @@ namespace WebAPIProject.Controllers
         }
 
         [HttpPost("AddProduct")]
-        public void AddProduct(Product p)
+        public IActionResult AddProduct(Product p)
         {
             context.products.Add(p);
             context.SaveChanges();
 
+            return Ok();
+
         }
 
         [HttpPost("DeleteProduct")]
-        public void DeleteProduct(int id)
+        public IActionResult DeleteProduct(int id)
         {
             Product p = context.products.FirstOrDefault(p => p.ProductId == id);
             if (p == null)
             {
+                return NotFound("Product not found.");
             }
             else 
             {
                 context.products.Remove(p);
+                return Ok("Product deleted successfully.");
             }
            
         }
 
         [HttpGet("GetProduct")]
-        public Product GetProduct (int id)
+        public IActionResult GetProduct (int id)
         {
             Product p = context.products.FirstOrDefault(p => p.ProductId == id);
-            return p;
+            return Ok(p);
 
         }
 
         [HttpGet("GetProducts")]
-        public List<Product> GetProducts ()
+        public IActionResult GetProducts ()
         {
             List<Product> products = context.products.ToList();
-            return products;
+            return Ok(products);
         }
 
         [HttpPatch("UpdateProductPrice")]
-        public void UpdateProductPrice(int id, double newPrice)
+        public IActionResult UpdateProductPrice(int id, double newPrice)
         {
             Product p = context.products.FirstOrDefault(p => p.ProductId == id);
 
             p.Price = newPrice;
 
             context.SaveChanges();
+            return Ok();
         }
 
         [HttpPatch("UpdateProductName")]
-        public void UpdateProductName(int id, string newName)
+        public IActionResult UpdateProductName(int id, string newName)
         {
             Product p = context.products.FirstOrDefault(p => p.ProductId == id);
 
             p.ProductName = newName;
 
             context.SaveChanges();
+            return Ok();
 
         }
 
         [HttpPut("UpdateProduct")]
-        public void UpdateProduct(int id, Product newProduct)
+        public IActionResult UpdateProduct(int id, Product newProduct)
         {
             Product p = context.products.FirstOrDefault(p => p.ProductId == id);
 
@@ -80,6 +86,7 @@ namespace WebAPIProject.Controllers
             p.ProductDescription = newProduct.ProductDescription;
 
             context.SaveChanges();
+            return Ok();
 
         }
 

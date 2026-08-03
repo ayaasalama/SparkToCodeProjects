@@ -1,0 +1,20 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+
+namespace WebAPIProject.Models
+{
+    public class Category
+    {
+        [Key]
+        [JsonIgnore]
+        public int CategoryId { get; set; }
+        [Required]
+        public string CategoryName { get; set; }
+        [Required]
+        public string Description { get; set; }
+
+        [JsonIgnore]
+        public List<Product> products { get; set; }
+    }
+}
